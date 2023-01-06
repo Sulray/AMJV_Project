@@ -5,7 +5,6 @@ using UnityEngine;
 public class CameraMovement : MonoBehaviour
 {
     private GameObject player;
-    [SerializeField] float cameraHeight;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,6 +15,7 @@ public class CameraMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        this.transform.position = new Vector3(player.transform.position.x,cameraHeight, player.transform.position.z);
+        this.transform.position = new Vector3(player.transform.position.x,player.transform.position.y + 3, player.transform.position.z - 4);
+        transform.LookAt(player.transform.position);
     }
 }
