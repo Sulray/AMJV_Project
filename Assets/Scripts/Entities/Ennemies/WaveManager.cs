@@ -4,9 +4,19 @@ using UnityEngine;
 
 public class WaveManager : MonoBehaviour
 {
+    //On utilise une Pool d'objets pour optimiser la mémoire
     [SerializeField] private Enemy[] enemies;
     private Pool[] pools = new Pool[5];
-    //On utilise une Pool d'objets pour optimiser la mémoire
+
+    private int wave;
+    private int maxEnemies = 500;
+    private float spawnSpeed = 2;
+    private float waveDelay = 5;
+    private float timer;
+
+    //entre 4 et 8 spawnpoints
+    [SerializeField] private GameObject[] spawnpoints;
+    
     private void Awake()
     {
         int i = 0;
@@ -16,21 +26,36 @@ public class WaveManager : MonoBehaviour
             i += 1;
         }
     }
-    // Start is called before the first frame update
-    void Start()
+
+    private void Start()
     {
-        
+        timer = 0;
+        StartCoroutine("Life");
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            Spawn(0, 1, Vector3.zero);
-        }
+
     }
 
+    private IEnumerator Life()
+    {
+        while (true)
+        {
+            timer += Time.deltaTime;
+            if (timer >= waveDelay)
+            {
+                timer = 0;
+                yield return startWave(wave);
+                wave += 1;
+            }
+        }
+    }
+    private IEnumerator startWave(int wave)
+    {
+        yield return null;
+    }
     
     //On préfère spawn à partir de l'id de l'ennemi pour accéder directement à la pool correspondante
     private void Spawn(int enemy, int number, Vector3 spawn)
