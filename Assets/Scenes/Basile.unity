@@ -656,6 +656,24 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1126ae03e60f97e42bf5e68b41ab1451, type: 3}
+--- !u!1 &1093114741 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5352921855327395112, guid: 1126ae03e60f97e42bf5e68b41ab1451,
+    type: 3}
+  m_PrefabInstance: {fileID: 1093114740}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1093114742
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1093114741}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d854a8efb84656c4e967e0083ff15afb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1133755043
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -877,6 +895,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1689960157}
+  - component: {fileID: 1689960158}
   m_Layer: 0
   m_Name: WaveManager
   m_TagString: Untagged
@@ -898,6 +917,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1689960158
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1689960156}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3064606e8d7efee46babe89182a67955, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemies:
+  - {fileID: 1093114742}
 --- !u!1 &1806922381
 GameObject:
   m_ObjectHideFlags: 0

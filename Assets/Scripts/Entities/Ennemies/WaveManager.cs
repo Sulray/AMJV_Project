@@ -12,7 +12,7 @@ public class WaveManager : MonoBehaviour
         int i = 0;
         foreach(Enemy enemy in enemies)
         {
-            pools[i] = new Pool();
+            pools[i] = new Pool(50, enemies[i]);
             i += 1;
         }
     }
@@ -25,6 +25,20 @@ public class WaveManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Spawn(0, 1, Vector3.zero);
+        }
+    }
+
+    
+    //On préfère spawn à partir de l'id de l'ennemi pour accéder directement à la pool correspondante
+    private void Spawn(int enemy, int number, Vector3 spawn)
+    {
+        for (int i=0; i<= number; i++)
+        {
+            Enemy guy = pools[enemy].GetEnemy();
+            guy.transform.position = spawn;
+        }
     }
 }

@@ -8,7 +8,7 @@ public class Pool : MonoBehaviour
     private Enemy prefab;
     private int size;
 
-    public void createPool(int size, Enemy prefab)
+    public Pool(int size, Enemy prefab)
     {
         pool = new Stack<Enemy>(size);
         this.prefab = prefab;
@@ -20,13 +20,14 @@ public class Pool : MonoBehaviour
         if (pool.Count == 0)
         {
             Enemy enemy = Instantiate(prefab);
+            enemy.gameObject.SetActive(true);
             pool.Push(enemy);
             return enemy;
         }
         else
         {
             Enemy enemy = pool.Pop();
-            enemy.enabled = true;
+            enemy.gameObject.SetActive(true);
             return enemy;
         }
     }
@@ -39,7 +40,7 @@ public class Pool : MonoBehaviour
         }
         else
         {
-            enemy.enabled = false;
+            enemy.gameObject.SetActive(false);
             pool.Push(enemy);
         }
     }
