@@ -1,18 +1,36 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
+using UnityEngine.Animations;
 
 public abstract class Enemy : Entity
 {
-    // Start is called before the first frame update
+    [Header("Enemy Parameters")]
+    NavMeshAgent agent;
+    Animator animator;
+    [SerializeField] GameObject enemyModel;
+    GameObject player;
+    Transform playerTransform;
+    [SerializeField] float distanceDetection = 5f;
+
     void Start()
     {
-        
+        Debug.Log("Enemy");
+        agent = GetComponent<NavMeshAgent>();
+        animator = enemyModel.GetComponent<Animator>();
+        player = GameObject.FindGameObjectsWithTag("Player")[0];
+        playerTransform = player.transform;
+
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+        if (Vector3.Distance(this.transform.position, playerTransform.position) < distanceDetection)
+        {
+            agent.destination = playerTransform.position;
+        }
+
+        animator.SetFloat("ForwardSpeed", agent.velocity.magnitude / agent.speed);
     }
 }

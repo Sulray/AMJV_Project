@@ -9,6 +9,9 @@ public class WaveManager : MonoBehaviour
     private Pool[] pools = new Pool[5];
 
     private int wave;
+    private int currentFib = 0;
+    private int lastFib = 1;
+    [SerializeField] private int totalEnemies;
     private int maxEnemies = 500;
     private float spawnSpeed = 2;
     private float waveDelay = 5;
@@ -36,34 +39,83 @@ public class WaveManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKey(KeyCode.C))
+        {
+            totalEnemies -= 1;
+        }
+        /*timer += Time.deltaTime;
+        if (timer >= waveDelay)
+        {
+            timer = 0;
+            IEnumerator newWave = startWave(wave);
+            StartCoroutine("newWave");
+            wave += 1;
 
+        }*/
     }
 
     private IEnumerator Life()
     {
+        Debug.Log("life");
+        int tmpFib;
         while (true)
         {
             timer += Time.deltaTime;
             if (timer >= waveDelay)
             {
                 timer = 0;
-                yield return startWave(wave);
+                //update the fibonacci sequence
+                tmpFib = currentFib;
+                currentFib += lastFib;
+                lastFib = tmpFib;
                 wave += 1;
+                yield return startWave(currentFib);
+                
+            }
+            else
+            {
+                yield return null; //utile ou ça se fait tout seul de sortir de la coroutine?
             }
         }
     }
-    private IEnumerator startWave(int wave)
+
+    private Vector3 pickSpawn()
     {
-        yield return null;
+        return spawnpoints[Random.Range(0, spawnpoints.Length)].transform.position;
+    }
+
+    private int pickEnemy()
+    {
+        return Random.Range(0, enemies.Length);
+    }
+
+    //spawns random ennemies at random spawn anchors if there's room available, until all are spawned
+    private IEnumerator startWave(int toSpawn)
+    {
+        Debug.Log(toSpawn);
+        int spawnedEnemies = 0;
+        while(spawnedEnemies< toSpawn)
+        {
+            //polish : optimiser le choix des spawns, attendre qu'il soit vide, etc...
+            if (totalEnemies < maxEnemies)
+            {
+                totalEnemies += 1;
+                spawnedEnemies += 1;
+                Spawn(pickEnemy(), pickSpawn());
+                yield return new WaitForSeconds(1f / spawnSpeed);
+            }
+            else
+            {
+                yield return null;
+            }
+        }
     }
     
+    //spawns an enemy from pool "enemy" at "spawn" anchor
     //On préfère spawn à partir de l'id de l'ennemi pour accéder directement à la pool correspondante
-    private void Spawn(int enemy, int number, Vector3 spawn)
+    private void Spawn(int enemy, Vector3 spawn)
     {
-        for (int i=0; i<= number; i++)
-        {
             Enemy guy = pools[enemy].GetEnemy();
             guy.transform.position = spawn;
-        }
     }
 }
