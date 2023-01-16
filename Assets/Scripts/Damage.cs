@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TakeDamage : MonoBehaviour
+public class Damage : MonoBehaviour
 {
     public HealthBar healthBar;
 
     [SerializeField]
     private float maxHealth = 5f;
+    [SerializeField]
+    private int hitDamage = 1;
 
     // Start is called before the first frame update
     void Start()
@@ -21,7 +23,7 @@ public class TakeDamage : MonoBehaviour
         // entity takes damage
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            Damage(3);
+            TakeDamage(hitDamage);
         }
         
         // entity dies
@@ -30,7 +32,7 @@ public class TakeDamage : MonoBehaviour
             Destroy(gameObject);
         }
     }
-    void Damage(int damage)
+    void TakeDamage(int damage)
     {
         healthBar.currentHealth -= damage;
     }
