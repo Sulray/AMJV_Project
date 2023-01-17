@@ -188,6 +188,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 5352921855327395112, guid: 1126ae03e60f97e42bf5e68b41ab1451,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1126ae03e60f97e42bf5e68b41ab1451, type: 3}
 --- !u!1001 &368291445
@@ -1007,9 +1012,20 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1615806493324164360, guid: e333605822099814db35a1b693b948f7,
         type: 3}
+      propertyPath: pools.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1615806493324164360, guid: e333605822099814db35a1b693b948f7,
+        type: 3}
       propertyPath: enemies.Array.size
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 1615806493324164360, guid: e333605822099814db35a1b693b948f7,
+        type: 3}
+      propertyPath: pools.Array.data[0]
+      value: 
+      objectReference: {fileID: 2291118415514589010, guid: f357e31a5b8ffab429dadb0dc5383c78,
+        type: 3}
     - target: {fileID: 1615806493324164360, guid: e333605822099814db35a1b693b948f7,
         type: 3}
       propertyPath: enemies.Array.data[0]
@@ -1041,6 +1057,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: WaveManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 1615806493324164362, guid: e333605822099814db35a1b693b948f7,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1615806493324164363, guid: e333605822099814db35a1b693b948f7,
         type: 3}

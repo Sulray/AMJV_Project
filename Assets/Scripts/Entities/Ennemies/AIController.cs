@@ -15,6 +15,7 @@ public class AIController : MonoBehaviour
 
     void Start()
     {
+        Debug.Log("ai");
         agent = GetComponent<NavMeshAgent>();
         animator = enemyModel.GetComponent<Animator>();
         player = GameObject.FindGameObjectsWithTag("Player")[0];
