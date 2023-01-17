@@ -4,12 +4,11 @@ using UnityEngine;
 
 public abstract class Entity : MonoBehaviour
 {
-
-    [Header("Entity Parameters")]
-    [SerializeField] protected float maxHealth;
-    [SerializeField] protected float health;
+    /*[SerializeField] protected float maxHealth;
     [SerializeField] protected float speed;
-    [SerializeField] protected float damage;
+    [SerializeField] protected float damage;*/
+    [SerializeField] public EnityParameters entityData;
+    [SerializeField] protected float health;
     // Start is called before the first frame update
     void Start()
     {
