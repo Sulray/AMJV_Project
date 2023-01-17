@@ -217,75 +217,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0be4ffae16e7c914a949be6853ee35ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1001 &227646769
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 379635395619272642, guid: f05e286449bdb054cb5256153470eac5,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 379635395619272642, guid: f05e286449bdb054cb5256153470eac5,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -7.2290874
-      objectReference: {fileID: 0}
-    - target: {fileID: 379635395619272642, guid: f05e286449bdb054cb5256153470eac5,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.88
-      objectReference: {fileID: 0}
-    - target: {fileID: 379635395619272642, guid: f05e286449bdb054cb5256153470eac5,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -4.54
-      objectReference: {fileID: 0}
-    - target: {fileID: 379635395619272642, guid: f05e286449bdb054cb5256153470eac5,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 379635395619272642, guid: f05e286449bdb054cb5256153470eac5,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 379635395619272642, guid: f05e286449bdb054cb5256153470eac5,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 379635395619272642, guid: f05e286449bdb054cb5256153470eac5,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 379635395619272642, guid: f05e286449bdb054cb5256153470eac5,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 379635395619272642, guid: f05e286449bdb054cb5256153470eac5,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 379635395619272642, guid: f05e286449bdb054cb5256153470eac5,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5352921855327395112, guid: f05e286449bdb054cb5256153470eac5,
-        type: 3}
-      propertyPath: m_Name
-      value: Enemy
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: f05e286449bdb054cb5256153470eac5, type: 3}
 --- !u!1001 &487380857
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -525,7 +456,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!1001 &1273793543
 PrefabInstance:
@@ -700,7 +631,7 @@ Transform:
   m_LocalScale: {x: 1.2692, y: 1.2863, z: 1.1729}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1895213660 stripped
 GameObject:
@@ -722,6 +653,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   directionOffset: 1
   playerModel: {fileID: 544385171}
+--- !u!114 &1895213662
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1895213660}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b1e56f85ddffb0409b9a3887a9b4583, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  entityData: {fileID: 0}
+  health: 0
 --- !u!1001 &2022740754
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -732,7 +677,7 @@ PrefabInstance:
     - target: {fileID: 1143215858451487142, guid: e9241649bbe40ed479b6999072d2097a,
         type: 3}
       propertyPath: m_Name
-      value: Player
+      value: Warrior
       objectReference: {fileID: 0}
     - target: {fileID: 1143215858451487142, guid: e9241649bbe40ed479b6999072d2097a,
         type: 3}
