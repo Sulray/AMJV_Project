@@ -5,8 +5,8 @@ using UnityEngine;
 public class WaveManager : MonoBehaviour
 {
     //On utilise une Pool d'objets pour optimiser la mémoire
-    [SerializeField] private Enemy[] enemies;
-    private Pool[] pools = new Pool[5];
+    //[SerializeField] private Enemy[] enemies;
+    [SerializeField] private Pool[] pools;
 
     private int wave;
     private int currentFib = 0;
@@ -14,7 +14,7 @@ public class WaveManager : MonoBehaviour
     [SerializeField] private int totalEnemies;
     private int maxEnemies = 500;
     private float spawnSpeed = 2;
-    private float waveDelay = 5;
+    private float waveDelay = 2;
     private float timer;
 
     //entre 4 et 8 spawnpoints
@@ -22,12 +22,12 @@ public class WaveManager : MonoBehaviour
     
     private void Awake()
     {
-        int i = 0;
+        /*int i = 0;
         foreach(Enemy enemy in enemies)
         {
-            pools[i] = new Pool(50, enemies[i]);
+            pools[i] = gameObject.AddComponent(new Pool(50, enemies[i]));
             i += 1;
-        }
+        }*/
     }
 
     private void Start()
@@ -86,7 +86,7 @@ public class WaveManager : MonoBehaviour
 
     private int pickEnemy()
     {
-        return Random.Range(0, enemies.Length);
+        return Random.Range(0, pools.Length);
     }
 
     //spawns random ennemies at random spawn anchors if there's room available, until all are spawned
