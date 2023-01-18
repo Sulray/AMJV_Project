@@ -4,7 +4,7 @@ using UnityEngine;
 
 public abstract class Entity : MonoBehaviour
 {   
-    [SerializeField] protected EntityParameter entityData;
+    
     [SerializeField] protected float health;
     // Start is called before the first frame update
     void Start()

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface Strategy
+public abstract class Movement : MonoBehaviour
 {
-    
+    public abstract Vector3 Move();
 }
