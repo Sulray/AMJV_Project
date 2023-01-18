@@ -4,9 +4,9 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Animations;
 
-public abstract class Enemy : Entity
+public abstract class Enemy : MonoBehaviour
 {
-    [SerializeField] protected EnemyParameter enemyData;
+    [SerializeField] private EnemyParameter enemyData;
     NavMeshAgent agent;
     Animator animator;
     [SerializeField] GameObject enemyModel;
@@ -25,6 +25,7 @@ public abstract class Enemy : Entity
 
     protected void Update()
     {
+        enemyData.attacks.First();
         agent.destination = enemyData.movement.Move();
         animator.SetFloat("ForwardSpeed", agent.velocity.magnitude / agent.speed);
     }

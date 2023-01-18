@@ -10,9 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8b9320eee79fc22439dffa4f0aa7fee7, type: 3}
-  m_Name: New Entity
+  m_Name: New Enemy
   m_EditorClassIdentifier: 
-  maxHealth: 0
-  damage: 0
-  speed: 0
-  attackCD: 0
+  maxHealth: 5
+  damage: 5
+  speed: 5
+  attackCD: 5
+  movement: {fileID: 6006442726043782135, guid: b9300c781e4314d488b306963c077898,
+    type: 3}

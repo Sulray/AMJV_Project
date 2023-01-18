@@ -4,18 +4,18 @@ using UnityEngine;
 
 public class ArcherAttack : Attack
 {
-    public void First()
+    public override void First()
     {
-
+        Debug.Log("first");
     }
 
-    public void Second()
+    public override void Second()
     {
-
+        Debug.Log("first");
     }
-    
-    public void Third()
-    {
 
+    public override void Third()
+    {
+        Debug.Log("first");
     }
 }
