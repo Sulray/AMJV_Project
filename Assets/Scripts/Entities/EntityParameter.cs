@@ -9,4 +9,5 @@ public class EntityParameter : ScriptableObject
     public int damage;
     public int speed;
     public MonoBehaviour strategy;
+    public Attack attacks;
 }
