@@ -651,8 +651,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f51958e7c8fae7a46ad1e1498fef9608, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  entityData: {fileID: 0}
+  health: 0
   directionOffset: 1
   playerModel: {fileID: 544385171}
+  inputAction1: 0
+  inputAction2: 0
+  inputACtion3: 0
 --- !u!114 &1895213662
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -665,8 +670,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b1e56f85ddffb0409b9a3887a9b4583, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  entityData: {fileID: 0}
-  health: 0
+  entityData: {fileID: 11400000, guid: 8281e150cec43e24da1f3c0ff424636b, type: 2}
+  health: 50
+  directionOffset: 0
+  playerModel: {fileID: 0}
+  inputAction1: 0
+  inputAction2: 0
+  inputACtion3: 0
 --- !u!1001 &2022740754
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -741,6 +751,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 1143215858451487145, guid: e9241649bbe40ed479b6999072d2097a, type: 3}
+    - {fileID: 5427190043489600019, guid: e9241649bbe40ed479b6999072d2097a, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: e9241649bbe40ed479b6999072d2097a, type: 3}
 --- !u!1001 &2027247996
 PrefabInstance:
