@@ -7,7 +7,7 @@ public class WaveManager : MonoBehaviour
     private GameObject player;
     //On utilise une Pool d'objets pour optimiser la mémoire
     [SerializeField] private Enemy[] enemies;
-    private Pool[] pools = new Pool[1];
+    private Pool[] pools;
 
     private int wave;
     private int currentFib = 0;
@@ -23,7 +23,9 @@ public class WaveManager : MonoBehaviour
     
     private void Awake()
     {
+        pools = new Pool[enemies.Length];
         player = GameObject.FindWithTag("Player");
+
         int i = 0;
         foreach(Enemy enemy in enemies)
         {
