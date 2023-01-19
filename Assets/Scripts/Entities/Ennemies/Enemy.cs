@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Animations;
 
-public abstract class Enemy : MonoBehaviour
+public class Enemy : MonoBehaviour
 {
     //We use EnemyType to instanciate Move and Attack types rather than attaching scripts directly
     [SerializeField] private EnemyType enemyType;
@@ -12,14 +12,11 @@ public abstract class Enemy : MonoBehaviour
     private Attack attack;
     private Movement movement;
 
-    [SerializeField] protected GameObject player;
+    private GameObject player;
 
     NavMeshAgent agent;
     Animator animator;
     [SerializeField] GameObject enemyModel;
-    //GameObject player;
-    //Transform playerTransform;
-    //[SerializeField] float distanceDetection = 5f;
     protected void Awake()
     {
 
@@ -28,20 +25,20 @@ public abstract class Enemy : MonoBehaviour
     {
         agent = GetComponent<NavMeshAgent>();
         animator = enemyModel.GetComponent<Animator>();
-        // player = GameObject.FindGameObjectsWithTag("Player")[0];
-        //playerTransform = player.transform;
 
         switch (enemyType)
         {
             case EnemyType.Warrior:
+                //attack = gameObject.AddComponent<*nom de votre script d'attaque*>();
+                //movement = gameObject.AddComponent<*nom de votre script de mouvement*>();
                 break;
             case EnemyType.Archer:
                 attack = gameObject.AddComponent<ArcherAttack>();
                 movement = gameObject.AddComponent<ArcherMovement>();
-                Debug.Log(attack);
-                Debug.Log(movement);
                 break;
             case EnemyType.Liche:
+                //attack = gameObject.AddComponent<*nom de votre script d'attaque*>();
+                //movement = gameObject.AddComponent<*nom de votre script de mouvement*>();
                 break;
             default:
                 break;
@@ -49,7 +46,12 @@ public abstract class Enemy : MonoBehaviour
 
     }
 
-    protected void Update()
+    public void SetTarget(GameObject target)
+    {
+        player = target;
+    }
+
+    void Update()
     {
         attack.First();
         agent.destination = movement.Move(player);

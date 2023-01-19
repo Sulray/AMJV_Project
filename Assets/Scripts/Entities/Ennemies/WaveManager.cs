@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class WaveManager : MonoBehaviour
 {
+    private GameObject player;
     //On utilise une Pool d'objets pour optimiser la mémoire
-    //[SerializeField] private Enemy[] enemies;
-    [SerializeField] private Pool[] pools;
+    [SerializeField] private Enemy[] enemies;
+    private Pool[] pools = new Pool[1];
 
     private int wave;
     private int currentFib = 0;
@@ -22,12 +23,14 @@ public class WaveManager : MonoBehaviour
     
     private void Awake()
     {
-        /*int i = 0;
+        player = GameObject.FindWithTag("Player");
+        int i = 0;
         foreach(Enemy enemy in enemies)
         {
-            pools[i] = gameObject.AddComponent(new Pool(50, enemies[i]));
+            pools[i] = gameObject.AddComponent<Pool>();
+            pools[i].SetEnemy(enemy);
             i += 1;
-        }*/
+        }
     }
 
     private void Start()
@@ -56,7 +59,6 @@ public class WaveManager : MonoBehaviour
 
     private IEnumerator Life()
     {
-        Debug.Log("life");
         int tmpFib;
         while (true)
         {
@@ -92,7 +94,7 @@ public class WaveManager : MonoBehaviour
     //spawns random ennemies at random spawn anchors if there's room available, until all are spawned
     private IEnumerator startWave(int toSpawn)
     {
-        Debug.Log(toSpawn);
+        //Debug.Log(toSpawn);
         int spawnedEnemies = 0;
         while(spawnedEnemies< toSpawn)
         {
@@ -115,7 +117,10 @@ public class WaveManager : MonoBehaviour
     //On préfère spawn à partir de l'id de l'ennemi pour accéder directement à la pool correspondante
     private void Spawn(int enemy, Vector3 spawn)
     {
-            Enemy guy = pools[enemy].GetEnemy();
-            guy.transform.position = spawn;
+        //Debug.Log(enemy);
+        Enemy guy = pools[enemy].GetEnemy();
+        guy.transform.position = spawn;
+        guy.SetTarget(player);
+        guy.gameObject.SetActive(true);
     }
 }

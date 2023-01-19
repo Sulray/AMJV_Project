@@ -5,11 +5,12 @@ using UnityEngine;
 public class Pool : MonoBehaviour
 {
     private Stack<Enemy> pool;
-    [SerializeField] private Enemy prefab;
-    [SerializeField] private int size;
+    public Enemy prefab;
+    private int size;
 
     /*public Pool(int size, Enemy prefab)
     {
+        Debug.Log("constructor");
         pool = new Stack<Enemy>(size);
         this.prefab = prefab;
         this.size = size;
@@ -20,6 +21,10 @@ public class Pool : MonoBehaviour
         pool = new Stack<Enemy>(size);
     }
 
+    public void SetEnemy(Enemy prefab)
+    {
+        this.prefab = prefab;
+    }
     public Enemy GetEnemy()
     {
         Debug.Log("get");
@@ -27,7 +32,7 @@ public class Pool : MonoBehaviour
         {
             Debug.Log("empty");
             Enemy enemy = Instantiate(prefab);
-            enemy.gameObject.SetActive(true);
+            //enemy.gameObject.SetActive(true);
             pool.Push(enemy);
             return enemy;
         }
