@@ -27,18 +27,18 @@ public class Pool : MonoBehaviour
     }
     public Enemy GetEnemy()
     {
-        Debug.Log("get");
+        //Debug.Log("get");
         if (pool.Count == 0)
         {
-            Debug.Log("empty");
+            //Debug.Log("empty");
             Enemy enemy = Instantiate(prefab);
             //enemy.gameObject.SetActive(true);
-            pool.Push(enemy);
+            //pool.Push(enemy);
             return enemy;
         }
         else
         {
-            Debug.Log("Pop");
+            //Debug.Log("Pop");
             Enemy enemy = pool.Pop();
             enemy.gameObject.SetActive(true);
             return enemy;
