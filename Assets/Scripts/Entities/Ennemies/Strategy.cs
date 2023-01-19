@@ -1,9 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System;
 
-public abstract class Movement : MonoBehaviour
+public abstract class Strategy : MonoBehaviour
 {
     public abstract Vector3 Move(GameObject target);
+
+    public abstract void Attack();
+
 }
