@@ -4,27 +4,29 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Animations;
 
-public abstract class Enemy : Entity
+public abstract class Enemy : MonoBehaviour
 {
-    [Header("Enemy Parameters")]
+    [SerializeField] private EnemyParameter enemyData;
     NavMeshAgent agent;
     Animator animator;
     [SerializeField] GameObject enemyModel;
-    GameObject player;
-    Transform playerTransform;
-    [SerializeField] float distanceDetection = 5f;
+    //GameObject player;
+    //Transform playerTransform;
+    //[SerializeField] float distanceDetection = 5f;
 
     protected void Start()
     {
         agent = GetComponent<NavMeshAgent>();
         animator = enemyModel.GetComponent<Animator>();
-        player = GameObject.FindGameObjectsWithTag("Player")[0];
-        playerTransform = player.transform;
+       // player = GameObject.FindGameObjectsWithTag("Player")[0];
+        //playerTransform = player.transform;
 
     }
 
-    void Update()
+    protected void Update()
     {
-        
+        enemyData.attacks.First();
+        agent.destination = enemyData.movement.Move();
+        animator.SetFloat("ForwardSpeed", agent.velocity.magnitude / agent.speed);
     }
 }

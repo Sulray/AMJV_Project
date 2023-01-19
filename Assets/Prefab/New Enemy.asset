@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b9320eee79fc22439dffa4f0aa7fee7, type: 3}
+  m_Name: New Enemy
+  m_EditorClassIdentifier: 
+  maxHealth: 5
+  damage: 5
+  speed: 5
+  attackCD: 5
+  movement: {fileID: 6006442726043782135, guid: b9300c781e4314d488b306963c077898,
+    type: 3}
