@@ -7,7 +7,6 @@ public class Archer : Enemy
     // Start is called before the first frame update
     new void Start()
     {
-        Debug.Log("hi");
         base.Start();
     }
 

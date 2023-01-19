@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class ArcherMovement : Movement
 {
-    [SerializeField] GameObject target;
-    public override Vector3 Move()
+    private Transform target;
+    public override Vector3 Move(GameObject target)
     {
-        return this.transform.position;
+        return target.transform.position;
     }
 }

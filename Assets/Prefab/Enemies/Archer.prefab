@@ -179,8 +179,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d854a8efb84656c4e967e0083ff15afb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyData: {fileID: 11400000, guid: 36cbb6947d796a54dab2d638961697b4, type: 2}
+  attack: {fileID: 0}
+  movement: {fileID: 0}
   enemyModel: {fileID: 6000507589392467965}
-  distanceDetection: 5
 --- !u!1001 &6000507589392564455
 PrefabInstance:
   m_ObjectHideFlags: 0

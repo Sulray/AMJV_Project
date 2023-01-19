@@ -1,7 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
+[Serializable]
 public class ArcherAttack : Attack
 {
     public override void First()
@@ -11,11 +13,11 @@ public class ArcherAttack : Attack
 
     public override void Second()
     {
-        Debug.Log("first");
+        Debug.Log("second");
     }
 
     public override void Third()
     {
-        Debug.Log("first");
+        Debug.Log("third");
     }
 }
