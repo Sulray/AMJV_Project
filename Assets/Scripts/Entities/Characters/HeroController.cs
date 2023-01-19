@@ -23,13 +23,16 @@ public class HeroController : MonoBehaviour
     public float jumpAmount = 20;
     float jumpTime;
     bool jumping;
-    bool Grounded;
+    bool grounded;
+    [SerializeField] float groundDetection;
     bool canMove;
     [SerializeField] float gravityOnFall;
 
 
     float momentSpeed;
     bool moving;
+    private Vector3 positionRay;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -44,13 +47,14 @@ public class HeroController : MonoBehaviour
         Inputs();
         Action();
         inAir();
-        Grounded = IsGrounded();
+        LookAt();
+        grounded = IsGrounded();
 
         momentSpeed = agent.velocity.magnitude / agent.speed;
         //Debug.Log(momentSpeed);
         moving = (momentSpeed != 0);
-        Debug.Log("Grounded : " + Grounded);
-        if (Grounded) 
+        Debug.Log("Grounded : " + grounded);
+        if (grounded) 
         {
             agent.destination = transform.position + new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical")) * directionOffset;
         }
@@ -63,7 +67,21 @@ public class HeroController : MonoBehaviour
 
     bool IsGrounded()
     {
-        return Physics.Raycast(transform.position, -Vector3.up,0.1f);
+        Debug.DrawRay(transform.position, -Vector3.up * (0.1f + groundDetection), Color.red);
+        return Physics.Raycast(transform.position, -Vector3.up,0.1f+groundDetection);
+
+    }
+
+    void LookAt()
+    {
+        RaycastHit hit;
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        if (Physics.Raycast(ray, out hit))
+        {
+            positionRay = hit.point;
+        }
+        Quaternion Rotation = Quaternion.LookRotation(new Vector3(positionRay.x, transform.position.y, positionRay.z) - transform.position);
+        transform.rotation = Quaternion.Slerp(transform.rotation, Rotation, 0.3f);
     }
 
     public void Inputs()
@@ -115,7 +133,7 @@ public class HeroController : MonoBehaviour
             //rb.AddForce(new Vector3(0, gravityOnFall, 0), ForceMode.Acceleration);
             animator.SetInteger("intAir", 2);
         }
-        if (Grounded)
+        if (grounded)
         {
             animator.SetInteger("intAir", 0);
             agent.enabled = true;
@@ -156,4 +174,5 @@ public class HeroController : MonoBehaviour
         animator.SetInteger("intAttack", 0);
 
     }
+
 }
