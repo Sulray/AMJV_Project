@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class WaveManager : MonoBehaviour
 {
+    private GameObject player;
     //On utilise une Pool d'objets pour optimiser la mémoire
-    //[SerializeField] private Enemy[] enemies;
-    [SerializeField] private Pool[] pools;
+    [SerializeField] private Enemy[] enemies;
+    private Pool[] pools;
 
     private int wave;
     private int currentFib = 0;
@@ -22,12 +24,16 @@ public class WaveManager : MonoBehaviour
     
     private void Awake()
     {
-        /*int i = 0;
+        pools = new Pool[enemies.Length];
+        player = GameObject.FindWithTag("Player");
+
+        int i = 0;
         foreach(Enemy enemy in enemies)
         {
-            pools[i] = gameObject.AddComponent(new Pool(50, enemies[i]));
+            pools[i] = gameObject.AddComponent<Pool>();
+            pools[i].SetEnemy(enemy);
             i += 1;
-        }*/
+        }
     }
 
     private void Start()
@@ -56,7 +62,6 @@ public class WaveManager : MonoBehaviour
 
     private IEnumerator Life()
     {
-        Debug.Log("life");
         int tmpFib;
         while (true)
         {
@@ -79,30 +84,26 @@ public class WaveManager : MonoBehaviour
         }
     }
 
-    private Vector3 pickSpawn()
-    {
-        return spawnpoints[Random.Range(0, spawnpoints.Length)].transform.position;
-    }
-
-    private int pickEnemy()
-    {
-        return Random.Range(0, pools.Length);
-    }
-
     //spawns random ennemies at random spawn anchors if there's room available, until all are spawned
     private IEnumerator startWave(int toSpawn)
     {
-        Debug.Log(toSpawn);
         int spawnedEnemies = 0;
-        while(spawnedEnemies< toSpawn)
+        while (spawnedEnemies < toSpawn)
         {
             //polish : optimiser le choix des spawns, attendre qu'il soit vide, etc...
             if (totalEnemies < maxEnemies)
-            {
-                totalEnemies += 1;
-                spawnedEnemies += 1;
-                Spawn(pickEnemy(), pickSpawn());
-                yield return new WaitForSeconds(1f / spawnSpeed);
+            {   
+                foreach (GameObject spawnpoint in spawnpoints)
+                {
+                    if (!CheckSpawn(spawnpoint.transform.position))
+                    {
+                        Spawn(pickEnemy(), spawnpoint.transform.position);
+                        totalEnemies += 1;
+                        spawnedEnemies += 1;
+                        yield return new WaitForSeconds(1f / spawnSpeed);
+                        break;
+                    }
+                }
             }
             else
             {
@@ -110,12 +111,36 @@ public class WaveManager : MonoBehaviour
             }
         }
     }
+
+    /*private Vector3 pickSpawn()
+    {
+        foreach (GameObject spawn in spawnpoints)
+        {
+            if (!CheckSpawn(spawn.transform.position))
+            {
+                return spawn.transform.position;
+            }
+        }
+    }*/
+
+    private int pickEnemy()
+    {
+        return Random.Range(0, pools.Length);
+    }
+
+    private bool CheckSpawn(Vector3 spawn)
+    {
+        return Physics.SphereCast(new Ray(spawn, Vector3.up), 0.8f, 2f);
+    }
     
     //spawns an enemy from pool "enemy" at "spawn" anchor
     //On préfère spawn à partir de l'id de l'ennemi pour accéder directement à la pool correspondante
     private void Spawn(int enemy, Vector3 spawn)
     {
-            Enemy guy = pools[enemy].GetEnemy();
-            guy.transform.position = spawn;
+        //Debug.Log(enemy);
+        Enemy guy = pools[enemy].GetEnemy();
+        guy.transform.position = spawn;
+        guy.SetTarget(player);
+        guy.gameObject.SetActive(true);
     }
 }

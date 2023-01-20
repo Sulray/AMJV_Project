@@ -9,7 +9,5 @@ public class EnemyParameter : ScriptableObject
     public int damage;
     public int speed;
     public int attackCD;
-    public Movement movement;
-    public Attack attacks;
     
 }
