@@ -19,7 +19,7 @@ public class Warrior : HeroController
     void Update()
     {
         Inputs();
-        SwordHit();
+        StartCoroutine(ActionsCooldown(1,isCooldown1Over));
     }
 
     public void SwordHit()
@@ -40,15 +40,14 @@ public class Warrior : HeroController
                 Debug.Log("Did not Hit");
             }
         }
-        StartCoroutine(ActionsCooldown(1, isCooldown1Over));
     }
 
 
     private IEnumerator ActionsCooldown(float cooldown, bool isCooldownOver) //la coroutine prend en arguments le temps de cooldown pour une action donnée
                                                                              //et le booléen correspondant à l'action.
     {
-        isCooldownOver = true;
         yield return new WaitForSeconds(cooldown);
+        SwordHit();
     }
 
 }
