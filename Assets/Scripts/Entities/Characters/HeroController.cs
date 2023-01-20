@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class HeroController : Entity
+public class HeroController : MonoBehaviour
 {
     [SerializeField] float directionOffset;
     NavMeshAgent agent;

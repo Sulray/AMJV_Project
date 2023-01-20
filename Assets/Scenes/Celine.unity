@@ -677,6 +677,20 @@ MonoBehaviour:
   inputAction1: 0
   inputAction2: 0
   inputACtion3: 0
+--- !u!136 &1895213663
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1895213660}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 1
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &2022740754
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -693,6 +707,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_TagString
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 1143215858451487147, guid: e9241649bbe40ed479b6999072d2097a,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4670336943683531596, guid: e9241649bbe40ed479b6999072d2097a,
         type: 3}
