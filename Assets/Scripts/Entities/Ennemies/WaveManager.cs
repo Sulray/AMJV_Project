@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class WaveManager : MonoBehaviour
 {
     private GameObject player;
@@ -83,36 +84,53 @@ public class WaveManager : MonoBehaviour
         }
     }
 
-    private Vector3 pickSpawn()
-    {
-        return spawnpoints[Random.Range(0, spawnpoints.Length)].transform.position;
-    }
-
-    private int pickEnemy()
-    {
-        return Random.Range(0, pools.Length);
-    }
-
     //spawns random ennemies at random spawn anchors if there's room available, until all are spawned
     private IEnumerator startWave(int toSpawn)
     {
-        //Debug.Log(toSpawn);
         int spawnedEnemies = 0;
-        while(spawnedEnemies< toSpawn)
+        while (spawnedEnemies < toSpawn)
         {
             //polish : optimiser le choix des spawns, attendre qu'il soit vide, etc...
             if (totalEnemies < maxEnemies)
-            {
-                totalEnemies += 1;
-                spawnedEnemies += 1;
-                Spawn(pickEnemy(), pickSpawn());
-                yield return new WaitForSeconds(1f / spawnSpeed);
+            {   
+                foreach (GameObject spawnpoint in spawnpoints)
+                {
+                    if (!CheckSpawn(spawnpoint.transform.position))
+                    {
+                        Spawn(pickEnemy(), spawnpoint.transform.position);
+                        totalEnemies += 1;
+                        spawnedEnemies += 1;
+                        yield return new WaitForSeconds(1f / spawnSpeed);
+                        break;
+                    }
+                }
             }
             else
             {
                 yield return null;
             }
         }
+    }
+
+    /*private Vector3 pickSpawn()
+    {
+        foreach (GameObject spawn in spawnpoints)
+        {
+            if (!CheckSpawn(spawn.transform.position))
+            {
+                return spawn.transform.position;
+            }
+        }
+    }*/
+
+    private int pickEnemy()
+    {
+        return Random.Range(0, pools.Length);
+    }
+
+    private bool CheckSpawn(Vector3 spawn)
+    {
+        return Physics.SphereCast(new Ray(spawn, Vector3.up), 0.8f, 2f);
     }
     
     //spawns an enemy from pool "enemy" at "spawn" anchor
