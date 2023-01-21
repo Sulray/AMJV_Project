@@ -17,6 +17,7 @@ public class Enemy : MonoBehaviour
     //We use EnemyType to instanciate Move and Attack types rather than attaching scripts directly
     [SerializeField] private EnemyType enemyType;
     [SerializeField] private EnemyParameter enemyData;
+    private Health health;
     private float cdTimer = 0f;
     private Strategy strategy;
 
@@ -34,6 +35,7 @@ public class Enemy : MonoBehaviour
         animator = enemyModel.GetComponent<Animator>();
         agent.speed = enemyData.speed;
         agent.acceleration = 10 * enemyData.speed;
+        health = new Health(enemyData.maxHealth);
     }
 
     private void Start()

@@ -240,6 +240,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 1143215858451487145, guid: e9241649bbe40ed479b6999072d2097a, type: 3}
+    - {fileID: 5427190043489600019, guid: e9241649bbe40ed479b6999072d2097a, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: e9241649bbe40ed479b6999072d2097a, type: 3}
 --- !u!1 &938897824 stripped
 GameObject:
@@ -247,26 +248,20 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 938897823}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &938897825 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1143215858015995244, guid: e9241649bbe40ed479b6999072d2097a,
-    type: 3}
-  m_PrefabInstance: {fileID: 938897823}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &938897826
+--- !u!114 &938897825
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 938897824}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f51958e7c8fae7a46ad1e1498fef9608, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  directionOffset: 1
-  playerModel: {fileID: 938897825}
+  directionOffset: 0
+  playerModel: {fileID: 0}
   speed: 0
   inputAction1: 0
   inputAction2: 0
@@ -550,6 +545,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0be4ffae16e7c914a949be6853ee35ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  offset: {x: 0, y: 0, z: 0}
 --- !u!81 &1806922383
 AudioListener:
   m_ObjectHideFlags: 0
@@ -716,6 +712,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1615806493324164360, guid: e333605822099814db35a1b693b948f7,
         type: 3}
+      propertyPath: poolSize
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 1615806493324164360, guid: e333605822099814db35a1b693b948f7,
+        type: 3}
       propertyPath: totalEnemies
       value: 0
       objectReference: {fileID: 0}
@@ -727,7 +728,7 @@ PrefabInstance:
     - target: {fileID: 1615806493324164360, guid: e333605822099814db35a1b693b948f7,
         type: 3}
       propertyPath: enemies.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1615806493324164360, guid: e333605822099814db35a1b693b948f7,
         type: 3}
@@ -745,7 +746,7 @@ PrefabInstance:
         type: 3}
       propertyPath: enemies.Array.data[1]
       value: 
-      objectReference: {fileID: 7047492110565370764, guid: c5193713e87db0f4fbdf2d6bc22e62d0,
+      objectReference: {fileID: 6936642418185176391, guid: c5193713e87db0f4fbdf2d6bc22e62d0,
         type: 3}
     - target: {fileID: 1615806493324164360, guid: e333605822099814db35a1b693b948f7,
         type: 3}
@@ -788,7 +789,7 @@ PrefabInstance:
     - target: {fileID: 1615806493324164362, guid: e333605822099814db35a1b693b948f7,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1615806493324164363, guid: e333605822099814db35a1b693b948f7,
         type: 3}
