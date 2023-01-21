@@ -8,3 +8,10 @@ public enum EnemyType
     Archer,
     Liche
 }
+
+
+public enum PlayerType
+{
+    Mage,
+    Hunter
+}
