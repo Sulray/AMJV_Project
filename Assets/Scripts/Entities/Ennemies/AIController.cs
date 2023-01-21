@@ -8,8 +8,8 @@ public class AIController : MonoBehaviour
 {
     NavMeshAgent agent;
     Animator animator;
-    [SerializeField] UnityEngine.GameObject enemyModel;
-    UnityEngine.GameObject player;
+    [SerializeField] GameObject enemyModel;
+    GameObject player;
     Transform playerTransform;
     [SerializeField] float distanceDetection = 5f;
 
@@ -18,7 +18,7 @@ public class AIController : MonoBehaviour
         Debug.Log("ai");
         agent = GetComponent<NavMeshAgent>();
         animator = enemyModel.GetComponent<Animator>();
-        player = UnityEngine.GameObject.FindGameObjectsWithTag("Player")[0];
+        player = GameObject.FindGameObjectsWithTag("Player")[0];
         playerTransform = player.transform;
 
     }

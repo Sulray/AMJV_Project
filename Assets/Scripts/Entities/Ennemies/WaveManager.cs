@@ -5,11 +5,12 @@ using UnityEngine;
 
 public class WaveManager : MonoBehaviour
 {
-    private UnityEngine.GameObject player;
+    private GameObject player;
     private Camera camera;
     //On utilise une Pool d'objets pour optimiser la mémoire
-    [SerializeField] private GameObject[] enemies;
+    [SerializeField] private Enemy[] enemies;
     private Pool[] pools;
+    [SerializeField] private int poolSize;
 
     private int wave;
     private int currentFib = 0;
@@ -22,18 +23,19 @@ public class WaveManager : MonoBehaviour
 
 
     //entre 4 et 8 spawnpoints
-    [SerializeField] private UnityEngine.GameObject[] spawnpoints;
+    [SerializeField] private GameObject[] spawnpoints;
     
     private void Awake()
     {
         pools = new Pool[enemies.Length];
-        player = UnityEngine.GameObject.FindWithTag("Player");
+        player = GameObject.FindWithTag("Player");
 
         int i = 0;
-        foreach(GameObject enemy in enemies)
+        foreach(Enemy enemy in enemies)
         {
             pools[i] = gameObject.AddComponent<Pool>();
             pools[i].SetPrefab(enemy);
+            pools[i].Size = poolSize;
             i += 1;
         }
     }
@@ -95,7 +97,7 @@ public class WaveManager : MonoBehaviour
             //polish : optimiser le choix des spawns, attendre qu'il soit vide, etc...
             if (totalEnemies < maxEnemies)
             {   
-                foreach (UnityEngine.GameObject spawnpoint in spawnpoints)
+                foreach (GameObject spawnpoint in spawnpoints)
                 {
                     if (!CheckSpawn(spawnpoint.transform.position))
                     {
@@ -140,7 +142,7 @@ public class WaveManager : MonoBehaviour
     private void Spawn(int enemy, Vector3 spawn)
     {
         //Debug.Log(enemy);
-        GameObject guy = pools[enemy].GetObject();
+        Enemy guy = pools[enemy].GetObject();
         guy.transform.position = spawn;
         guy.Player = player;
         guy.Camera = camera;

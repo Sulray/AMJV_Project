@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Animations;
 
-public class GameObject : MonoBehaviour
+public class Enemy : MonoBehaviour
 {
     /*LE problème que je rencontre avec le component pattern par rapport à l'héritage, c'est que vu que les comportements spécifiques sont instanciés après le
      début de la scène, je ne peux rien accrocher dessus via des champs sérialisés.
@@ -21,13 +21,13 @@ public class GameObject : MonoBehaviour
     private Strategy strategy;
 
     [HideInInspector]
-    public UnityEngine.GameObject Player { get; set; }
+    public GameObject Player { get; set; }
     [HideInInspector]
     public Camera Camera { get; set; }
 
     NavMeshAgent agent;
     Animator animator;
-    [SerializeField] UnityEngine.GameObject enemyModel;
+    [SerializeField] GameObject enemyModel;
     protected void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -59,7 +59,7 @@ public class GameObject : MonoBehaviour
         }
     }
 
-    public void SetTarget(UnityEngine.GameObject target)
+    public void SetTarget(GameObject target)
     {
         strategy.Target = target.transform;
         //strategy.SetTarget(target.transform);

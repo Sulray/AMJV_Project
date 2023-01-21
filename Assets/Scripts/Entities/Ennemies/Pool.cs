@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class Pool : MonoBehaviour
 {
-    private Stack<GameObject> pool;
-    public GameObject prefab;
-    private int size;
+    private Stack<Enemy> pool;
+    public Enemy prefab;
+    public int Size { get; set; }
     
 
     /*public Pool(int size, Enemy prefab)
@@ -19,14 +19,14 @@ public class Pool : MonoBehaviour
 
     private void Awake()
     {
-        pool = new Stack<GameObject>(size);
+        pool = new Stack<Enemy>(Size);
     }
 
-    public void SetPrefab(GameObject prefab)
+    public void SetPrefab(Enemy prefab)
     {
         this.prefab = prefab;
     }
-    public GameObject GetObject()
+    public Enemy GetObject()
     {
         //Debug.Log("get");
         if (pool.Count == 0)
@@ -37,15 +37,15 @@ public class Pool : MonoBehaviour
         }
         else
         {
-            GameObject obj = pool.Pop();
+            Enemy obj = pool.Pop();
             obj.gameObject.SetActive(true);
             return obj;
         }
     }
 
-    public void ReturnObject(GameObject obj)
+    public void ReturnObject(Enemy obj)
     {
-        if(pool.Count >= size)
+        if(pool.Count >= Size)
         {
             Destroy(obj);
         }
