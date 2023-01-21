@@ -8,7 +8,7 @@ public class Warrior : HeroController
 {
     private float cooldownGlobal; //ce cooldown empêche le joueur de faire plusieurs actions en même temps
     private bool isCooldown1Over; //il y a un booléen cooldown pour chaque action en plus du cooldown global
-    public float knockback = 20f;
+    public float knockbackForce = 20f;
 
     // Start is called before the first frame update
     void Start()
@@ -29,11 +29,12 @@ public class Warrior : HeroController
         {
             RaycastHit hit;
 
-            if (Physics.SphereCast(transform.position, 5, transform.forward, out hit, 4))
+            if (Physics.SphereCast(transform.position, 4, transform.forward, out hit, 4))
             {
                 Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * hit.distance);
                 Debug.Log("Did Hit");
-                hit.collider.GetComponent<Damage>().TakeDamage(5);
+                Debug.Log(hit.collider);
+                hit.collider.GetComponent<Enemy>().GetKnockback(transform.position);
             }
             else
             {
@@ -46,7 +47,6 @@ public class Warrior : HeroController
 
 
     public IEnumerator Action1Cooldown(float cooldown) //la coroutine prend en arguments le temps de cooldown pour une action donnée
-                                                                             //et le booléen correspondant à l'action.
     {
         isCooldown1Over = false;
         yield return new WaitForSeconds(cooldown);
