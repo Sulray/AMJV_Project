@@ -8,7 +8,7 @@ public class Pool : MonoBehaviour
     //Pools<GameObject> et qu'on ne peut pas transtiper un gameobject en Enemy car Enemy est un script
 
     private Stack<Enemy> pool;
-    public Enemy prefab;
+    public Enemy Prefab { get; set; }
     public int Size { get; set; }
     
 
@@ -24,17 +24,12 @@ public class Pool : MonoBehaviour
     {
         pool = new Stack<Enemy>(Size);
     }
-
-    public void SetPrefab(Enemy prefab)
-    {
-        this.prefab = prefab;
-    }
     public Enemy GetObject()
     {
         //Debug.Log("get");
         if (pool.Count == 0)
         {
-            return Instantiate(prefab);
+            return Instantiate(Prefab);
             //GameObject obj = Instantiate(prefab);   
             //return obj;
         }
