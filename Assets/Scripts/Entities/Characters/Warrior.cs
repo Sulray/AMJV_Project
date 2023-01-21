@@ -19,15 +19,14 @@ public class Warrior : HeroController
     void Update()
     {
         Inputs();
-        StartCoroutine(ActionsCooldown(1,isCooldown1Over));
+        SwordHit();
     }
 
     public void SwordHit()
     {
-        if (inputAction1 && isCooldown1Over)
+        if (inputAction1 &&isCooldown1Over)
         {
             RaycastHit hit;
-            isCooldown1Over = false;
 
             if (Physics.SphereCast(transform.position, 5, transform.forward, out hit, 3))
             {
@@ -39,6 +38,7 @@ public class Warrior : HeroController
                 Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * 1000);
                 Debug.Log("Did not Hit");
             }
+            StartCoroutine(ActionsCooldown(1, isCooldown1Over));
         }
     }
 
@@ -46,8 +46,9 @@ public class Warrior : HeroController
     private IEnumerator ActionsCooldown(float cooldown, bool isCooldownOver) //la coroutine prend en arguments le temps de cooldown pour une action donnée
                                                                              //et le booléen correspondant à l'action.
     {
+        isCooldownOver = false;
         yield return new WaitForSeconds(cooldown);
-        SwordHit();
+        isCooldownOver = true;
     }
 
 }

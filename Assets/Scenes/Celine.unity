@@ -543,8 +543,8 @@ MonoBehaviour:
   directionOffset: 0
   playerModel: {fileID: 0}
   speed: 0
-  inputAction1: 0
-  inputAction2: 0
+  inputAction1: 1
+  inputAction2: 1
   inputAction3: 1
   inputJump: 0
   rb: {fileID: 0}

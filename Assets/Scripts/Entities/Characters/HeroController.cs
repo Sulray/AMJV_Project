@@ -53,7 +53,7 @@ public class HeroController : MonoBehaviour
         momentSpeed = agent.velocity.magnitude / agent.speed;
         //Debug.Log(momentSpeed);
         moving = (momentSpeed != 0);
-        Debug.Log("Grounded : " + grounded);
+        //Debug.Log("Grounded : " + grounded);
         if (grounded) 
         {
             agent.destination = transform.position + new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical")) * directionOffset;
@@ -127,7 +127,7 @@ public class HeroController : MonoBehaviour
 
     public void inAir()
     {
-        Debug.Log("velocity on y : " + rb.velocity.y);
+        //Debug.Log("velocity on y : " + rb.velocity.y);
         if (rb.velocity.y < 0) 
         {
             //rb.AddForce(new Vector3(0, gravityOnFall, 0), ForceMode.Acceleration);
