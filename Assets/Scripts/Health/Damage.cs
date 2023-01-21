@@ -32,7 +32,7 @@ public class Damage : MonoBehaviour
             Destroy(gameObject);
         }
     }
-    void TakeDamage(int damage)
+    public void TakeDamage(int damage)
     {
         healthBar.currentHealth -= damage;
     }
