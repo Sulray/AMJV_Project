@@ -6,13 +6,13 @@ using UnityEngine.SceneManagement;
 public class MainMenu : MonoBehaviour
 {
     [SerializeField]
-    GameObject mainMenuContainer;
+    UnityEngine.GameObject mainMenuContainer;
 
     [SerializeField]
-    GameObject characterSelectionContainer;
+    UnityEngine.GameObject characterSelectionContainer;
 
     [SerializeField]
-    GameObject settingsContainer;
+    UnityEngine.GameObject settingsContainer;
 
     // Start is called before the first frame update
     void Start()

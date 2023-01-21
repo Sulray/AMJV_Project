@@ -2,7 +2,7 @@
 
 public class CameraController:MonoBehaviour
 {
-	public GameObject cameraTarget;
+	public UnityEngine.GameObject cameraTarget;
 
 
 	public float rotateSpeed;

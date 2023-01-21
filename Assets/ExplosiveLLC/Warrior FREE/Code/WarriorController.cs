@@ -7,8 +7,8 @@ namespace WarriorAnimsFREE
 	{
 		[Header("Components")]
 		public Warrior warrior;
-		public GameObject target;
-		public GameObject weapon;
+		public UnityEngine.GameObject target;
+		public UnityEngine.GameObject weapon;
 		private Rigidbody rb;
 		[HideInInspector] public SuperCharacterController superCharacterController;
 		[HideInInspector] public WarriorMovementController warriorMovementController;

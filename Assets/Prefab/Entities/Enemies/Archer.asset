@@ -14,7 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 5
   damage: 5
-  speed: 5
+  speed: 10
   attackCD: 5
-  movement: {fileID: 6006442726043782135, guid: b9300c781e4314d488b306963c077898,
-    type: 3}

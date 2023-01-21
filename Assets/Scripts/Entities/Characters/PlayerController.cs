@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour
 {
     NavMeshAgent agent;
     Animator animator;
-    [SerializeField] GameObject playerModel;
+    [SerializeField] UnityEngine.GameObject playerModel;
 
 
     void Start()

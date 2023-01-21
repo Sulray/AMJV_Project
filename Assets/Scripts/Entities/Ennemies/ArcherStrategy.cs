@@ -4,14 +4,15 @@ using UnityEngine;
 
 public class ArcherStrategy : Strategy
 {
-    private Transform target;
-    public override Vector3 Move(GameObject target)
+    
+    public override Vector3 Move()
     {
-        return target.transform.position;
+        return Target.position;
     }
 
-    public override void Attack()
+    public override bool Attack()
     {
-
+        Debug.Log("archer attack");
+        return true;
     }
 }

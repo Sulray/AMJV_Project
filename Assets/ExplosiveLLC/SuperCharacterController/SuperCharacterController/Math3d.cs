@@ -11,8 +11,8 @@ public class Math3d : MonoBehaviour
     public static void Init()
     {
 
-        tempChild = (new GameObject("Math3d_TempChild")).transform;
-        tempParent = (new GameObject("Math3d_TempParent")).transform;
+        tempChild = (new UnityEngine.GameObject("Math3d_TempChild")).transform;
+        tempParent = (new UnityEngine.GameObject("Math3d_TempParent")).transform;
 
         tempChild.gameObject.hideFlags = HideFlags.HideAndDontSave;
         DontDestroyOnLoad(tempChild.gameObject);
@@ -449,7 +449,7 @@ public class Math3d : MonoBehaviour
     //customForward and customUp are in object space.
     //Usage: use alignWithVector and alignWithNormal as if you are using the default LookRotation function.
     //Set customForward and customUp to the vectors you wish to use instead of the default forward and up vectors.
-    public static void LookRotationExtended(ref GameObject gameObjectInOut, Vector3 alignWithVector, Vector3 alignWithNormal, Vector3 customForward, Vector3 customUp)
+    public static void LookRotationExtended(ref UnityEngine.GameObject gameObjectInOut, Vector3 alignWithVector, Vector3 alignWithNormal, Vector3 customForward, Vector3 customUp)
     {
 
         //Set the rotation of the destination
@@ -503,7 +503,7 @@ public class Math3d : MonoBehaviour
     //triangleForward, triangleNormal, and trianglePosition are in object space.
     //trianglePosition is the mesh position of the triangle. The effect of the scale of the object is handled automatically.
     //trianglePosition can be set at any position, it does not have to be at a vertex or in the middle of the triangle.
-    public static void PreciseAlign(ref GameObject gameObjectInOut, Vector3 alignWithVector, Vector3 alignWithNormal, Vector3 alignWithPosition, Vector3 triangleForward, Vector3 triangleNormal, Vector3 trianglePosition)
+    public static void PreciseAlign(ref UnityEngine.GameObject gameObjectInOut, Vector3 alignWithVector, Vector3 alignWithNormal, Vector3 alignWithPosition, Vector3 triangleForward, Vector3 triangleNormal, Vector3 trianglePosition)
     {
 
         //Set the rotation.
@@ -521,7 +521,7 @@ public class Math3d : MonoBehaviour
 
 
     //Convert a position, direction, and normal vector to a transform
-    void VectorsToTransform(ref GameObject gameObjectInOut, Vector3 positionVector, Vector3 directionVector, Vector3 normalVector)
+    void VectorsToTransform(ref UnityEngine.GameObject gameObjectInOut, Vector3 positionVector, Vector3 directionVector, Vector3 normalVector)
     {
 
         gameObjectInOut.transform.position = positionVector;

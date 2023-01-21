@@ -6,7 +6,7 @@ public class PlayerCamera : MonoBehaviour {
     public float Distance = 5.0f;
     public float Height = 2.0f;
 
-    public GameObject PlayerTarget;    
+    public UnityEngine.GameObject PlayerTarget;    
 
     private PlayerInputController input;
     private Transform target;

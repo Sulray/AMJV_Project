@@ -9,7 +9,7 @@ public class Billboard : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        cam = GameObject.FindGameObjectWithTag("MainCamera").transform;
+        cam = UnityEngine.GameObject.FindGameObjectWithTag("MainCamera").transform;
     }
     void LateUpdate()
     {

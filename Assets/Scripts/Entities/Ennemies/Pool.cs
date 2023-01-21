@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class Pool : MonoBehaviour
 {
-    private Stack<Enemy> pool;
-    public Enemy prefab;
+    private Stack<GameObject> pool;
+    public GameObject prefab;
     private int size;
+    
 
     /*public Pool(int size, Enemy prefab)
     {
@@ -18,43 +19,40 @@ public class Pool : MonoBehaviour
 
     private void Awake()
     {
-        pool = new Stack<Enemy>(size);
+        pool = new Stack<GameObject>(size);
     }
 
-    public void SetEnemy(Enemy prefab)
+    public void SetPrefab(GameObject prefab)
     {
         this.prefab = prefab;
     }
-    public Enemy GetEnemy()
+    public GameObject GetObject()
     {
         //Debug.Log("get");
         if (pool.Count == 0)
         {
-            //Debug.Log("empty");
-            Enemy enemy = Instantiate(prefab);
-            //enemy.gameObject.SetActive(true);
-            //pool.Push(enemy);
-            return enemy;
+            return Instantiate(prefab);
+            //GameObject obj = Instantiate(prefab);   
+            //return obj;
         }
         else
         {
-            //Debug.Log("Pop");
-            Enemy enemy = pool.Pop();
-            enemy.gameObject.SetActive(true);
-            return enemy;
+            GameObject obj = pool.Pop();
+            obj.gameObject.SetActive(true);
+            return obj;
         }
     }
 
-    public void ReturnEnemy(Enemy enemy)
+    public void ReturnObject(GameObject obj)
     {
         if(pool.Count >= size)
         {
-            Destroy(enemy);
+            Destroy(obj);
         }
         else
         {
-            enemy.gameObject.SetActive(false);
-            pool.Push(enemy);
+            obj.gameObject.SetActive(false);
+            pool.Push(obj);
         }
     }
 }

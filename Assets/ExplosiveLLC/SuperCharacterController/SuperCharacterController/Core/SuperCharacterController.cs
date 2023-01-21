@@ -149,7 +149,7 @@ public class SuperCharacterController : MonoBehaviour
             Debug.LogError("[SuperCharacterController] Head not found on controller");
 
         if (defaultCollisionType == null)
-            defaultCollisionType = new GameObject("DefaultSuperCollisionType", typeof(SuperCollisionType)).GetComponent<SuperCollisionType>();
+            defaultCollisionType = new UnityEngine.GameObject("DefaultSuperCollisionType", typeof(SuperCollisionType)).GetComponent<SuperCollisionType>();
 
         currentGround = new SuperGround(Walkable, this, triggerInteraction);
 
@@ -902,7 +902,7 @@ public struct SuperCollision
 {
     public CollisionSphere collisionSphere;
     public SuperCollisionType superCollisionType;
-    public GameObject gameObject;
+    public UnityEngine.GameObject gameObject;
     public Vector3 point;
     public Vector3 normal;
 }

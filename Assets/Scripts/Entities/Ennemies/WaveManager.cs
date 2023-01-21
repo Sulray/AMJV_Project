@@ -5,9 +5,10 @@ using UnityEngine;
 
 public class WaveManager : MonoBehaviour
 {
-    private GameObject player;
+    private UnityEngine.GameObject player;
+    private Camera camera;
     //On utilise une Pool d'objets pour optimiser la mémoire
-    [SerializeField] private Enemy[] enemies;
+    [SerializeField] private GameObject[] enemies;
     private Pool[] pools;
 
     private int wave;
@@ -19,19 +20,20 @@ public class WaveManager : MonoBehaviour
     private float waveDelay = 2;
     private float timer;
 
+
     //entre 4 et 8 spawnpoints
-    [SerializeField] private GameObject[] spawnpoints;
+    [SerializeField] private UnityEngine.GameObject[] spawnpoints;
     
     private void Awake()
     {
         pools = new Pool[enemies.Length];
-        player = GameObject.FindWithTag("Player");
+        player = UnityEngine.GameObject.FindWithTag("Player");
 
         int i = 0;
-        foreach(Enemy enemy in enemies)
+        foreach(GameObject enemy in enemies)
         {
             pools[i] = gameObject.AddComponent<Pool>();
-            pools[i].SetEnemy(enemy);
+            pools[i].SetPrefab(enemy);
             i += 1;
         }
     }
@@ -93,7 +95,7 @@ public class WaveManager : MonoBehaviour
             //polish : optimiser le choix des spawns, attendre qu'il soit vide, etc...
             if (totalEnemies < maxEnemies)
             {   
-                foreach (GameObject spawnpoint in spawnpoints)
+                foreach (UnityEngine.GameObject spawnpoint in spawnpoints)
                 {
                     if (!CheckSpawn(spawnpoint.transform.position))
                     {
@@ -138,9 +140,10 @@ public class WaveManager : MonoBehaviour
     private void Spawn(int enemy, Vector3 spawn)
     {
         //Debug.Log(enemy);
-        Enemy guy = pools[enemy].GetEnemy();
+        GameObject guy = pools[enemy].GetObject();
         guy.transform.position = spawn;
-        guy.SetTarget(player);
+        guy.Player = player;
+        guy.Camera = camera;
         guy.gameObject.SetActive(true);
     }
 }

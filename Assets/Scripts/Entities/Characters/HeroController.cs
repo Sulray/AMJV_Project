@@ -8,7 +8,7 @@ public class HeroController : MonoBehaviour
     [SerializeField] float directionOffset;
     NavMeshAgent agent;
     Animator animator;
-    [SerializeField] GameObject playerModel;
+    [SerializeField] UnityEngine.GameObject playerModel;
     public float speed;
 
     public bool inputAction1;
