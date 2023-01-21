@@ -4,20 +4,23 @@ using UnityEngine;
 
 public class LevelSystem : MonoBehaviour
 {
-    private int level = 0;
+    private int level = 1;
     private int experience = 0;
 
     [SerializeField]
-    private int experienceToNextLevel;
+    private int experienceToNextLevel = 5;
+    [SerializeField]
+    private int experienceMultiplier = 5;
 
     public void AddExeprience(int amount)
     {
         experience += amount;
-        Debug.Log(experience);
-        if (experience >= experienceToNextLevel)
+        Debug.Log("current experience: " + experience);
+        while (experience >= experienceToNextLevel)
         {
             experience -= experienceToNextLevel;
             NextLevel();
+            Debug.Log("current experience: " + experience);
         }
     }
 
@@ -25,7 +28,7 @@ public class LevelSystem : MonoBehaviour
     {
         level++;
         Debug.Log("level up to" + level);
-        experienceToNextLevel = experienceToNextLevel*experienceToNextLevel;
+        experienceToNextLevel = experienceToNextLevel*experienceMultiplier;
         Debug.Log("experience to next level: " + experienceToNextLevel);
     }
 }
