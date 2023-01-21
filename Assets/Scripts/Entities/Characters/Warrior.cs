@@ -28,7 +28,7 @@ public class Warrior : HeroController
         {
             RaycastHit hit;
 
-            if (Physics.SphereCast(transform.position, 5, transform.forward, out hit, 3))
+            if (Physics.SphereCast(transform.position, 5, transform.forward, out hit, 4))
             {
                 Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * hit.distance);
                 Debug.Log("Did Hit");
