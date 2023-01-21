@@ -4,7 +4,13 @@ using UnityEngine;
 
 public class CameraMovement : MonoBehaviour
 {
+<<<<<<< HEAD
     private UnityEngine.GameObject player;
+=======
+    private GameObject player;
+    [SerializeField]
+    private Vector3 offset;
+>>>>>>> 82870c0cf7168199ad85a287387778cc55e7224a
     // Start is called before the first frame update
     void Start()
     {
@@ -15,7 +21,7 @@ public class CameraMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        this.transform.position = new Vector3(player.transform.position.x,player.transform.position.y + 5, player.transform.position.z - 6);
+        this.transform.position = player.transform.position + offset;
         transform.LookAt(player.transform.position);
     }
 }
