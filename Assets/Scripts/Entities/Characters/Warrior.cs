@@ -29,15 +29,12 @@ public class Warrior : HeroController
         {
             RaycastHit hit;
 
-            if (Physics.SphereCast(transform.position, 5, transform.forward, out hit, 4))
+            if (Physics.SphereCast(transform.position, 4, transform.forward, out hit, 4))
             {
                 Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * hit.distance);
                 Debug.Log("Did Hit");
-                hit.collider.GetComponent<Damage>().TakeDamage(5);
-                Vector3 knockDirection = (hit.collider.transform.position - transform.position).normalized;
-                Vector3 knockback = knockDirection * knockbackForce;
-                Rigidbody rbTarget = hit.collider.GetComponent<Rigidbody>();
-                rbTarget.AddForce(knockback);
+                Debug.Log(hit.collider);
+                hit.collider.GetComponent<Enemy>().GetKnockback(transform.position);
             }
             else
             {
