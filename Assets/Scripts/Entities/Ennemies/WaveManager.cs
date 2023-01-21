@@ -1,12 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 
 public class WaveManager : MonoBehaviour
 {
+    //Objects qui seront récupérés dans awake et passés à chaque entité spawn
     private GameObject player;
     private Camera camera;
+    [SerializeField] private Image healthBar; //voir avec louise pour setup ça correctement avec les différents éléments à initialiser
     //On utilise une Pool d'objets pour optimiser la mémoire
     [SerializeField] private Enemy[] enemies;
     private Pool[] pools;
@@ -29,6 +31,7 @@ public class WaveManager : MonoBehaviour
     {
         pools = new Pool[enemies.Length];
         player = GameObject.FindWithTag("Player");
+        camera = GameObject.FindWithTag("MainCamera").GetComponent<Camera>();
 
         int i = 0;
         foreach(Enemy enemy in enemies)

@@ -7,7 +7,7 @@ public class Health : MonoBehaviour
 {
     private float maxHealth;
     private float currentHealth;
-    private Image healthBar;
+    public Image HealthBar { get; set; }
 
     [SerializeField]
     private int hitDamage = 1;
@@ -21,8 +21,8 @@ public class Health : MonoBehaviour
     void Start()
     {
         currentHealth = maxHealth;
-        healthBar = transform.Find("Fill").GetComponent<Image>();
-        healthBar.fillAmount = 1;
+        HealthBar = transform.Find("Fill").GetComponent<Image>();
+        HealthBar.fillAmount = 1;
     }
 
     // Update is called once per frame
@@ -38,6 +38,6 @@ public class Health : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        healthBar.fillAmount = (currentHealth / maxHealth);
+        HealthBar.fillAmount = (currentHealth / maxHealth);
     }
 }

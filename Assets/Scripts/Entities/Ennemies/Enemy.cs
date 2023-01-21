@@ -13,9 +13,7 @@ public class Enemy : MonoBehaviour
     private float cdTimer = 0f;
     private Strategy strategy;
 
-    [HideInInspector]
     public GameObject Player { get; set; }
-    [HideInInspector]
     public Camera Camera { get; set; }
 
     NavMeshAgent agent;

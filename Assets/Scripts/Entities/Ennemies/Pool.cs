@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Pool : MonoBehaviour
 {
+    //duplicata de code car WaveManager utilise explicitement des Pools<Enemy> pour pouvoir leur set certains paramètres, alors que pour les autres on veut utiliser     
+    //Pools<GameObject> et qu'on ne peut pas transtiper un gameobject en Enemy car Enemy est un script
+
     private Stack<Enemy> pool;
     public Enemy prefab;
     public int Size { get; set; }
