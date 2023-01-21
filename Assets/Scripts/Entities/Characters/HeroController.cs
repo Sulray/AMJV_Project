@@ -36,7 +36,7 @@ public class HeroController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        agent = GetComponent<NavMeshAgent>();
+        //agent = GetComponent<NavMeshAgent>();
         animator = playerModel.GetComponent<Animator>();
 
     }
@@ -50,25 +50,27 @@ public class HeroController : MonoBehaviour
         LookAt();
         grounded = IsGrounded();
 
-        momentSpeed = agent.velocity.magnitude / agent.speed;
+        //momentSpeed = agent.velocity.magnitude / agent.speed;
+        momentSpeed = rb.velocity.magnitude / speed;
+
         //Debug.Log(momentSpeed);
         moving = (momentSpeed != 0);
         Debug.Log("Grounded : " + grounded);
         if (grounded) 
         {
-            agent.destination = transform.position + new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical")) * directionOffset;
+            rb.velocity = new Vector3(xMove, 0, zMove).normalized * speed + new Vector3(0, rb.velocity.y, 0); // Creates velocity in direction of value equal to keypress (WASD). rb.velocity.y deals with falling + jumping by setting velocity to y. 
+            //agent.destination = transform.position + new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical")); //* directionOffset  
         }
         animator.SetFloat("floatVelocity",momentSpeed);
         //animator.SetBool("Moving", moving);
-        //rb.velocity = new Vector3(xMove,0, zMove).normalized * speed + new Vector3(0,rb.velocity.y,0); // Creates velocity in direction of value equal to keypress (WASD). rb.velocity.y deals with falling + jumping by setting velocity to y. 
         //Debug.Log(rb.velocity+" at speed "+speed);
     }
 
 
     bool IsGrounded()
     {
-        Debug.DrawRay(transform.position, -Vector3.up * (0.1f + groundDetection), Color.red);
-        return Physics.Raycast(transform.position, -Vector3.up,0.1f+groundDetection);
+        Debug.DrawRay(transform.position-Vector3.up*0.1f, -Vector3.up * (0.2f + groundDetection), Color.red);
+        return Physics.Raycast(transform.position+Vector3.up*0.2f, -Vector3.up,0.3f+groundDetection);
 
     }
 
@@ -101,6 +103,16 @@ public class HeroController : MonoBehaviour
             StartCoroutine(TimeAttack(1));
 
         }
+        if (inputAction2)
+        {
+            StartCoroutine(TimeAttack(2));
+
+        }
+        if (inputAction3)
+        {
+            StartCoroutine(TimeAttack(3));
+
+        }
         /*
         if (inputJump && isGrounded == true)
         {
@@ -128,21 +140,27 @@ public class HeroController : MonoBehaviour
     public void inAir()
     {
         Debug.Log("velocity on y : " + rb.velocity.y);
-        if (rb.velocity.y < 0) 
+        if ((rb.velocity.y < -0.1f) && (!grounded))
         {
             //rb.AddForce(new Vector3(0, gravityOnFall, 0), ForceMode.Acceleration);
             animator.SetInteger("intAir", 2);
         }
+        else if (grounded)
+        {
+            animator.SetInteger("intAir", 0);
+        }
+        /*
         if (grounded)
         {
             animator.SetInteger("intAir", 0);
-            agent.enabled = true;
+            //agent.enabled = true;
 
         }
         else
         {
-            agent.enabled = false;
+            //agent.enabled = false;
         }
+        */
     }
 
     void OnCollisionEnter(Collision hit)
