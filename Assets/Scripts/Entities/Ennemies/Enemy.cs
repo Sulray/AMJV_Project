@@ -25,7 +25,7 @@ public class Enemy : MonoBehaviour
     [HideInInspector]
     public Camera Camera { get; set; }
 
-    NavMeshAgent agent;
+    public NavMeshAgent agent;
     Animator animator;
     [SerializeField] GameObject enemyModel;
     protected void Awake()
