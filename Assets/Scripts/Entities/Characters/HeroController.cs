@@ -5,27 +5,43 @@ using UnityEngine.AI;
 
 public class HeroController : MonoBehaviour
 {
-    [SerializeField] float directionOffset;
+    [SerializeField] private PlayerType playerType;
+    [SerializeField] private PlayerParameter playerData;
+    private Attack attack;
+
+    //[SerializeField] float directionOffset;
     NavMeshAgent agent;
     Animator animator;
-    [SerializeField] GameObject playerModel;
-    public float speed;
+    //[SerializeField] GameObject playerModel;
+    float speed;
 
     public bool inputAction1;
     public bool inputAction2;
     public bool inputAction3;
+
+    float cooldown1;
+    float cooldown2;
+    float cooldown3;
+
+
+    bool isCooldown1Over = true;
+    bool isCooldown2Over = true;
+    bool isCooldown3Over = true;
+    
+    bool canMove = true;
+
+
     public bool inputJump;
     float xMove;
     float zMove;
 
-    public Rigidbody rb;
-    public float buttonTimeJump = 0.3f;
-    public float jumpAmount = 20;
+    Rigidbody rb;
+    [SerializeField] float buttonTimeJump = 0.3f;
+    [SerializeField] float jumpAmount = 20;
     float jumpTime;
     bool jumping;
     bool grounded;
     [SerializeField] float groundDetection;
-    bool canMove;
     [SerializeField] float gravityOnFall;
 
 
@@ -36,9 +52,26 @@ public class HeroController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        
         //agent = GetComponent<NavMeshAgent>();
-        animator = playerModel.GetComponent<Animator>();
-
+        animator = this.GetComponentInChildren<Animator>();
+        //animator = playerModel.GetComponent<Animator>();
+        rb = this.GetComponent<Rigidbody>();
+        speed = playerData.startingSpeed;
+        cooldown1 = playerData.startingCD1;
+        cooldown2 = playerData.startingCD2;
+        cooldown3 = playerData.startingCD3;
+        switch (playerType)
+        {
+            case PlayerType.Mage:
+                attack = gameObject.AddComponent<MageAttack>();
+                break;
+            case PlayerType.Hunter:
+                attack = gameObject.AddComponent<HunterAttack>();
+                break;
+          
+        }
+        
     }
 
     // Update is called once per frame
@@ -88,30 +121,36 @@ public class HeroController : MonoBehaviour
 
     public void Inputs()
     {
-        xMove = Input.GetAxisRaw("Horizontal"); // d key changes value to 1, a key changes value to -1
-        zMove = Input.GetAxisRaw("Vertical"); // w key changes value to 1, s key changes value to -1
-        inputAction1 = Input.GetKeyDown(KeyCode.Mouse0);
-        inputAction2 = Input.GetKeyDown(KeyCode.Mouse1);
-        inputAction3 = Input.GetKeyDown(KeyCode.Space);
+        if (canMove)
+        {
+            xMove = Input.GetAxisRaw("Horizontal"); // d key changes value to 1, a key changes value to -1
+            zMove = Input.GetAxisRaw("Vertical"); // w key changes value to 1, s key changes value to -1
+            inputAction1 = Input.GetKeyDown(KeyCode.Mouse0);
+            inputAction2 = Input.GetKeyDown(KeyCode.Mouse1);
+            inputAction3 = Input.GetKeyDown(KeyCode.Space);
+        }
 
     }
 
     public void Action()
     {
-        if (inputAction1)
+        if (inputAction1 && isCooldown1Over)
         {
-            StartCoroutine(TimeAttack(1));
-
+            StartCoroutine(TimeAttack(1,0.5f));
+            StartCoroutine(Action1Cooldown(cooldown1));
+            attack.First();
         }
-        if (inputAction2)
+        if (inputAction2 && isCooldown2Over)
         {
-            StartCoroutine(TimeAttack(2));
-
+            StartCoroutine(TimeAttack(2, 0.5f));
+            StartCoroutine(Action2Cooldown(cooldown2));
+            attack.Second();
         }
-        if (inputAction3)
+        if (inputAction3 && isCooldown3Over)
         {
-            StartCoroutine(TimeAttack(3));
-
+            StartCoroutine(TimeAttack(3, 0.5f));
+            StartCoroutine(Action3Cooldown(cooldown3));
+            attack.Third();
         }
         /*
         if (inputJump && isGrounded == true)
@@ -187,10 +226,35 @@ public class HeroController : MonoBehaviour
     }
 
 
-    IEnumerator TimeAttack(int intAttack)
+    public IEnumerator Action1Cooldown(float cooldown) //la coroutine prend en arguments le temps de cooldown pour une action donnée
+                                                       //et le booléen correspondant à l'action.
+    {
+        isCooldown1Over = false;
+        yield return new WaitForSeconds(cooldown);
+        isCooldown1Over = true;
+    }
+
+    public IEnumerator Action2Cooldown(float cooldown) //la coroutine prend en arguments le temps de cooldown pour une action donnée
+                                                       //et le booléen correspondant à l'action.
+    {
+        isCooldown2Over = false;
+        yield return new WaitForSeconds(cooldown);
+        isCooldown2Over = true;
+    }
+
+    public IEnumerator Action3Cooldown(float cooldown) //la coroutine prend en arguments le temps de cooldown pour une action donnée
+                                                       //et le booléen correspondant à l'action.
+    {
+        isCooldown3Over = false;
+        yield return new WaitForSeconds(cooldown);
+        isCooldown3Over = true;
+    }
+    IEnumerator TimeAttack(int intAttack, float wait)
     {
         animator.SetInteger("intAttack", intAttack);
-        yield return new WaitForSeconds(0.1f);
+        canMove = false;
+        yield return new WaitForSeconds(wait);
+        canMove = true;
         animator.SetInteger("intAttack", 0);
 
     }

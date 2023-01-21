@@ -23,6 +23,7 @@ public class Enemy : MonoBehaviour
     private float knockbackForce = 100f;
     protected void Awake()
     {
+        rb = GetComponent<Rigidbody>();
         rb.isKinematic = true;
     }
     protected void Start()
@@ -59,6 +60,7 @@ public class Enemy : MonoBehaviour
 
     public void GetKnockback(Vector3 positionOrigin)
     {
+        Debug.Log("in it");
         Vector3 knockDirection = (transform.position - positionOrigin).normalized;
         Vector3 knockback = knockDirection * knockbackForce;
         agent.enabled = false;
