@@ -11,7 +11,7 @@ public class HeroController : MonoBehaviour
 
     //[SerializeField] float directionOffset;
     NavMeshAgent agent;
-    public Animator animator;
+    Animator animator;
     //[SerializeField] GameObject playerModel;
     float speed;
 

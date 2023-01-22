@@ -72,7 +72,7 @@ public class Enemy : MonoBehaviour
             }
         }
         
-        if((!agent.hasPath) || enemyType == EnemyType.Warrior)
+        if((!agent.hasPath) || enemyType == EnemyType.Soldier)
         {
             agent.destination = strategy.Move();
         }
