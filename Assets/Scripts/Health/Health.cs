@@ -7,6 +7,7 @@ public class Health : MonoBehaviour
 {
     private float maxHealth;
     private float currentHealth;
+
     public Image HealthBar { get; set; }
 
     [SerializeField]
