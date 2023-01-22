@@ -5,10 +5,10 @@ using UnityEngine;
 public class Billboard : MonoBehaviour
 {
     [SerializeField]
-    Transform cam;
+    private Vector3 camDirection = new Vector3(0, -13, 8); // opposé de l"offset de la caméra
 
     void LateUpdate()
     {
-        transform.LookAt(transform.position + cam.forward); // make the UI object stay in front of the camera
+        transform.LookAt(transform.position + camDirection);
     }
 }

@@ -8,7 +8,8 @@ public class Health : MonoBehaviour
     private float maxHealth;
     private float currentHealth;
 
-    public Image HealthBar { get; set; }
+    [SerializeField]
+    private Image HealthBar;
 
     [SerializeField]
     private int hitDamage = 1;
@@ -22,7 +23,7 @@ public class Health : MonoBehaviour
     void Start()
     {
         currentHealth = maxHealth;
-        HealthBar = transform.Find("Fill").GetComponent<Image>();
+        //HealthBar = transform.Find("Fill").GetComponent<Image>();
         HealthBar.fillAmount = 1;
     }
 
