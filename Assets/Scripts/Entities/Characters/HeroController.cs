@@ -6,7 +6,7 @@ using UnityEngine.AI;
 public class HeroController : MonoBehaviour
 {
     [SerializeField] private PlayerType playerType;
-    [SerializeField] private PlayerParameter playerData;
+    [SerializeField] public PlayerParameter playerData;
     private Attack attack;
 
     //[SerializeField] float directionOffset;
@@ -44,6 +44,7 @@ public class HeroController : MonoBehaviour
     [SerializeField] float groundDetection;
     [SerializeField] float gravityOnFall;
 
+    public Ray rayMouse;
 
     float momentSpeed;
     bool moving;
@@ -113,8 +114,7 @@ public class HeroController : MonoBehaviour
     void LookAt()
     {
         RaycastHit hit;
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        if (Physics.Raycast(ray, out hit))
+        if (Physics.Raycast(rayMouse, out hit))
         {
             positionRay = hit.point;
         }
@@ -124,8 +124,11 @@ public class HeroController : MonoBehaviour
 
     public void Inputs()
     {
+        rayMouse = Camera.main.ScreenPointToRay(Input.mousePosition);
+
         if (canMove)
         {
+
             xMove = Input.GetAxisRaw("Horizontal"); // d key changes value to 1, a key changes value to -1
             zMove = Input.GetAxisRaw("Vertical"); // w key changes value to 1, s key changes value to -1
             inputAction1 = Input.GetKeyDown(KeyCode.Mouse0);
@@ -256,6 +259,11 @@ public class HeroController : MonoBehaviour
     {
         animator.SetInteger("intAttack", intAttack);
         canMove = false;
+        xMove = 0f;
+        zMove = 0f;
+        inputAction1 = false;
+        inputAction2 = false;
+        inputAction3 = false;
         yield return new WaitForSeconds(wait);
         canMove = true;
         animator.SetInteger("intAttack", 0);

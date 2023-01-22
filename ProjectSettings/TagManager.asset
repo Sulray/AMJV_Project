@@ -7,6 +7,7 @@ TagManager:
   - Enemy
   - Collide
   - Ground
+  - Rotating_Projectile
   layers:
   - Default
   - TransparentFX
