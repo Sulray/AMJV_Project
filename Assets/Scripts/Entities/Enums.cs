@@ -13,5 +13,6 @@ public enum EnemyType
 public enum PlayerType
 {
     Mage,
-    Hunter
+    Hunter,
+    Knight
 }

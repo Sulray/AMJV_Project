@@ -25,32 +25,35 @@ public class Warrior : HeroController
 
     public void SwordHit()
     {
-        if (inputAction1 &&isCooldown1Over)
+        if (inputAction1 && isCooldown1Over)
         {
-            RaycastHit hit;
 
-            if (Physics.SphereCast(transform.position, 4, transform.forward, out hit, 4))
+            RaycastHit[] hitArray = Physics.SphereCastAll(transform.position, 4, transform.forward, 4);
+            foreach (RaycastHit hit in hitArray)
             {
-                Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * hit.distance);
-                Debug.Log("Did Hit");
-                Debug.Log(hit.collider);
-                hit.collider.GetComponent<Enemy>().GetKnockback(transform.position);
+                if (hit.collider.gameObject.tag == "Enemy")
+                {
+                    Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * hit.distance);
+                    Debug.Log("Did Hit");
+                    Debug.Log(hit.collider);
+                    hit.collider.GetComponent<Enemy>().GetKnockback(transform.position);
+                }
+                else
+                {
+                    Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * 1000);
+                    Debug.Log("Did not Hit");
+                }
+                StartCoroutine(Action1Cooldown(1));
             }
-            else
-            {
-                Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * 1000);
-                Debug.Log("Did not Hit");
-            }
-            StartCoroutine(Action1Cooldown(1));
         }
     }
 
 
-    public IEnumerator Action1Cooldown(float cooldown) //la coroutine prend en arguments le temps de cooldown pour une action donnée
+    private IEnumerator Action1Cooldown(float cooldown) //la coroutine prend en arguments le temps de cooldown pour une action donnée
     {
         isCooldown1Over = false;
         yield return new WaitForSeconds(cooldown);
-        isCooldown1Over = true;
+            isCooldown1Over = true;
     }
 
 }

@@ -69,7 +69,10 @@ public class HeroController : MonoBehaviour
             case PlayerType.Hunter:
                 attack = gameObject.AddComponent<HunterAttack>();
                 break;
-          
+            case PlayerType.Knight:
+                attack = gameObject.AddComponent<KnightAttack>();
+                break;
+
         }
         
     }
