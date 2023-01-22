@@ -4,7 +4,7 @@ using UnityEngine;
 
 public enum EnemyType
 {
-    Warrior,
+    Soldier,
     Archer,
     Liche
 }
@@ -13,5 +13,6 @@ public enum EnemyType
 public enum PlayerType
 {
     Mage,
-    Hunter
+    Hunter,
+    Knight
 }

@@ -230,6 +230,7 @@ GameObject:
   - component: {fileID: 8253695373193685647}
   - component: {fileID: 5485783724630859709}
   - component: {fileID: 5485783724630859710}
+  - component: {fileID: 8459951771854768552}
   m_Layer: 0
   m_Name: Knight Warrior
   m_TagString: Player
@@ -294,16 +295,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f51958e7c8fae7a46ad1e1498fef9608, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  directionOffset: 1
-  playerModel: {fileID: 6143756799760596120}
-  speed: 5
+  playerType: 0
+  playerData: {fileID: 0}
+  animator: {fileID: 0}
   inputAction1: 0
   inputAction2: 0
   inputAction3: 0
+  canMove: 1
   inputJump: 0
-  rb: {fileID: 8253695373193685644}
   buttonTimeJump: 0.3
   jumpAmount: 5
+  grounded: 0
   groundDetection: 0.1
   gravityOnFall: 5
 --- !u!195 &5485783724630859710
@@ -313,7 +315,7 @@ NavMeshAgent:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5485783724630859711}
-  m_Enabled: 1
+  m_Enabled: 0
   m_AgentTypeID: 0
   m_Radius: 0.5
   m_Speed: 5
@@ -328,6 +330,18 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &8459951771854768552
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5485783724630859711}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 755d8cb44eec4de4c95679f4000850ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6143756799760596116
 GameObject:
   m_ObjectHideFlags: 0

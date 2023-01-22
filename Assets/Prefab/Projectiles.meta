@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Prefab/Projectiles.meta
 guid: 2359901beeaf56a459a3dd7a2212b23b
+========
+guid: b45baf5f7358c634a9ea579184fb930f
+>>>>>>>> 33aea50 (attack 1 knight debut):Assets/Scripts/Attacks.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}

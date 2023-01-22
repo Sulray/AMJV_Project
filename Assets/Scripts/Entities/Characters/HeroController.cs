@@ -11,7 +11,7 @@ public class HeroController : MonoBehaviour
 
     //[SerializeField] float directionOffset;
     NavMeshAgent agent;
-    Animator animator;
+    public Animator animator;
     //[SerializeField] GameObject playerModel;
     float speed;
 
@@ -28,7 +28,7 @@ public class HeroController : MonoBehaviour
     bool isCooldown2Over = true;
     bool isCooldown3Over = true;
     
-    bool canMove = true;
+    public bool canMove = true;
 
 
     public bool inputJump;
@@ -40,7 +40,7 @@ public class HeroController : MonoBehaviour
     [SerializeField] float jumpAmount = 20;
     float jumpTime;
     bool jumping;
-    bool grounded;
+    public bool grounded;
     [SerializeField] float groundDetection;
     [SerializeField] float gravityOnFall;
 
@@ -69,7 +69,10 @@ public class HeroController : MonoBehaviour
             case PlayerType.Hunter:
                 attack = gameObject.AddComponent<HunterAttack>();
                 break;
-          
+            case PlayerType.Knight:
+                attack = gameObject.AddComponent<KnightAttack>();
+                break;
+
         }
         
     }
