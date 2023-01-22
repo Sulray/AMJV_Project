@@ -36,7 +36,7 @@ public class Enemy : MonoBehaviour
         health = new Health(enemyData.maxHealth);
         switch (enemyType)
         {
-            case EnemyType.Warrior:
+            case EnemyType.Soldier:
                 //strategy = gameObject.AddComponent<*nom de votre script de stratégie*>();
                 break;
             case EnemyType.Archer:
