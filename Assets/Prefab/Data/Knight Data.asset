@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5dc357e9f8b9387419fa5ce38e5d4242, type: 3}
   m_Name: Knight Data
   m_EditorClassIdentifier: 
-  startingHealth: 40
+  startingHealth: 50
   startingDamage1: 5
   startingDamage2: 2
   startingDamage3: 0
   startingSpeed: 5
-  startingCD1: 2
-  startingCD2: 10
-  startingCD3: 10
+  startingCD1: 1
+  startingCD2: 5
+  startingCD3: 5

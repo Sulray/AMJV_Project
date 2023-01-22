@@ -29,6 +29,10 @@ public class KnightAttack : Attack
     public override void Second()
     {
         Debug.Log("Knight Second Attack");
+        if (GetComponent<HeroController>().grounded)
+        {
+            Debug.Log("jumping");
+        }
 
     }
     public override void Third()

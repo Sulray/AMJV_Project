@@ -40,7 +40,7 @@ public class HeroController : MonoBehaviour
     [SerializeField] float jumpAmount = 20;
     float jumpTime;
     bool jumping;
-    bool grounded;
+    public bool grounded;
     [SerializeField] float groundDetection;
     [SerializeField] float gravityOnFall;
 
