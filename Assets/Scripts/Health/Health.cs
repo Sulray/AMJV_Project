@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class Health : MonoBehaviour
 {
-    private float maxHealth;
+    public float MaxHealth {get; set;}
     private float currentHealth;
 
     [SerializeField]
@@ -14,17 +14,12 @@ public class Health : MonoBehaviour
     [SerializeField]
     private int hitDamage = 1;
 
-    public Health(float maxHealth)
-    {
-        this.maxHealth = maxHealth;
-    }
-
     // Start is called before the first frame update
     void Start()
     {
-        currentHealth = maxHealth;
+        currentHealth = MaxHealth;
         //HealthBar = transform.Find("Fill").GetComponent<Image>();
-        HealthBar.fillAmount = 1;
+        //HealthBar.fillAmount = 1;
     }
 
     // Update is called once per frame
@@ -40,6 +35,6 @@ public class Health : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        HealthBar.fillAmount = (currentHealth / maxHealth);
+        HealthBar.fillAmount = (currentHealth / MaxHealth);
     }
 }

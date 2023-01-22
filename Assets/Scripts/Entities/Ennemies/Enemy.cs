@@ -7,16 +7,20 @@ using UnityEngine.Animations;
 public class Enemy : MonoBehaviour
 {
     //We use EnemyType to instanciate Move and Attack types rather than attaching scripts directly
+
+    //General Datas/Scripts
     [SerializeField] private EnemyType enemyType;
     [SerializeField] private EnemyParameter enemyData;
     private Health health;
-    private float cdTimer = 0f;
     private Strategy strategy;
+    private bool cdUp;
 
+    //Needed by Strategy script
     public GameObject Player { get; set; }
     public Camera Camera { get; set; }
-    public ProjectileManager ProjectileManager { get; set; }
+    [SerializeField] private ProjectileManager ProjectileManager;
 
+    //For movement
     NavMeshAgent agent;
     Rigidbody rb;
     Animator animator;
@@ -33,7 +37,8 @@ public class Enemy : MonoBehaviour
         animator = enemyModel.GetComponent<Animator>();
         agent.speed = enemyData.speed;
         agent.acceleration = 10 * enemyData.speed;
-        health = new Health(enemyData.maxHealth);
+        //health = gameObject.AddComponent<Health>();
+        //health.MaxHealth = enemyData.maxHealth;
         switch (enemyType)
         {
             case EnemyType.Warrior:
@@ -41,6 +46,9 @@ public class Enemy : MonoBehaviour
                 break;
             case EnemyType.Archer:
                 strategy = gameObject.AddComponent<ArcherStrategy>();
+                strategy.Camera = this.Camera;
+                strategy.Target = this.Player;
+                strategy.ArrowManager = this.ProjectileManager;
                 
                 break;
             case EnemyType.Liche:
@@ -49,14 +57,33 @@ public class Enemy : MonoBehaviour
             default:
                 break;
         }
+        StartCoroutine(Cooldown());
 
     }
 
+    
     void Update()
     {
-        strategy.Attack();
-        agent.destination = strategy.Move();
+        if (cdUp)
+        {
+            if (strategy.Attack())
+            {
+                StartCoroutine(Cooldown());
+            }
+        }
+        
+        if((!agent.hasPath) || enemyType == EnemyType.Warrior)
+        {
+            agent.destination = strategy.Move();
+        }
         animator.SetFloat("ForwardSpeed", agent.velocity.magnitude / agent.speed);
+    }
+
+    private IEnumerator Cooldown()
+    {
+        cdUp = false;
+        yield return new WaitForSeconds(enemyData.attackCD);
+        cdUp = true;
     }
 
     public void GetKnockback(Vector3 positionOrigin)

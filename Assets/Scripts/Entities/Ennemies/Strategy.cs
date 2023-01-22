@@ -4,8 +4,9 @@ using UnityEngine;
 
 public abstract class Strategy : MonoBehaviour
 {
-    public Transform Target { get; set; }
+    public GameObject Target { get; set; }
     public Camera Camera { get; set; }
+    public ProjectileManager ArrowManager { get; set; }
 
     //renvoie la destination de l'ennemi
     public abstract Vector3 Move();

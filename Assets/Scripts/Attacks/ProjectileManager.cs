@@ -17,24 +17,26 @@ public class ProjectileManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.G))
         {
-            this.BroadcastMessage("OnFireProjectile");
+
         }
     }
-    public Projectile OnFireProjectile()
+    public void OnFireProjectile(Vector3[] entities)
     {
         Projectile obj;
         if (pool.Count == 0)
         {
             obj = Instantiate(prefab);
-            obj.ProjectileManager = this;
-            return obj;
+            obj.gameObject.SetActive(false);
         }
         else
         {
             obj = pool.Pop();
-            obj.gameObject.SetActive(true);
-            return obj;
         }
+        obj.transform.position = entities[0];
+        obj.transform.LookAt(entities[1]);
+        obj.gameObject.GetComponent<Rigidbody>().velocity = (entities[1] - entities[0]).normalized * 3;
+        obj.gameObject.SetActive(true);
+
     }
 
     public void OnDestroyProjectile(Projectile obj)
