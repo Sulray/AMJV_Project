@@ -7,7 +7,12 @@ TagManager:
   - Enemy
   - Collide
   - Ground
+<<<<<<< HEAD
   - Rotating_Projectile
+=======
+  - Wall
+  - Poison
+>>>>>>> c90efba (Main menu background and LV1-2 tagged)
   layers:
   - Default
   - TransparentFX
