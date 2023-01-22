@@ -17,7 +17,7 @@ public class ProjectileManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.G))
         {
-
+            SendMessage("OnFireProjectile", ( new Vector3[]{ Vector3.zero, Vector3.one }));
         }
     }
     public void OnFireProjectile(Vector3[] entities)
@@ -26,6 +26,7 @@ public class ProjectileManager : MonoBehaviour
         if (pool.Count == 0)
         {
             obj = Instantiate(prefab);
+            obj.ProjectileManager = this;
             obj.gameObject.SetActive(false);
         }
         else

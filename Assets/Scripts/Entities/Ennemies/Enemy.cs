@@ -18,7 +18,7 @@ public class Enemy : MonoBehaviour
     //Needed by Strategy script
     public GameObject Player { get; set; }
     public Camera Camera { get; set; }
-    [SerializeField] private ProjectileManager ProjectileManager;
+    public ProjectileManager ProjectileManager { get; set; }
 
     //For movement
     NavMeshAgent agent;
@@ -60,7 +60,6 @@ public class Enemy : MonoBehaviour
         StartCoroutine(Cooldown());
 
     }
-
     
     void Update()
     {
@@ -68,11 +67,11 @@ public class Enemy : MonoBehaviour
         {
             if (strategy.Attack())
             {
-                StartCoroutine(Cooldown());
+                yield return StartCoroutine(Cooldown());
             }
         }
         
-        if((!agent.hasPath) || enemyType == EnemyType.Warrior)
+        if((!agent.hasPath) || enemyType == EnemyType.Soldier)
         {
             agent.destination = strategy.Move();
         }

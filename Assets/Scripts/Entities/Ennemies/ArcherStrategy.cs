@@ -7,7 +7,7 @@ public class ArcherStrategy : Strategy
     private float xDistanceFromPlayer = 0.4f; //0 to 0.5, used in viewport
     private float yDistanceFromPlayer = 0.4f; //0 to 0.5, used in viewport
     private float zCameraToGround;
-
+    
     private void Start()
     {
         zCameraToGround = Camera.transform.position.y;
@@ -31,7 +31,6 @@ public class ArcherStrategy : Strategy
                 return gameObject.transform.position;
         }
     }
-
     public override bool Attack()
     {
         StartCoroutine(Fire(Random.Range(1,6)));
@@ -46,9 +45,8 @@ public class ArcherStrategy : Strategy
             Vector3[] tempStore = new Vector3[2];
             tempStore[0] = this.transform.position;
             tempStore[1] = Target.transform.position;
-            Debug.Log(ArrowManager);
-            ArrowManager.gameObject.SendMessage("OnFireProjectile", tempStore);
-            yield return new WaitForSeconds(0.2f);
+            ArrowManager.SendMessage("OnFireProjectile", tempStore);
+            yield return new WaitForSeconds(0.5f);
             
         }
     }

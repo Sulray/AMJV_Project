@@ -9,7 +9,7 @@ public class WaveManager : MonoBehaviour
     private GameObject player;
     private Camera camera;
     [SerializeField] private Image healthBar; //voir avec louise pour setup ça correctement avec les différents éléments à initialiser, peut être utiliser Assets.Load
-    //[SerializeField] private ProjectileManager projectileManager;
+    [SerializeField] private ProjectileManager projectileManager;
     //On utilise une Pool d'objets pour optimiser la mémoire
     [SerializeField] private Enemy[] enemies;
     private Pool[] pools;
@@ -150,7 +150,7 @@ public class WaveManager : MonoBehaviour
         guy.transform.position = spawn;
         guy.Player = player;
         guy.Camera = camera;
-        //guy.ProjectileManager = projectileManager;
+        guy.ProjectileManager = projectileManager;
         guy.gameObject.SetActive(true);
     }
 }
