@@ -12,6 +12,9 @@ TagManager:
   - Ground
   - Rotating_Projectile
   - Projectile_Source
+<<<<<<< HEAD
+>>>>>>> f47998a (finished Mage + started to do Boss)
+=======
 >>>>>>> f47998a (finished Mage + started to do Boss)
   layers:
   - Default

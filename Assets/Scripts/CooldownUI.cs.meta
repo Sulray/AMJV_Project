@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Scripts/CooldownUI.cs.meta
 guid: 783984a10d6a6fc4fb5c1df22e516580
+========
+guid: 77fbcbac4cbcae144b6c709ac0bead8b
+>>>>>>>> f47998a (finished Mage + started to do Boss):Assets/Scripts/Entities/Boss.cs.meta
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
