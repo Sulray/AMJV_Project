@@ -104,7 +104,7 @@ public class WaveManager : MonoBehaviour
         {
             //polish : optimiser le choix des spawns, attendre qu'il soit vide, etc...
             if (totalEnemies < maxEnemies)
-            {   
+            {
                 foreach (GameObject spawnpoint in spawnpoints)
                 {
                     if (!CheckSpawn(spawnpoint.transform.position))
