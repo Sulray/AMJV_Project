@@ -15,4 +15,4 @@ MonoBehaviour:
   maxHealth: 5
   damage: 5
   speed: 10
-  attackCD: 5
+  attackCD: 3

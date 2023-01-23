@@ -53,20 +53,18 @@ public class Enemy : MonoBehaviour
 
                 break;
             case EnemyType.Liche:
-                //strategy = gameObject.AddComponent<*nom de votre script de stratégie*>();
+                //strategy = gameObject.AddComponent<nom de votre script de stratégie>();
                 break;
             default:
                 break;
         }
         StartCoroutine(Cooldown());
-
     }
-
-    
     void Update()
     {
         if (cdUp)
         {
+            //si l'attaque réussi
             if (strategy.Attack())
             {
                 StartCoroutine(Cooldown());

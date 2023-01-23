@@ -16,7 +16,7 @@ public class Projectile : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.B))
         {
-            ProjectileManager.SendMessage("OnDestroyProjectile", this);
+            ProjectileManager.SendMessage("OnDestroyProjectile", this);//utiliser la méthode
         }
     }
 
@@ -25,11 +25,12 @@ public class Projectile : MonoBehaviour
         string tag = collision.gameObject.tag;
         if (tag == "Wall")
         {
-            ProjectileManager.SendMessage("OnDestroyProjectile", this);
+            ProjectileManager.OnDestroyProjectile(this);
         }
         if (tag == "Player")
         {
-            collision.gameObject.SendMessage("Damage", damage);
+            //collision.gameObject.GetComponent<Health>().OnTakeDamage(damage);
+            ProjectileManager.OnDestroyProjectile(this);
         }
     }
 }

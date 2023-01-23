@@ -31,10 +31,10 @@ public class Health : MonoBehaviour
     {
         currentHealth -= damage;
         //entity dies
-        if (currentHealth <= 0)
+        /*if (currentHealth <= 0)
         {
             Destroy(gameObject);
         }
-        HealthBar.fillAmount = (currentHealth / MaxHealth);
+        HealthBar.fillAmount = (currentHealth / MaxHealth);*/
     }
 }
