@@ -42,15 +42,22 @@ public class Enemy : MonoBehaviour
         switch (enemyType)
         {
             case EnemyType.Soldier:
+<<<<<<< HEAD
                 strategy = gameObject.GetComponent<SoldierStrategy>();
                 strategy.Target = this.Player;
+=======
+                //strategy = gameObject.AddComponent<nom de votre script de stratégie>();
+>>>>>>> f47998a (finished Mage + started to do Boss)
                 break;
             case EnemyType.Archer:
                 strategy = gameObject.AddComponent<ArcherStrategy>();
                 strategy.Camera = this.Camera;
                 strategy.Target = this.Player;
                 strategy.ArrowManager = this.ProjectileManager;
+<<<<<<< HEAD
 
+=======
+>>>>>>> f47998a (finished Mage + started to do Boss)
                 break;
             case EnemyType.Liche:
                 //strategy = gameObject.AddComponent<nom de votre script de stratégie>();
@@ -60,6 +67,10 @@ public class Enemy : MonoBehaviour
         }
         StartCoroutine(Cooldown());
     }
+<<<<<<< HEAD
+=======
+
+>>>>>>> f47998a (finished Mage + started to do Boss)
     void Update()
     {
         if (cdUp)
@@ -70,8 +81,8 @@ public class Enemy : MonoBehaviour
                 StartCoroutine(Cooldown());
             }
         }
-        
-        if((!agent.hasPath) || enemyType == EnemyType.Soldier)
+
+        if ((!agent.hasPath) || enemyType == EnemyType.Soldier)
         {
             agent.destination = strategy.Move();
         }

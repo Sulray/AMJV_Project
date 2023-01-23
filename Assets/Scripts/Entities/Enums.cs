@@ -16,3 +16,11 @@ public enum PlayerType
     Hunter,
     Knight
 }
+
+
+public enum BossStates
+{
+    FirstPhase,
+    SecondPhase,
+    ThirdPhase
+}

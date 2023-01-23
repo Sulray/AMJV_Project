@@ -8,6 +8,10 @@ public class MageAttack : Attack
     GameObject rotatingFireball;
     GameObject baseFireball;
 
+    Transform transformProjectileSource;
+
+    ProjectileManager MageFireManager;
+
     [SerializeField] private PlayerParameter playerData;
 
     int timeWallInitial=5;
@@ -17,12 +21,14 @@ public class MageAttack : Attack
     HeroController controller;
     private void Start()
     {
+        MageFireManager = GameObject.Find("MageFireManager").GetComponent<ProjectileManager>();
         controller = this.gameObject.GetComponent<HeroController>();
         playerData = controller.playerData;
         rotatingFireball = GameObject.Find("Parent_BulletTrail").gameObject;
         rotatingFireball.transform.parent = null;
         Debug.Log(rotatingFireball);
         rotatingFireball.SetActive(false);
+        transformProjectileSource = GameObject.FindGameObjectWithTag("Projectile_Source").transform;
 
     }
 
@@ -42,9 +48,19 @@ public class MageAttack : Attack
 
     public override void First()
     {
+
         Debug.Log("Mage First Attack");
+        RaycastHit hit;
+        if (Physics.Raycast(controller.rayMouse, out hit))
+        {
+            MageFireManager.SendMessage("OnFireProjectile", new Vector3[] { transformProjectileSource.position, new Vector3(hit.point.x,transformProjectileSource.position.y,hit.point.z) });
+
+        }
 
     }
+
+
+
 
     public override void Second()
     {
