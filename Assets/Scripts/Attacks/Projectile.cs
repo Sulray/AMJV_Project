@@ -29,7 +29,9 @@ public class Projectile : MonoBehaviour
         }
         if (tag == "Player")
         {
-            //collision.gameObject.GetComponent<Health>().OnTakeDamage(damage);
+            //collision.gameObject.GetComponent<
+            //
+            //>().OnTakeDamage(damage);
             ProjectileManager.OnDestroyProjectile(this);
         }
     }

@@ -2,11 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+using UnityEngine.Events;
 
 public class Health : MonoBehaviour
 {
+    //These aren't working
+    /*
+    public UnityEvent<Enemy> enemyDeath;
+    public UnityEvent playerDeath;*/
     public float MaxHealth {get; set;}
-    private float currentHealth;
+    public float currentHealth;//private
 
     [SerializeField]
     private Image HealthBar;
@@ -18,8 +24,8 @@ public class Health : MonoBehaviour
     void Start()
     {
         currentHealth = MaxHealth;
-        //HealthBar = transform.Find("Fill").GetComponent<Image>();
-        //HealthBar.fillAmount = 1;
+        Debug.Log(HealthBar);
+        HealthBar.fillAmount = 1;
     }
 
     // Update is called once per frame
@@ -31,10 +37,22 @@ public class Health : MonoBehaviour
     {
         currentHealth -= damage;
         //entity dies
-        /*if (currentHealth <= 0)
+        if (currentHealth <= 0)
         {
-            Destroy(gameObject);
+            if (gameObject.CompareTag("Player")){
+                GameObject.FindWithTag("SceneManager").GetComponent<PauseMenu>().GameOver();
+                //playerDeath?.Invoke();
+            }
+            else
+            {
+                GetComponent<Enemy>().Despawn();
+                //enemyDeath?.Invoke(this.gameObject.GetComponent<Enemy>());
+            }
+                
         }
-        HealthBar.fillAmount = (currentHealth / MaxHealth);*/
+        Debug.Log(HealthBar);
+        Debug.Log(currentHealth);
+        Debug.Log(MaxHealth);
+        HealthBar.fillAmount = (currentHealth / MaxHealth);
     }
 }
