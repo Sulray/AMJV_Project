@@ -49,6 +49,7 @@ public class Enemy : MonoBehaviour
                 strategy.Camera = this.Camera;
                 strategy.Target = this.Player;
                 strategy.ArrowManager = this.ProjectileManager;
+
                 
                 break;
             case EnemyType.Liche:
@@ -58,20 +59,21 @@ public class Enemy : MonoBehaviour
                 break;
         }
         StartCoroutine(Cooldown());
-
     }
     
     void Update()
     {
         if (cdUp)
         {
+            //si l'attaque réussi
             if (strategy.Attack())
             {
-                yield return StartCoroutine(Cooldown());
+                Debug.Log("start cd " + Time.time);
+                StartCoroutine(Cooldown());
             }
         }
         
-        if((!agent.hasPath) || enemyType == EnemyType.Soldier)
+        if((!agent.hasPath && !cdUp) || enemyType == EnemyType.Soldier)
         {
             agent.destination = strategy.Move();
         }

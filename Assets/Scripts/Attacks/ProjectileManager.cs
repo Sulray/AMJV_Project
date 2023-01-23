@@ -17,10 +17,10 @@ public class ProjectileManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.G))
         {
-            SendMessage("OnFireProjectile", ( new Vector3[]{ Vector3.zero, Vector3.one }));
+            SendMessage("OnFireProjectile", ( new Vector3[]{ Vector3.zero, Vector3.one }));//event
         }
     }
-    public void OnFireProjectile(Vector3[] entities)
+    public void OnFireProjectile(Vector3 shooter, Vector3 target)
     {
         Projectile obj;
         if (pool.Count == 0)
@@ -33,9 +33,9 @@ public class ProjectileManager : MonoBehaviour
         {
             obj = pool.Pop();
         }
-        obj.transform.position = entities[0];
-        obj.transform.LookAt(entities[1]);
-        obj.gameObject.GetComponent<Rigidbody>().velocity = (entities[1] - entities[0]).normalized * 3;
+        obj.transform.position = shooter;
+        obj.transform.right = -(target - shooter).normalized;
+        obj.gameObject.GetComponent<Rigidbody>().velocity = (target - shooter).normalized * 3;
         obj.gameObject.SetActive(true);
 
     }

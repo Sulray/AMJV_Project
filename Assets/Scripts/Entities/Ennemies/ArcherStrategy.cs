@@ -1,12 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class ArcherStrategy : Strategy
 {
     private float xDistanceFromPlayer = 0.4f; //0 to 0.5, used in viewport
     private float yDistanceFromPlayer = 0.4f; //0 to 0.5, used in viewport
     private float zCameraToGround;
+    private bool visible; //récupérer le renderer
+
+    private bool isAttacking = false;
     
     private void Start()
     {
@@ -33,8 +37,16 @@ public class ArcherStrategy : Strategy
     }
     public override bool Attack()
     {
-        StartCoroutine(Fire(Random.Range(1,6)));
-        return true;
+        if (!isAttacking)
+        {
+            Debug.Log("start attack " + Time.time);
+            isAttacking = true;
+            this.GetComponent<NavMeshAgent>().velocity = Vector3.zero;
+            StartCoroutine(Fire(Random.Range(1, 6)));
+        }
+        return !isAttacking;
+        /*StartCoroutine(Fire(Random.Range(1, 6)));
+        return true;*/
     }
 
     private IEnumerator Fire(int ammo)
@@ -45,9 +57,10 @@ public class ArcherStrategy : Strategy
             Vector3[] tempStore = new Vector3[2];
             tempStore[0] = this.transform.position;
             tempStore[1] = Target.transform.position;
-            ArrowManager.SendMessage("OnFireProjectile", tempStore);
+            ArrowManager.OnFireProjectile(this.transform.position, Target.transform.position);
             yield return new WaitForSeconds(0.5f);
-            
         }
+        Debug.Log("end attack " + Time.time);
+        isAttacking = false;
     }
 }

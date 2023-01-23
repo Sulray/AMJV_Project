@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+using TMPro;
 public class WaveManager : MonoBehaviour
 {
     //Objects qui seront récupérés dans awake et passés à chaque entité spawn
@@ -23,7 +23,8 @@ public class WaveManager : MonoBehaviour
     private float spawnSpeed = 2;
     private float waveDelay = 2;
     private float timer;
-
+    [SerializeField] Slider slider;
+    [SerializeField] TMP_Text text;
 
     //entre 4 et 8 spawnpoints
     [SerializeField] private GameObject[] spawnpoints;
@@ -47,7 +48,7 @@ public class WaveManager : MonoBehaviour
     private void Start()
     {
         timer = 0;
-        //StartCoroutine("Life");
+        StartCoroutine("Life");
     }
 
     // Update is called once per frame
@@ -73,7 +74,9 @@ public class WaveManager : MonoBehaviour
         int tmpFib;
         while (true)
         {
+            slider.value = (timer / waveDelay);
             timer += Time.deltaTime;
+            Debug.Log(timer);
             if (timer >= waveDelay)
             {
                 timer = 0;
@@ -82,6 +85,7 @@ public class WaveManager : MonoBehaviour
                 currentFib += lastFib;
                 lastFib = tmpFib;
                 wave += 1;
+                text.text = "Wave " + wave;
                 yield return startWave(currentFib);
                 
             }
