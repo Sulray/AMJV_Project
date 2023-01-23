@@ -186,7 +186,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3dc17244d3dc01b438ad76f3f4483d6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cam: {fileID: 0}
+  camDirection: {x: 0, y: -13, z: 8}
 --- !u!1 &4789127403674605663
 GameObject:
   m_ObjectHideFlags: 0
@@ -271,7 +271,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3018931008108355470}
   - component: {fileID: 3889139484674854614}
-  - component: {fileID: 5202380884017550355}
   m_Layer: 5
   m_Name: HealthBar
   m_TagString: Untagged
@@ -308,17 +307,3 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8081080463461946989}
   m_CullTransparentMesh: 0
---- !u!114 &5202380884017550355
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8081080463461946989}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 02b31cc5643b32049a2894c90f9e17e3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 10
-  currentHealth: 0

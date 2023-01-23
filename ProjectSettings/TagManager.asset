@@ -3,19 +3,9 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-<<<<<<< HEAD
-  tags: []
-=======
   tags:
   - Enemy
-  - Collide
-  - Ground
-  - Rotating_Projectile
-  - Projectile_Source
-<<<<<<< HEAD
->>>>>>> f47998a (finished Mage + started to do Boss)
-=======
->>>>>>> f47998a (finished Mage + started to do Boss)
+  - SceneManager
   layers:
   - Default
   - TransparentFX

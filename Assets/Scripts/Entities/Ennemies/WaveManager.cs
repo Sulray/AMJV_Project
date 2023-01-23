@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.Events;
 public class WaveManager : MonoBehaviour
 {
     //Objects qui seront récupérés dans awake et passés à chaque entité spawn
     private GameObject player;
     private Camera camera;
-    [SerializeField] private Image healthBar; //voir avec louise pour setup ça correctement avec les différents éléments à initialiser, peut être utiliser Assets.Load
+
     [SerializeField] private ProjectileManager projectileManager;
     //On utilise une Pool d'objets pour optimiser la mémoire
     [SerializeField] private Enemy[] enemies;
@@ -28,6 +29,9 @@ public class WaveManager : MonoBehaviour
 
     //entre 4 et 8 spawnpoints
     [SerializeField] private GameObject[] spawnpoints;
+
+    //To handle death
+    public UnityAction<Enemy> despawn;
     
     private void Awake()
     {
@@ -47,6 +51,7 @@ public class WaveManager : MonoBehaviour
 
     private void Start()
     {
+        despawn += Despawn;
         timer = 0;
         StartCoroutine("Life");
     }
@@ -76,7 +81,6 @@ public class WaveManager : MonoBehaviour
         {
             slider.value = (timer / waveDelay);
             timer += Time.deltaTime;
-            Debug.Log(timer);
             if (timer >= waveDelay)
             {
                 timer = 0;
@@ -155,6 +159,27 @@ public class WaveManager : MonoBehaviour
         guy.Player = player;
         guy.Camera = camera;
         guy.ProjectileManager = projectileManager;
+        guy.Manager = this;
         guy.gameObject.SetActive(true);
+    }
+
+
+    //Returns an enemy to corresponding pool
+    public void Despawn(Enemy enemy)
+    {
+        Debug.Log("despawn");
+        //Would've been better to make a WaveManager<T> class and fuse it with pools but it's too late so here's a rusty implementation
+        foreach(Enemy prefab in enemies)
+        {
+            for (int i = 0; i<= enemies.Length; i++) //check for each pool if the enemy to return belongs
+            {
+                if (prefab.CompareTag(enemy.tag))
+                {
+                    pools[i].ReturnObject(enemy);
+                    break;
+                }
+            }
+            
+        }
     }
 }

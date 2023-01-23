@@ -15,6 +15,8 @@ public class Enemy : MonoBehaviour
     private Strategy strategy;
     private bool cdUp;
 
+    //To be destroyed
+    public WaveManager Manager { get; set; }
     //Needed by Strategy script
     public GameObject Player { get; set; }
     public Camera Camera { get; set; }
@@ -37,8 +39,8 @@ public class Enemy : MonoBehaviour
         animator = enemyModel.GetComponent<Animator>();
         agent.speed = enemyData.speed;
         agent.acceleration = 10 * enemyData.speed;
-        //health = gameObject.AddComponent<Health>();
-        //health.MaxHealth = enemyData.maxHealth;
+        health = gameObject.GetComponent<Health>();
+        health.MaxHealth = enemyData.maxHealth;
         switch (enemyType)
         {
             case EnemyType.Soldier:
@@ -65,7 +67,12 @@ public class Enemy : MonoBehaviour
 
     void Update()
     {
-        if (cdUp)
+        if (Input.GetKeyDown(KeyCode.D))
+        {
+            Player.GetComponent<Health>().OnTakeDamage(1);
+            Debug.Log(health.currentHealth);
+        }
+        /*if (cdUp)
         {
             //si l'attaque réussi
             if (strategy.Attack())
@@ -78,7 +85,7 @@ public class Enemy : MonoBehaviour
         {
             agent.destination = strategy.Move();
         }
-        animator.SetFloat("ForwardSpeed", agent.velocity.magnitude / agent.speed);
+        animator.SetFloat("ForwardSpeed", agent.velocity.magnitude / agent.speed);*/
 
     }
 
@@ -105,5 +112,10 @@ public class Enemy : MonoBehaviour
         yield return new WaitForSeconds(0.8f);
         rb.isKinematic = true;
         agent.enabled = true;
+    }
+
+    public void Despawn()//Despawns (events aren't working, this is current solution)
+    {
+        Manager.despawn(this);
     }
 }
