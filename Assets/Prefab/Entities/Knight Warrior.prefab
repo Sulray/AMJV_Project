@@ -295,12 +295,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f51958e7c8fae7a46ad1e1498fef9608, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerType: 0
-  playerData: {fileID: 0}
-  animator: {fileID: 0}
+  playerType: 2
+  playerData: {fileID: 11400000, guid: 915b829eeb2658b4e9d2005012abc291, type: 2}
   inputAction1: 0
   inputAction2: 0
   inputAction3: 0
+  lClickCooldown: {fileID: 0}
+  rClickCooldown: {fileID: 0}
+  spaceCooldown: {fileID: 0}
   canMove: 1
   inputJump: 0
   buttonTimeJump: 0.3
