@@ -11,13 +11,25 @@ public class Experience : MonoBehaviour
 
     private LevelSystem levelSystem;
 
+    // Start is called before the first frame update
+    void Start()
+    {
+        StartCoroutine(AutoDestroy(lifetime));
+    }
+
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Player")
+        if (other.CompareTag("Player"))
         {
             levelSystem = other.GetComponent<LevelSystem>();
             levelSystem.AddExeprience(amount);
             Destroy(this.gameObject);
         }
+    }
+
+    private IEnumerator AutoDestroy(float lifetime)
+    {
+        yield return new WaitForSeconds(lifetime);
+        Destroy(this.gameObject);
     }
 }

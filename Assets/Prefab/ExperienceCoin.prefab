@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4489602481826820023}
   - component: {fileID: 4578626455991658569}
   - component: {fileID: 4475725399434893979}
+  - component: {fileID: 8402661024955859867}
   m_Layer: 0
   m_Name: ExperienceCoin
   m_TagString: Untagged
@@ -108,3 +109,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   amount: 0
   lifetime: 0
+--- !u!65 &8402661024955859867
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4474939280928106469}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.76345885, y: 0.91229343, z: 0.24000017}
+  m_Center: {x: 0, y: 0, z: 0}
