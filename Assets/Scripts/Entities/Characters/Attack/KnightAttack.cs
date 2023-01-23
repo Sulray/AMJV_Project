@@ -9,7 +9,7 @@ public class KnightAttack : Attack
     public override void First() //le player assène un coup d'épée devant lui qui repousse les ennemis dans la trajectoire
     {
         Debug.Log("Knight First Attack");
-        RaycastHit[] hitArray = Physics.SphereCastAll(transform.position, 3, transform.forward, 3);
+        RaycastHit[] hitArray = Physics.SphereCastAll(transform.position, 1.5f, transform.forward, 1.5f);
         foreach (RaycastHit hit in hitArray)
         {
             if (hit.collider.gameObject.tag == "Enemy")
@@ -34,10 +34,11 @@ public class KnightAttack : Attack
         if (this.gameObject.GetComponent<HeroController>().grounded) //cette attaque n'est possible que lorsque le joueur n'est pas au dessus d'une fosse
         {
             Rigidbody rb = this.gameObject.GetComponent<Rigidbody>();
-            rb.velocity = new Vector3(rb.velocity.x, 5, rb.velocity.z);
+            rb.velocity = new Vector3(rb.velocity.x, 3, rb.velocity.z);
+            StartCoroutine(WaitTilOnGround());
             if (this.gameObject.GetComponent<HeroController>().grounded)
             {
-                RaycastHit[] hitArray = Physics.SphereCastAll(transform.position, 5, Vector3.zero, 5);
+                RaycastHit[] hitArray = Physics.SphereCastAll(transform.position, 1.5f, Vector3.zero, 1.5f);
                 foreach (RaycastHit hit in hitArray)
                 {
                     if (hit.collider.gameObject.tag == "Enemy")
@@ -57,7 +58,7 @@ public class KnightAttack : Attack
     {
         Debug.Log("Knight Third Attack");
         StartCoroutine(Tournoiement());
-        RaycastHit[] hitArray = Physics.SphereCastAll(transform.position, 5, Vector3.zero, 5);
+        RaycastHit[] hitArray = Physics.SphereCastAll(transform.position, 1.5f, Vector3.zero, 1.5f);
         foreach (RaycastHit hit in hitArray)
         {
             if (hit.collider.gameObject.tag == "Enemy")
@@ -75,15 +76,20 @@ public class KnightAttack : Attack
 
     }
 
-    public IEnumerator DamageTournoiment()
+    private IEnumerator DamageTournoiment()
     {
         yield return new WaitForSeconds(0.5f);
     }
 
-    public IEnumerator Tournoiement()
+    private IEnumerator Tournoiement()
     {
         this.gameObject.GetComponent<HeroController>().canMove = false;
         yield return new WaitForSeconds(3);
         this.gameObject.GetComponent<HeroController>().canMove = true;
+    }
+
+    private IEnumerator WaitTilOnGround()
+    {
+        yield return new WaitForSeconds(0.5f);
     }
 }
