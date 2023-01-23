@@ -42,36 +42,33 @@ public class Enemy : MonoBehaviour
         switch (enemyType)
         {
             case EnemyType.Soldier:
-                //strategy = gameObject.AddComponent<*nom de votre script de stratégie*>();
+                //strategy = gameObject.AddComponent<nom de votre script de stratégie>();
                 break;
             case EnemyType.Archer:
                 strategy = gameObject.AddComponent<ArcherStrategy>();
                 strategy.Camera = this.Camera;
                 strategy.Target = this.Player;
                 strategy.ArrowManager = this.ProjectileManager;
-                
                 break;
             case EnemyType.Liche:
-                //strategy = gameObject.AddComponent<*nom de votre script de stratégie*>();
+                //strategy = gameObject.AddComponent<nom de votre script de stratégie>();
                 break;
             default:
                 break;
         }
         StartCoroutine(Cooldown());
-
     }
-    
     void Update()
     {
         if (cdUp)
         {
             if (strategy.Attack())
             {
-                yield return StartCoroutine(Cooldown());
+                StartCoroutine(Cooldown());
             }
         }
-        
-        if((!agent.hasPath) || enemyType == EnemyType.Soldier)
+
+        if ((!agent.hasPath) || enemyType == EnemyType.Soldier)
         {
             agent.destination = strategy.Move();
         }
