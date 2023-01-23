@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SoldierStrategy : MonoBehaviour
+public class SoldierStrategy : Strategy
 {
     bool isCdEnemyOver;
     int range = 2;
@@ -16,30 +16,25 @@ public class SoldierStrategy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
-    void SwordAttack()
+    public override Vector3 Move()
+    {
+        return Target.transform.position;
+    }
+
+    public override bool Attack()
     {
         RaycastHit[] hitArray = Physics.SphereCastAll(transform.position, range, transform.forward, range);
         foreach (RaycastHit hit in hitArray)
         {
             if (hit.collider.gameObject.tag == "Player")
             {
-                if (isCdEnemyOver)
-                {
-                    Debug.Log("Hit");
-                    hit.collider.SendMessage("OnTakeDamage", 5);
-                    StartCoroutine(CdAttack());
-                }
+              Debug.Log("Hit");
+              return true;
             }
         }
-    }
-
-    private IEnumerator CdAttack()
-    {
-        isCdEnemyOver = false;
-        yield return new WaitForSeconds(1);
-        isCdEnemyOver = true;
+        return false;
     }
 }

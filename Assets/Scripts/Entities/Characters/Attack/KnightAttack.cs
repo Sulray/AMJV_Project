@@ -9,7 +9,7 @@ public class KnightAttack : Attack
     public override void First() //le player assène un coup d'épée devant lui qui repousse les ennemis dans la trajectoire
     {
         Debug.Log("Knight First Attack");
-        RaycastHit[] hitArray = Physics.SphereCastAll(transform.position, 4, transform.forward, 4);
+        RaycastHit[] hitArray = Physics.SphereCastAll(transform.position, 3, transform.forward, 3);
         foreach (RaycastHit hit in hitArray)
         {
             if (hit.collider.gameObject.tag == "Enemy")

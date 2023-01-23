@@ -18,14 +18,14 @@ public class Enemy : MonoBehaviour
     //Needed by Strategy script
     public GameObject Player { get; set; }
     public Camera Camera { get; set; }
-    [SerializeField] private ProjectileManager ProjectileManager;
+    public ProjectileManager ProjectileManager { get; set; }
 
     //For movement
     NavMeshAgent agent;
     Rigidbody rb;
     Animator animator;
     [SerializeField] GameObject enemyModel;
-    private float knockbackForce = 100f;
+    private float knockbackForce = 4.5f;
     protected void Awake()
     {
         rb = GetComponent<Rigidbody>();
@@ -42,14 +42,15 @@ public class Enemy : MonoBehaviour
         switch (enemyType)
         {
             case EnemyType.Soldier:
-                //strategy = gameObject.AddComponent<*nom de votre script de stratégie*>();
+                strategy = gameObject.GetComponent<SoldierStrategy>();
+                strategy.Target = this.Player;
                 break;
             case EnemyType.Archer:
                 strategy = gameObject.AddComponent<ArcherStrategy>();
                 strategy.Camera = this.Camera;
                 strategy.Target = this.Player;
                 strategy.ArrowManager = this.ProjectileManager;
-                
+
                 break;
             case EnemyType.Liche:
                 //strategy = gameObject.AddComponent<*nom de votre script de stratégie*>();
@@ -77,6 +78,7 @@ public class Enemy : MonoBehaviour
             agent.destination = strategy.Move();
         }
         animator.SetFloat("ForwardSpeed", agent.velocity.magnitude / agent.speed);
+
     }
 
     private IEnumerator Cooldown()
@@ -88,16 +90,19 @@ public class Enemy : MonoBehaviour
 
     public void GetKnockback(Vector3 positionOrigin)
     {
-        Debug.Log("in it");
-        Vector3 knockDirection = (transform.position - positionOrigin).normalized;
+        Debug.Log("in knockback");
+        Vector3 knockDirection = (this.gameObject.transform.position - positionOrigin).normalized;
         Vector3 knockback = knockDirection * knockbackForce;
         agent.enabled = false;
         rb.isKinematic = false;
         rb.AddForce(knockback, ForceMode.Impulse);
-        if (agent.velocity.magnitude < 1)
-        {
-            rb.isKinematic = true;
-            agent.enabled = true;
-        }
+        StartCoroutine(TimeKnockback());
+    }
+
+    private IEnumerator TimeKnockback()
+    {
+        yield return new WaitForSeconds(0.8f);
+        rb.isKinematic = true;
+        agent.enabled = true;
     }
 }
