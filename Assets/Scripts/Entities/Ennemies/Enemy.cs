@@ -42,7 +42,7 @@ public class Enemy : MonoBehaviour
         switch (enemyType)
         {
             case EnemyType.Soldier:
-                //strategy = gameObject.AddComponent<*nom de votre script de stratégie*>();
+                //strategy = gameObject.AddComponent<nom de votre script de stratégie>();
                 break;
             case EnemyType.Archer:
                 strategy = gameObject.AddComponent<ArcherStrategy>();
@@ -53,14 +53,13 @@ public class Enemy : MonoBehaviour
                 
                 break;
             case EnemyType.Liche:
-                //strategy = gameObject.AddComponent<*nom de votre script de stratégie*>();
+                //strategy = gameObject.AddComponent<nom de votre script de stratégie>();
                 break;
             default:
                 break;
         }
         StartCoroutine(Cooldown());
     }
-    
     void Update()
     {
         if (cdUp)
@@ -68,12 +67,11 @@ public class Enemy : MonoBehaviour
             //si l'attaque réussi
             if (strategy.Attack())
             {
-                Debug.Log("start cd " + Time.time);
                 StartCoroutine(Cooldown());
             }
         }
-        
-        if((!agent.hasPath && !cdUp) || enemyType == EnemyType.Soldier)
+
+        if ((!agent.hasPath) || enemyType == EnemyType.Soldier)
         {
             agent.destination = strategy.Move();
         }

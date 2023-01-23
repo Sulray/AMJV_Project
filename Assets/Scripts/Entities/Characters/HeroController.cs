@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 
 public class HeroController : MonoBehaviour
 {
     [SerializeField] private PlayerType playerType;
-    [SerializeField] private PlayerParameter playerData;
+    [SerializeField] public PlayerParameter playerData;
     private Attack attack;
 
     //[SerializeField] float directionOffset;
@@ -22,6 +23,13 @@ public class HeroController : MonoBehaviour
     float cooldown1;
     float cooldown2;
     float cooldown3;
+
+    [SerializeField]
+    CooldownUI lClickCooldown; //Left click
+    [SerializeField]
+    CooldownUI rClickCooldown; //Right click
+    [SerializeField]
+    CooldownUI spaceCooldown; //Space bar
 
 
     bool isCooldown1Over = true;
@@ -44,6 +52,7 @@ public class HeroController : MonoBehaviour
     [SerializeField] float groundDetection;
     [SerializeField] float gravityOnFall;
 
+    public Ray rayMouse;
 
     float momentSpeed;
     bool moving;
@@ -113,8 +122,7 @@ public class HeroController : MonoBehaviour
     void LookAt()
     {
         RaycastHit hit;
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        if (Physics.Raycast(ray, out hit))
+        if (Physics.Raycast(rayMouse, out hit))
         {
             positionRay = hit.point;
         }
@@ -124,8 +132,11 @@ public class HeroController : MonoBehaviour
 
     public void Inputs()
     {
+        rayMouse = Camera.main.ScreenPointToRay(Input.mousePosition);
+
         if (canMove)
         {
+
             xMove = Input.GetAxisRaw("Horizontal"); // d key changes value to 1, a key changes value to -1
             zMove = Input.GetAxisRaw("Vertical"); // w key changes value to 1, s key changes value to -1
             inputAction1 = Input.GetKeyDown(KeyCode.Mouse0);
@@ -233,6 +244,7 @@ public class HeroController : MonoBehaviour
                                                        //et le booléen correspondant à l'action.
     {
         isCooldown1Over = false;
+        StartCoroutine(lClickCooldown.ShowCooldown((int)cooldown));
         yield return new WaitForSeconds(cooldown);
         isCooldown1Over = true;
     }
@@ -241,6 +253,7 @@ public class HeroController : MonoBehaviour
                                                        //et le booléen correspondant à l'action.
     {
         isCooldown2Over = false;
+        StartCoroutine(rClickCooldown.ShowCooldown((int)cooldown));
         yield return new WaitForSeconds(cooldown);
         isCooldown2Over = true;
     }
@@ -249,6 +262,7 @@ public class HeroController : MonoBehaviour
                                                        //et le booléen correspondant à l'action.
     {
         isCooldown3Over = false;
+        StartCoroutine(spaceCooldown.ShowCooldown((int)cooldown));
         yield return new WaitForSeconds(cooldown);
         isCooldown3Over = true;
     }
@@ -256,6 +270,11 @@ public class HeroController : MonoBehaviour
     {
         animator.SetInteger("intAttack", intAttack);
         canMove = false;
+        xMove = 0f;
+        zMove = 0f;
+        inputAction1 = false;
+        inputAction2 = false;
+        inputAction3 = false;
         yield return new WaitForSeconds(wait);
         canMove = true;
         animator.SetInteger("intAttack", 0);
