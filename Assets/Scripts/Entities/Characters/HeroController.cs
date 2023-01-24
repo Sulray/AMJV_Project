@@ -57,6 +57,10 @@ public class HeroController : MonoBehaviour
     bool moving;
     private Vector3 positionRay;
 
+    [SerializeField]
+    private LevelSystem levelSystem;
+    [SerializeField] int experienceAmount = 1;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -243,6 +247,7 @@ public class HeroController : MonoBehaviour
                                                        //et le booléen correspondant à l'action.
     {
         isCooldown1Over = false;
+        Debug.Log(cooldown);
         StartCoroutine(lClickCooldown.ShowCooldown((int)cooldown));
         yield return new WaitForSeconds(cooldown);
         isCooldown1Over = true;
@@ -252,6 +257,7 @@ public class HeroController : MonoBehaviour
                                                        //et le booléen correspondant à l'action.
     {
         isCooldown2Over = false;
+        Debug.Log(cooldown);
         StartCoroutine(rClickCooldown.ShowCooldown((int)cooldown));
         yield return new WaitForSeconds(cooldown);
         isCooldown2Over = true;
@@ -278,6 +284,13 @@ public class HeroController : MonoBehaviour
         canMove = true;
         animator.SetInteger("intAttack", 0);
 
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Experience"))
+        {
+            levelSystem.AddExeprience(experienceAmount);
+        }
     }
 
 }

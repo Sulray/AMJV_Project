@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 8402661024955859867}
   m_Layer: 0
   m_Name: ExperienceCoin
-  m_TagString: Untagged
+  m_TagString: Experience
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -109,6 +109,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   amount: 0
   lifetime: 0
+  levelSystem: {fileID: 0}
 --- !u!65 &8402661024955859867
 BoxCollider:
   m_ObjectHideFlags: 0
