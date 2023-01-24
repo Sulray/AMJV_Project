@@ -12,11 +12,7 @@ public class Health : MonoBehaviour
     public UnityEvent<Enemy> enemyDeath;
     public UnityEvent playerDeath;*/
     public float MaxHealth {get; set;}
-<<<<<<< HEAD
-    public float currentHealth;//private
-=======
     public float currentHealth;
->>>>>>> 53c6678 (Worked on boss script and removed all methods on animations)
 
     [SerializeField]
     private Image HealthBar;
