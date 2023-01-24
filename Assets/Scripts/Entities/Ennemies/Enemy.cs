@@ -21,7 +21,7 @@ public class Enemy : MonoBehaviour
     public GameObject Player { get; set; }
     public Camera Camera { get; set; }
     public ProjectileManager ProjectileManager { get; set; }
-    public ExperiencePool Xp { get; set; }
+    [SerializeField] public Experience xp;
 
 
     //For movement

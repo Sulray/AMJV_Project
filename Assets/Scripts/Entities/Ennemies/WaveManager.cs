@@ -161,7 +161,7 @@ public class WaveManager : MonoBehaviour
         guy.Camera = camera;
         guy.ProjectileManager = projectileManager;
         guy.Manager = this;
-        guy.Xp = xpPool;
+        //guy.Xp = xpPool;
         guy.gameObject.SetActive(true);
     }
 

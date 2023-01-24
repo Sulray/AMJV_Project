@@ -49,10 +49,10 @@ public class Health : MonoBehaviour
             else
             {
                 GetComponent<Enemy>().Despawn();
-                GetComponent<ExperiencePool>().OnSpawnExp(transform.position);
+                GameObject.Instantiate(GetComponent<Enemy>().xp, transform);
+                //GetComponent<ExperiencePool>().OnSpawnExp(transform.position);
                 //enemyDeath?.Invoke(this.gameObject.GetComponent<Enemy>());
             }
-                
         }
         HealthBar.fillAmount = (currentHealth / MaxHealth);
     }

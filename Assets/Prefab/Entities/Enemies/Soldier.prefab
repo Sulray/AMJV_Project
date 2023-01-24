@@ -705,6 +705,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyType: 0
   enemyData: {fileID: 11400000, guid: 8c605fe4571942f4b9ff18d11d4708b4, type: 2}
+  xp: {fileID: 4475725399434893979, guid: 714db8273ee84404894943226fcb9e8c, type: 3}
   canMove: 0
   enemyModel: {fileID: 453844974125221993}
 --- !u!114 &4995754759491947042

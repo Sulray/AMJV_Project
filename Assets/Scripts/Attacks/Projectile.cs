@@ -19,22 +19,26 @@ public class Projectile : MonoBehaviour
             ProjectileManager.SendMessage("OnDestroyProjectile", this);//utiliser la méthode
         }
     }
-
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        string tag = collision.gameObject.tag;
+        string tag = other.gameObject.tag;
         if (tag == "Wall")
         {
             ProjectileManager.OnDestroyProjectile(this);
         }
         else if (tag == "Player" && !onPlayerSide)
         {
-            collision.gameObject.GetComponent<Health>().OnTakeDamage(damage);
+            other.gameObject.GetComponent<Health>().OnTakeDamage(damage);
             ProjectileManager.OnDestroyProjectile(this);
         }
         else if (tag == "Enemy" && onPlayerSide)
         {
-            collision.gameObject.GetComponent<Health>().OnTakeDamage(damage);
+            other.gameObject.GetComponent<Health>().OnTakeDamage(damage);
+            ProjectileManager.OnDestroyProjectile(this);
         }
+    }
+    private void OnCollisionEnter(Collision collision)
+    {
+        Debug.Log("collision");
     }
 }
