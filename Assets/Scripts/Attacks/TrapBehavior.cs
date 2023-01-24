@@ -21,6 +21,7 @@ public class TrapBehavior : MonoBehaviour
         if(collision.gameObject.tag == "Enemy")
         {
             Debug.Log("Trap triggered");
+            collision.gameObject.GetComponent<Enemy>().canMove = false;
         }
     }
 }

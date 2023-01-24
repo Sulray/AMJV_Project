@@ -2419,6 +2419,7 @@ GameObject:
   - component: {fileID: 4851142042248984083}
   - component: {fileID: 4851142042248984080}
   - component: {fileID: 3915555035844597046}
+  - component: {fileID: 1268717877020328261}
   m_Layer: 0
   m_Name: Corssbow Warrior
   m_TagString: Player
@@ -2486,9 +2487,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerType: 1
   playerData: {fileID: 11400000, guid: c4342758d1bfe4f45b5af02ed15d91ce, type: 2}
+  speed: 0
   inputAction1: 0
   inputAction2: 0
   inputAction3: 0
+  cooldown1: 0
   lClickCooldown: {fileID: 0}
   rClickCooldown: {fileID: 0}
   spaceCooldown: {fileID: 0}
@@ -2533,7 +2536,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00a147297eacfad48ba25ab7eac2698d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  trap: {fileID: 920760300362844728, guid: dcce850f9eef98840b5a7cb9ae1e6050, type: 3}
+  Trap: {fileID: 920760300362844728, guid: dcce850f9eef98840b5a7cb9ae1e6050, type: 3}
+--- !u!114 &1268717877020328261
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4851142042248984081}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a1ffc3d74503bf4f9a31053381043fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentHealth: 0
+  HealthBar: {fileID: 0}
+  hitDamage: 1
 --- !u!1001 &8205445912851595093
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2541,6 +2559,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3691261664247043037}
     m_Modifications:
+    - target: {fileID: 947563679831601958, guid: 814789cb86923f741a8d2ab718af6767,
+        type: 3}
+      propertyPath: size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 947563679831601958, guid: 814789cb86923f741a8d2ab718af6767,
         type: 3}
       propertyPath: prefab

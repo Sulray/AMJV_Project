@@ -18,7 +18,7 @@ public class KnightAttack : Attack
                 Debug.Log("Did Hit");
                 Debug.Log(hit.collider);
                 hit.collider.GetComponent<Enemy>().GetKnockback(transform.position); //on lance dans le script ennemy la fonction qui va repousser la cible
-                hit.collider.SendMessage("OnTakeDamage", 5);
+                hit.collider.gameObject.GetComponent<Health>().OnTakeDamage(5);
             }
             else
             {
@@ -47,7 +47,7 @@ public class KnightAttack : Attack
                         Debug.Log("Did Hit");
                         Debug.Log(hit.collider);
                         hit.collider.GetComponent<Enemy>().GetKnockback(transform.position);
-                        hit.collider.SendMessage("OnTakeDamage", 2);
+                        hit.collider.gameObject.GetComponent<Health>().OnTakeDamage(2);
                     }
                 }
             }
@@ -69,7 +69,7 @@ public class KnightAttack : Attack
                 for (int i=0; i < 6; i++)
                 {
                     StartCoroutine(DamageTournoiment()); //le player inflige 1 dégats toutes les 0.5 secondes
-                    hit.collider.SendMessage("OnTakeDamage", 1);
+                    hit.collider.gameObject.GetComponent<Health>().OnTakeDamage(1);
                 }
             }
         }

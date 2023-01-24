@@ -11,6 +11,7 @@ TagManager:
   - Poison
   - Enemy
   - Trap
+  - SceneManager
   layers:
   - Default
   - TransparentFX
