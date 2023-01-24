@@ -27,12 +27,14 @@ public class Projectile : MonoBehaviour
         {
             ProjectileManager.OnDestroyProjectile(this);
         }
-        if (tag == "Player")
+        else if (tag == "Player" && !onPlayerSide)
         {
-            //collision.gameObject.GetComponent<
-            //
-            //>().OnTakeDamage(damage);
+            collision.gameObject.GetComponent<Health>().OnTakeDamage(damage);
             ProjectileManager.OnDestroyProjectile(this);
+        }
+        else if (tag == "Enemy" && onPlayerSide)
+        {
+            collision.gameObject.GetComponent<Health>().OnTakeDamage(damage);
         }
     }
 }

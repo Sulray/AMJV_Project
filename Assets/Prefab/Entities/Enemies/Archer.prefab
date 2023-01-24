@@ -688,6 +688,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyType: 1
   enemyData: {fileID: 11400000, guid: 36cbb6947d796a54dab2d638961697b4, type: 2}
+  canMove: 0
   enemyModel: {fileID: 453844974125221993}
 --- !u!54 &3058017635632510951
 Rigidbody:

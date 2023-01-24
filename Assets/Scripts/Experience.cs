@@ -6,24 +6,32 @@ public class Experience : MonoBehaviour
 {
     [SerializeField]
     private float lifetime;
+    public ExperiencePool Manager { get; set; }
 
-    // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
         StartCoroutine(AutoDestroy(lifetime));
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.G))
+        {
+            SendMessage("OnFireProjectile", (new Vector3[] { Vector3.zero, Vector3.one }));//event
+        }
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            Destroy(this.gameObject);
+            Manager.OnDestroyExp(this);
         }
     }
 
     private IEnumerator AutoDestroy(float lifetime)
     {
         yield return new WaitForSeconds(lifetime);
-        Destroy(this.gameObject);
+        Manager.OnDestroyExp(this);
     }
 }

@@ -17,10 +17,12 @@ public class Enemy : MonoBehaviour
 
     //To be destroyed
     public WaveManager Manager { get; set; }
-    //Needed by Strategy script
+    //Needed by Strategy script / general behaviour
     public GameObject Player { get; set; }
     public Camera Camera { get; set; }
     public ProjectileManager ProjectileManager { get; set; }
+    public ExperiencePool Xp { get; set; }
+
 
     //For movement
     public bool canMove;
@@ -91,7 +93,7 @@ public class Enemy : MonoBehaviour
 
         if ((!agent.hasPath) || enemyType == EnemyType.Soldier)
         {
-            agent.destination = strategy.Move();
+            agent.destination = strategy.Move();    
         }
         animator.SetFloat("ForwardSpeed", agent.velocity.magnitude / agent.speed);
 
