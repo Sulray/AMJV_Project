@@ -38872,6 +38872,11 @@ PrefabInstance:
       propertyPath: HealthBar
       value: 
       objectReference: {fileID: 538058300}
+    - target: {fileID: 2537884999174320419, guid: ca39de28a94b4874a8717f7ced0f0862,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2537884999174320473, guid: ca39de28a94b4874a8717f7ced0f0862,
         type: 3}
       propertyPath: m_RootOrder
@@ -66519,6 +66524,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: LevelUICanva
+      objectReference: {fileID: 0}
+    - target: {fileID: 2051764734580420395, guid: 7b862a31bb288c84880dbe38903b1cfd,
+        type: 3}
+      propertyPath: m_UiScaleMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2051764734580420395, guid: 7b862a31bb288c84880dbe38903b1cfd,
+        type: 3}
+      propertyPath: m_ReferenceResolution.x
+      value: 1080
+      objectReference: {fileID: 0}
+    - target: {fileID: 2051764734580420395, guid: 7b862a31bb288c84880dbe38903b1cfd,
+        type: 3}
+      propertyPath: m_ReferenceResolution.y
+      value: 720
       objectReference: {fileID: 0}
     - target: {fileID: 2051764734580420405, guid: 7b862a31bb288c84880dbe38903b1cfd,
         type: 3}

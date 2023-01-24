@@ -61,6 +61,11 @@ public class HeroController : MonoBehaviour
     private LevelSystem levelSystem;
     [SerializeField] int experienceAmount = 1;
 
+
+    private void Awake()
+    {
+        GetComponent<Health>().MaxHealth = playerData.startingHealth;
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -73,6 +78,8 @@ public class HeroController : MonoBehaviour
         cooldown1 = playerData.startingCD1;
         cooldown2 = playerData.startingCD2;
         cooldown3 = playerData.startingCD3;
+        
+        Debug.Log("setHealth" + playerData.startingHealth);
         switch (playerType)
         {
             case PlayerType.Mage:

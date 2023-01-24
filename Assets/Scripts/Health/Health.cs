@@ -31,11 +31,13 @@ public class Health : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        Debug.Log("normal health " + currentHealth);
     }
     public void OnTakeDamage(int damage)
     {
         currentHealth -= damage;
+        Debug.Log("damage "+damage);
+        Debug.Log("health " + currentHealth);
         //entity dies
         if (currentHealth <= 0)
         {
