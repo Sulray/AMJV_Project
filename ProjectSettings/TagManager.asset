@@ -3,7 +3,12 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Ground
+  - Experience
+  - Trap
+  - Projectile_Source
+  - Poison
   layers:
   - Default
   - TransparentFX
