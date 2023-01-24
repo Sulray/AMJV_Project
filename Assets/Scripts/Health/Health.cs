@@ -40,6 +40,7 @@ public class Health : MonoBehaviour
         if (currentHealth <= 0)
         {
             if (gameObject.CompareTag("Player")){
+                Debug.Log("You died");
                 GameObject.FindWithTag("SceneManager").GetComponent<PauseMenu>().GameOver();
                 //playerDeath?.Invoke();
             }
@@ -54,5 +55,13 @@ public class Health : MonoBehaviour
         Debug.Log(currentHealth);
         Debug.Log(MaxHealth);
         HealthBar.fillAmount = (currentHealth / MaxHealth);
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.collider.CompareTag("Poison"))
+        {
+            OnTakeDamage(1000);
+        }
     }
 }
