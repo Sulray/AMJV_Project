@@ -13,15 +13,15 @@ public class HeroController : MonoBehaviour
     NavMeshAgent agent;
     Animator animator;
     //[SerializeField] GameObject playerModel;
-    float speed;
+    [HideInInspector] public float speed;
 
     public bool inputAction1;
     public bool inputAction2;
     public bool inputAction3;
 
-    float cooldown1;
-    float cooldown2;
-    float cooldown3;
+    [HideInInspector] public float cooldown1;
+    [HideInInspector] public float cooldown2;
+    [HideInInspector] public float cooldown3;
 
     [SerializeField]
     CooldownUI lClickCooldown; //Left click
@@ -56,6 +56,10 @@ public class HeroController : MonoBehaviour
     float momentSpeed;
     bool moving;
     private Vector3 positionRay;
+
+    [SerializeField]
+    private LevelSystem levelSystem;
+    [SerializeField] int experienceAmount = 1;
 
     // Start is called before the first frame update
     void Start()
@@ -243,6 +247,7 @@ public class HeroController : MonoBehaviour
                                                        //et le booléen correspondant à l'action.
     {
         isCooldown1Over = false;
+        Debug.Log(cooldown);
         StartCoroutine(lClickCooldown.ShowCooldown((int)cooldown));
         yield return new WaitForSeconds(cooldown);
         isCooldown1Over = true;
@@ -252,6 +257,7 @@ public class HeroController : MonoBehaviour
                                                        //et le booléen correspondant à l'action.
     {
         isCooldown2Over = false;
+        Debug.Log(cooldown);
         StartCoroutine(rClickCooldown.ShowCooldown((int)cooldown));
         yield return new WaitForSeconds(cooldown);
         isCooldown2Over = true;
@@ -278,6 +284,13 @@ public class HeroController : MonoBehaviour
         canMove = true;
         animator.SetInteger("intAttack", 0);
 
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Experience"))
+        {
+            levelSystem.AddExeprience(experienceAmount);
+        }
     }
 
 }

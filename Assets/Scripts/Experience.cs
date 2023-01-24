@@ -8,7 +8,7 @@ public class Experience : MonoBehaviour
     private int amount;
     [SerializeField]
     private float lifetime;
-
+    [SerializeField]
     private LevelSystem levelSystem;
 
     // Start is called before the first frame update
@@ -21,8 +21,6 @@ public class Experience : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            levelSystem = other.GetComponent<LevelSystem>();
-            levelSystem.AddExeprience(amount);
             Destroy(this.gameObject);
         }
     }
