@@ -3,8 +3,8 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-<<<<<<< HEAD
   tags: []
+<<<<<<< HEAD
 =======
   tags:
   - Projectile_Source
@@ -16,6 +16,8 @@ TagManager:
   - Trap
   - SceneManager
 >>>>>>> a4a5b502700fb9e7b90dd1e893621948ddb3d92d
+=======
+>>>>>>> 53c6678 (Worked on boss script and removed all methods on animations)
   layers:
   - Default
   - TransparentFX
