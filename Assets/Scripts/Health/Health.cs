@@ -55,4 +55,12 @@ public class Health : MonoBehaviour
         Debug.Log(MaxHealth);
         HealthBar.fillAmount = (currentHealth / MaxHealth);
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Poison"))
+        {
+            OnTakeDamage(1000);
+        }
+    }
 }

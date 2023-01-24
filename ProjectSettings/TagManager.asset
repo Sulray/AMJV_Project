@@ -4,26 +4,6 @@
 TagManager:
   serializedVersion: 2
   tags: []
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-  tags:
-  - Projectile_Source
-  - Rotating_Projectile
-  - Wall
-  - Ground
-  - Poison
-  - Enemy
-  - Trap
-  - SceneManager
->>>>>>> a4a5b502700fb9e7b90dd1e893621948ddb3d92d
-=======
->>>>>>> 53c6678 (Worked on boss script and removed all methods on animations)
-=======
->>>>>>> 53c6678 (Worked on boss script and removed all methods on animations)
->>>>>>> 370c7337ae75a7e134a50e5cc2d7e2f79131eed1
   layers:
   - Default
   - TransparentFX
