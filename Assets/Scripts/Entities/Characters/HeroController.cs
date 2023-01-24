@@ -13,15 +13,15 @@ public class HeroController : MonoBehaviour
     NavMeshAgent agent;
     Animator animator;
     //[SerializeField] GameObject playerModel;
-    [HideInInspector] public float speed;
+    public float speed;
 
     public bool inputAction1;
     public bool inputAction2;
     public bool inputAction3;
 
-    [HideInInspector] public float cooldown1;
-    [HideInInspector] public float cooldown2;
-    [HideInInspector] public float cooldown3;
+    public float cooldown1;
+    float cooldown2;
+    float cooldown3;
 
     [SerializeField]
     CooldownUI lClickCooldown; //Left click

@@ -3,7 +3,19 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
+<<<<<<< HEAD
   tags: []
+=======
+  tags:
+  - Projectile_Source
+  - Rotating_Projectile
+  - Wall
+  - Ground
+  - Poison
+  - Enemy
+  - Trap
+  - SceneManager
+>>>>>>> a4a5b502700fb9e7b90dd1e893621948ddb3d92d
   layers:
   - Default
   - TransparentFX
