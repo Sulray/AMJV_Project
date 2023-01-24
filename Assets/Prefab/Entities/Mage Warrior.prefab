@@ -1465,6 +1465,8 @@ GameObject:
   - component: {fileID: 2537884999174320472}
   - component: {fileID: 2537884999174320479}
   - component: {fileID: 2537884999174320477}
+  - component: {fileID: -7456608686356919919}
+  - component: {fileID: 8251527464966335160}
   m_Layer: 0
   m_Name: Mage Warrior
   m_TagString: Player
@@ -1531,10 +1533,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerType: 0
   playerData: {fileID: 11400000, guid: 79a4ac7c697b62547923d432b551dad9, type: 2}
-  animator: {fileID: 0}
+  speed: 0
   inputAction1: 0
   inputAction2: 0
   inputAction3: 0
+  cooldown1: 0
+  cooldown2: 0
+  cooldown3: 0
+  lClickCooldown: {fileID: 0}
+  rClickCooldown: {fileID: 0}
+  spaceCooldown: {fileID: 0}
   canMove: 1
   inputJump: 0
   buttonTimeJump: 0.3
@@ -1542,6 +1550,37 @@ MonoBehaviour:
   grounded: 0
   groundDetection: 0.1
   gravityOnFall: 5
+  levelSystem: {fileID: 0}
+  experienceAmount: 1
+--- !u!114 &-7456608686356919919
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2537884999174320419}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a1ffc3d74503bf4f9a31053381043fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentHealth: 0
+  HealthBar: {fileID: 0}
+  hitDamage: 1
+--- !u!114 &8251527464966335160
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2537884999174320419}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd94f5a69bcc52e40bea05669f9a806a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 5823197088974745815, guid: 6690bc19b9aa2c24ebca4e060a1b415a, type: 3}
+  size: 5
 --- !u!1 &2537884999187651331
 GameObject:
   m_ObjectHideFlags: 0

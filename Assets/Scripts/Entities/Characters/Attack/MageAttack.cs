@@ -21,7 +21,7 @@ public class MageAttack : Attack
     HeroController controller;
     private void Start()
     {
-        MageFireManager = GameObject.Find("MageFireManager").GetComponent<ProjectileManager>();
+        MageFireManager = GetComponent<ProjectileManager>(); //GameObject.Find("MageFireManager").GetComponent<ProjectileManager>();
         controller = this.gameObject.GetComponent<HeroController>();
         playerData = controller.playerData;
         rotatingFireball = GameObject.Find("Parent_BulletTrail").gameObject;
@@ -53,7 +53,8 @@ public class MageAttack : Attack
         RaycastHit hit;
         if (Physics.Raycast(controller.rayMouse, out hit))
         {
-            MageFireManager.SendMessage("OnFireProjectile", new Vector3[] { transformProjectileSource.position, new Vector3(hit.point.x,transformProjectileSource.position.y,hit.point.z) });
+            MageFireManager.OnFireProjectile(transformProjectileSource.position, new Vector3(hit.point.x, transformProjectileSource.position.y, hit.point.z));
+            //MageFireManager.SendMessage("OnFireProjectile", new Vector3[] { transformProjectileSource.position, new Vector3(hit.point.x,transformProjectileSource.position.y,hit.point.z) });
 
         }
 

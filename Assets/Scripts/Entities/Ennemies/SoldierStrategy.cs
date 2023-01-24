@@ -32,7 +32,8 @@ public class SoldierStrategy : Strategy
             if (hit.collider.gameObject.tag == "Player")
             {
               Debug.Log("Hit");
-              return true;
+                hit.collider.gameObject.GetComponent<Health>().OnTakeDamage(5);
+                return true;
             }
         }
         return false;

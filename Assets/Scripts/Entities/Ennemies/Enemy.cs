@@ -23,6 +23,7 @@ public class Enemy : MonoBehaviour
     public ProjectileManager ProjectileManager { get; set; }
 
     //For movement
+    public bool canMove;
     NavMeshAgent agent;
     Rigidbody rb;
     Animator animator;
@@ -35,6 +36,7 @@ public class Enemy : MonoBehaviour
     }
     protected void Start()
     {
+        canMove = true;
         agent = GetComponent<NavMeshAgent>();
         animator = enemyModel.GetComponent<Animator>();
         agent.speed = enemyData.speed;
@@ -72,6 +74,12 @@ public class Enemy : MonoBehaviour
             Player.GetComponent<Health>().OnTakeDamage(1);
             Debug.Log(health.currentHealth);
         }
+
+        if (!canMove)
+        {
+            agent.speed = 0;
+        }
+
         /*if (cdUp)
         {
             //si l'attaque réussi

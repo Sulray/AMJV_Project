@@ -231,6 +231,7 @@ GameObject:
   - component: {fileID: 5485783724630859709}
   - component: {fileID: 5485783724630859710}
   - component: {fileID: 8459951771854768552}
+  - component: {fileID: 3684524530653658647}
   m_Layer: 0
   m_Name: Knight Warrior
   m_TagString: Player
@@ -295,12 +296,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f51958e7c8fae7a46ad1e1498fef9608, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerType: 0
-  playerData: {fileID: 0}
-  animator: {fileID: 0}
+  playerType: 2
+  playerData: {fileID: 11400000, guid: 915b829eeb2658b4e9d2005012abc291, type: 2}
+  speed: 0
   inputAction1: 0
   inputAction2: 0
   inputAction3: 0
+  cooldown1: 1
+  lClickCooldown: {fileID: 445086498992930554, guid: 02a9617e423ba4949a9f75da4613aa62,
+    type: 3}
+  rClickCooldown: {fileID: 7874889117661679475, guid: 8fdf266e28ecb924ba3f3ca80a5650e3,
+    type: 3}
+  spaceCooldown: {fileID: 2243193438594269965, guid: 8e3325c9cbba71e41a834df9cb08a16a,
+    type: 3}
   canMove: 1
   inputJump: 0
   buttonTimeJump: 0.3
@@ -342,6 +350,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 755d8cb44eec4de4c95679f4000850ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &3684524530653658647
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5485783724630859711}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a1ffc3d74503bf4f9a31053381043fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentHealth: 0
+  HealthBar: {fileID: 8830143857802085037, guid: eae51e83b0de0d24d8690dd6d6612fa2,
+    type: 3}
+  hitDamage: 1
 --- !u!1 &6143756799760596116
 GameObject:
   m_ObjectHideFlags: 0
