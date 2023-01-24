@@ -80,7 +80,7 @@ public class Enemy : MonoBehaviour
             agent.speed = 0;
         }
 
-        /*if (cdUp)
+        if (cdUp)
         {
             //si l'attaque réussi
             if (strategy.Attack())
@@ -93,7 +93,7 @@ public class Enemy : MonoBehaviour
         {
             agent.destination = strategy.Move();
         }
-        animator.SetFloat("ForwardSpeed", agent.velocity.magnitude / agent.speed);*/
+        animator.SetFloat("ForwardSpeed", agent.velocity.magnitude / agent.speed);
 
     }
 
