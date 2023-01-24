@@ -23,15 +23,18 @@ public class Experience : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        Debug.Log("triggered");
         if (other.CompareTag("Player"))
         {
-            Manager.OnDestroyExp(this);
+            Debug.Log("auto destroy");
+            Destroy(this.gameObject);
         }
     }
 
     private IEnumerator AutoDestroy(float lifetime)
     {
         yield return new WaitForSeconds(lifetime);
-        Manager.OnDestroyExp(this);
+        Debug.Log("time auto destroy");
+        Destroy(this.gameObject);
     }
 }
