@@ -25,7 +25,7 @@ public class Health : MonoBehaviour
     {
         currentHealth = MaxHealth;
         Debug.Log(HealthBar);
-        HealthBar.fillAmount = 1;
+        HealthBar.fillAmount = 1;   
     }
 
     // Update is called once per frame
