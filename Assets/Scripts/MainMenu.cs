@@ -83,16 +83,16 @@ public class MainMenu : MonoBehaviour
     // Setting functions
     public void SetVolume(float volume)
     {
-        audioMixer.SetFloat("volume", volume);
+        audioMixer.SetFloat("volume", Mathf.Log10(volume) * 20);
     }
     public void SetMusicVolume(float musicVolume)
     {
-        audioMixer.SetFloat("musicVolume", musicVolume);
+        audioMixer.SetFloat("musicVolume", Mathf.Log10(musicVolume) * 20);
     }
 
     public void SetEffectsVolume(float effectsVolume)
     {
-        audioMixer.SetFloat("effectsVolume", effectsVolume);
+        audioMixer.SetFloat("effectsVolume", Mathf.Log10(effectsVolume) * 20);
     }
 
     public void SetQuality(int qualityIndex)

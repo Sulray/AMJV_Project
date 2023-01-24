@@ -3,24 +3,7 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags:
-<<<<<<< HEAD
-<<<<<<< HEAD
-  - Enemy
-  - SceneManager
-=======
-=======
->>>>>>> 3bad3a9 (a lot of things)
-  - Ground
-  - Enemy
-  - Wall
-  - Projectile_Source
-  - Rotating_Projectile
-  - Experience
-<<<<<<< HEAD
->>>>>>> 3bad3a9 (a lot of things)
-=======
->>>>>>> 3bad3a9 (a lot of things)
+  tags: []
   layers:
   - Default
   - TransparentFX

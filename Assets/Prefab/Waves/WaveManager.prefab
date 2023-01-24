@@ -43,5 +43,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3064606e8d7efee46babe89182a67955, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  projectileManager: {fileID: 0}
   enemies:
-  - {fileID: 0}
+  - {fileID: 6936642418185176391, guid: c5193713e87db0f4fbdf2d6bc22e62d0, type: 3}
+  - {fileID: 6936642418185176391, guid: b8e70b3a18891754f8dab575db446248, type: 3}
+  poolSize: 10
+  totalEnemies: 0
+  slider: {fileID: 0}
+  text: {fileID: 0}
+  spawnpoints: []
