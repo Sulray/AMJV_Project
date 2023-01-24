@@ -5,11 +5,7 @@ using UnityEngine;
 public class Experience : MonoBehaviour
 {
     [SerializeField]
-    private int amount;
-    [SerializeField]
     private float lifetime;
-    [SerializeField]
-    private LevelSystem levelSystem;
 
     // Start is called before the first frame update
     void Start()
