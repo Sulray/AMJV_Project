@@ -8,8 +8,7 @@ public class HunterAttack : Attack
     ProjectileManager HunterArrowManager;
     HeroController controller;
     Transform transformProjectileSource;
-    [SerializeField]
-    GameObject Trap;
+    public GameObject Trap;
 
     public void Start()
     {

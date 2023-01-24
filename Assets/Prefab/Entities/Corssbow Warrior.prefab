@@ -2492,9 +2492,14 @@ MonoBehaviour:
   inputAction2: 0
   inputAction3: 0
   cooldown1: 0
-  lClickCooldown: {fileID: 0}
-  rClickCooldown: {fileID: 0}
-  spaceCooldown: {fileID: 0}
+  cooldown2: 0
+  cooldown3: 0
+  lClickCooldown: {fileID: 445086498992930554, guid: 02a9617e423ba4949a9f75da4613aa62,
+    type: 3}
+  rClickCooldown: {fileID: 7874889117661679475, guid: 8fdf266e28ecb924ba3f3ca80a5650e3,
+    type: 3}
+  spaceCooldown: {fileID: 2243193438594269965, guid: 8e3325c9cbba71e41a834df9cb08a16a,
+    type: 3}
   canMove: 1
   inputJump: 0
   buttonTimeJump: 0.3
@@ -2502,6 +2507,8 @@ MonoBehaviour:
   grounded: 0
   groundDetection: 0.2
   gravityOnFall: 5
+  levelSystem: {fileID: 0}
+  experienceAmount: 1
 --- !u!195 &4851142042248984080
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -2550,7 +2557,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentHealth: 0
-  HealthBar: {fileID: 0}
+  HealthBar: {fileID: 8830143857802085037, guid: eae51e83b0de0d24d8690dd6d6612fa2,
+    type: 3}
   hitDamage: 1
 --- !u!1001 &8205445912851595093
 PrefabInstance:

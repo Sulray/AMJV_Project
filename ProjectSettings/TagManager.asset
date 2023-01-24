@@ -3,16 +3,7 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-<<<<<<< HEAD
   tags: []
-=======
-  tags:
-  - Ground
-  - Experience
-  - Trap
-  - Projectile_Source
-  - Poison
->>>>>>> 588294edca888ab5abd8ff4eae307e1fff39032a
   layers:
   - Default
   - TransparentFX
