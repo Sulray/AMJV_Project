@@ -38884,6 +38884,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2537884999174320477, guid: ca39de28a94b4874a8717f7ced0f0862,
         type: 3}
+      propertyPath: levelSystem
+      value: 
+      objectReference: {fileID: 2111102860}
+    - target: {fileID: 2537884999174320477, guid: ca39de28a94b4874a8717f7ced0f0862,
+        type: 3}
       propertyPath: spaceCooldown
       value: 
       objectReference: {fileID: 1981230291}
@@ -61292,6 +61297,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2380696942932456425, guid: a4c16d484dca47748a073c531d957ece,
+        type: 3}
+      propertyPath: levelSystem
+      value: 
+      objectReference: {fileID: 2111102860}
+    - target: {fileID: 2380696942932456425, guid: a4c16d484dca47748a073c531d957ece,
+        type: 3}
+      propertyPath: spaceCooldown
+      value: 
+      objectReference: {fileID: 1981230291}
+    - target: {fileID: 2380696942932456425, guid: a4c16d484dca47748a073c531d957ece,
+        type: 3}
+      propertyPath: lClickCooldown
+      value: 
+      objectReference: {fileID: 138308891}
+    - target: {fileID: 2380696942932456425, guid: a4c16d484dca47748a073c531d957ece,
+        type: 3}
+      propertyPath: rClickCooldown
+      value: 
+      objectReference: {fileID: 183868100}
     - target: {fileID: 2380696942932456427, guid: a4c16d484dca47748a073c531d957ece,
         type: 3}
       propertyPath: m_Name
@@ -61352,6 +61377,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6776382452705776195, guid: a4c16d484dca47748a073c531d957ece,
+        type: 3}
+      propertyPath: HealthBar
+      value: 
+      objectReference: {fileID: 538058300}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a4c16d484dca47748a073c531d957ece, type: 3}
 --- !u!4 &1902234032 stripped
@@ -67126,6 +67156,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1e75f86c9a053724da0314e763b4775c, type: 3}
+--- !u!114 &2111102860 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2323360450395662047, guid: 1e75f86c9a053724da0314e763b4775c,
+    type: 3}
+  m_PrefabInstance: {fileID: 2111102859}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f3b57733ac0e6c478d24bc107514dda, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2111498487
 PrefabInstance:
   m_ObjectHideFlags: 0

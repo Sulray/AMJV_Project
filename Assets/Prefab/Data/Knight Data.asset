@@ -16,7 +16,7 @@ MonoBehaviour:
   startingDamage1: 5
   startingDamage2: 2
   startingDamage3: 0
-  startingSpeed: 5
+  startingSpeed: 8
   startingCD1: 1
   startingCD2: 5
   startingCD3: 5
