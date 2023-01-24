@@ -1,9 +1,13 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 <<<<<<<< HEAD:Assets/Scenes/GameOver.unity.meta
 guid: db76a9125950dd942879ef23fdbfc9e1
 ========
 guid: 4e171821fffe139478ec1d491ed10279
 >>>>>>>> 3bad3a9 (a lot of things):Assets/Scenes/LV3.unity.meta
+=======
+guid: 4e171821fffe139478ec1d491ed10279
+>>>>>>> 3bad3a9 (a lot of things)
 DefaultImporter:
   externalObjects: {}
   userData: 
