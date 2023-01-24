@@ -12,7 +12,7 @@ public class Health : MonoBehaviour
     public UnityEvent<Enemy> enemyDeath;
     public UnityEvent playerDeath;*/
     public float MaxHealth {get; set;}
-    public float currentHealth;//private
+    public float currentHealth;
 
     [SerializeField]
     private Image HealthBar;

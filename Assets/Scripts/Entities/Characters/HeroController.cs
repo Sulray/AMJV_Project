@@ -20,8 +20,8 @@ public class HeroController : MonoBehaviour
     public bool inputAction3;
 
     public float cooldown1;
-    float cooldown2;
-    float cooldown3;
+    public float cooldown2;
+    public float cooldown3;
 
     [SerializeField]
     CooldownUI lClickCooldown; //Left click
