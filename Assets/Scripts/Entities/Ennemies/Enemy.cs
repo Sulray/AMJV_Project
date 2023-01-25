@@ -10,7 +10,7 @@ public class Enemy : MonoBehaviour
 
     //General Datas/Scripts
     [SerializeField] private EnemyType enemyType;
-    [SerializeField] private EnemyParameter enemyData;
+    [SerializeField] public EnemyParameter enemyData;
     private Health health;
     private Strategy strategy;
     private bool cdUp;

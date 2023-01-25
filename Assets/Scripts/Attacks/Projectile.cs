@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
-    [SerializeField] 
-    private int damage;
+    public int damage { get; set; }
     [SerializeField]
     private bool onPlayerSide;
     [SerializeField]

@@ -10,10 +10,13 @@ public class ArcherStrategy : Strategy
     private float zCameraToGround;
     private bool visible; //récupérer le renderer
 
+    private int damage;
+
     private bool isAttacking = false;
     
     private void Start()
     {
+        damage = GetComponent<Enemy>().enemyData.damage;
         zCameraToGround = Camera.transform.position.y;
     }
 
@@ -57,7 +60,7 @@ public class ArcherStrategy : Strategy
             Vector3[] tempStore = new Vector3[2];
             tempStore[0] = this.transform.position;
             tempStore[1] = Target.transform.position;
-            ArrowManager.OnFireProjectile(this.transform.position, Target.transform.position);
+            ArrowManager.OnFireProjectile(damage, this.transform.position, Target.transform.position);
             yield return new WaitForSeconds(0.5f);
         }
         Debug.Log("end attack " + Time.time);
