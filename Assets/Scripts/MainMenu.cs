@@ -23,6 +23,11 @@ public class MainMenu : MonoBehaviour
     [SerializeField]
     AudioMixer audioMixer;
 
+    [SerializeField]
+    TMP_Text trueTitle;
+    [SerializeField]
+    TMP_Text title;
+
     Resolution[] resolutions;
 
     // Start is called before the first frame update
@@ -31,6 +36,7 @@ public class MainMenu : MonoBehaviour
         mainMenuContainer.SetActive(true);
         characterSelectionContainer.SetActive(false);
         settingsContainer.SetActive(false);
+        trueTitle.enabled = false;
 
         // Resolution settings set up
         resolutions = Screen.resolutions;
@@ -77,7 +83,9 @@ public class MainMenu : MonoBehaviour
 
     public void StartGame()
     {
-        // SceneManager.LoadScene(0);
+        int arena = Random.Range(1, 3);
+        Debug.Log(arena);
+        SceneManager.LoadScene("LV" + arena.ToString());
     }
 
     // Setting functions
@@ -104,5 +112,11 @@ public class MainMenu : MonoBehaviour
     {
         Resolution resolution = resolutions[resolutionIndex];
         Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
+    }
+
+    public void EasterEggTitle()
+    {
+        title.enabled = false;
+        trueTitle.enabled = true;
     }
 }

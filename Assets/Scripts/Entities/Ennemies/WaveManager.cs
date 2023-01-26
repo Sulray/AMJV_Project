@@ -10,6 +10,7 @@ public class WaveManager : MonoBehaviour
     private GameObject player;
     private Camera camera;
 
+    [SerializeField] private ExperiencePool xpPool;
     [SerializeField] private ProjectileManager projectileManager;
     //On utilise une Pool d'objets pour optimiser la mémoire
     [SerializeField] private Enemy[] enemies;
@@ -111,7 +112,7 @@ public class WaveManager : MonoBehaviour
             {
                 foreach (GameObject spawnpoint in spawnpoints)
                 {
-                    if (!CheckSpawn(spawnpoint.transform.position))
+                    if (!CheckSpawn(spawnpoint.transform.position) && (1 == Random.Range(0,2)))
                     {
                         Spawn(pickEnemy(), spawnpoint.transform.position);
                         totalEnemies += 1;
@@ -160,6 +161,7 @@ public class WaveManager : MonoBehaviour
         guy.Camera = camera;
         guy.ProjectileManager = projectileManager;
         guy.Manager = this;
+        //guy.Xp = xpPool;
         guy.gameObject.SetActive(true);
     }
 

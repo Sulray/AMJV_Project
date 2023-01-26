@@ -31,11 +31,13 @@ public class Health : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        Debug.Log("normal health " + currentHealth);
     }
     public void OnTakeDamage(int damage)
     {
         currentHealth -= damage;
+        Debug.Log("damage "+damage);
+        Debug.Log("health " + currentHealth);
         //entity dies
         if (currentHealth <= 0)
         {
@@ -47,13 +49,11 @@ public class Health : MonoBehaviour
             else
             {
                 GetComponent<Enemy>().Despawn();
+                GameObject.Instantiate(GetComponent<Enemy>().xp, transform);
+                //GetComponent<ExperiencePool>().OnSpawnExp(transform.position);
                 //enemyDeath?.Invoke(this.gameObject.GetComponent<Enemy>());
             }
-                
         }
-        Debug.Log(HealthBar);
-        Debug.Log(currentHealth);
-        Debug.Log(MaxHealth);
         HealthBar.fillAmount = (currentHealth / MaxHealth);
     }
 

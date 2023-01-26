@@ -53,7 +53,7 @@ public class OrbeMageProjectile : MonoBehaviour
         
         if (tag == "Enemy")
         {
-            collider.gameObject.BroadcastMessage("Damage", damage);
+            collider.gameObject.GetComponent<Health>().OnTakeDamage(damage);
             enemyCount += 1;
             if (enemyCount == enemyCountMax) 
             {

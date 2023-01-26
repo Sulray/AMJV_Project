@@ -5,7 +5,7 @@ using UnityEngine;
 public class SoldierStrategy : Strategy
 {
     bool isCdEnemyOver;
-    int range = 1;
+    float range = 0.8f;
 
     // Start is called before the first frame update
     void Start()

@@ -417,6 +417,18 @@ MonoBehaviour:
   currentHealth: 0
   HealthBar: {fileID: 3210489}
   hitDamage: 1
+--- !u!114 &61972513 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8459951771854768552, guid: f804f4cd5a07dad4c8cfc69dc6b50797,
+    type: 3}
+  m_PrefabInstance: {fileID: 967882570}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 61972510}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 755d8cb44eec4de4c95679f4000850ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &67954086
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1218,7 +1230,7 @@ PrefabInstance:
     - target: {fileID: 4471128578665735277, guid: 714db8273ee84404894943226fcb9e8c,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 6.4
+      value: -4.26
       objectReference: {fileID: 0}
     - target: {fileID: 4471128578665735277, guid: 714db8273ee84404894943226fcb9e8c,
         type: 3}
@@ -3287,6 +3299,11 @@ PrefabInstance:
       propertyPath: Upgrade3Text
       value: 
       objectReference: {fileID: 1128558933}
+    - target: {fileID: 2323360450395662047, guid: 1e75f86c9a053724da0314e763b4775c,
+        type: 3}
+      propertyPath: knightAttack
+      value: 
+      objectReference: {fileID: 61972513}
     - target: {fileID: 3089289603170308150, guid: 1e75f86c9a053724da0314e763b4775c,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
