@@ -16,13 +16,13 @@ public class LevelSystem : MonoBehaviour
 
     //In game UI elements
     [SerializeField]
-    private UnityEngine.UI.Image experienceBar;
+    private Image experienceBar;
     [SerializeField]
     private TMP_Text levelText;
 
     //Level up UI
     [SerializeField]
-    UnityEngine.GameObject levelUpPanel;
+    GameObject levelUpPanel;
     
     [SerializeField]
     private TMP_Text proposition1Text;
@@ -49,12 +49,13 @@ public class LevelSystem : MonoBehaviour
 
     //Player data
     private GameObject player;
-    private String playerName;
+    private string playerName;
     private HeroController heroController;
     private Health health;
     [SerializeField] KnightAttack knightAttack;
     [SerializeField] MageAttack mageAttack;
     [SerializeField] HunterAttack hunterAttack;
+    private int upgradesNumber;
 
     //Upgrades sprites
     [SerializeField] Sprite upgrade_0;
@@ -84,6 +85,21 @@ public class LevelSystem : MonoBehaviour
         experienceBar.fillAmount = 0;
         player = GameObject.FindWithTag("Player");
         playerName = player.name;
+        if (player.name == "Knight Warrior") 
+        { 
+            knightAttack = player.GetComponent<KnightAttack>();
+            upgradesNumber = 10;
+        }
+        if (player.name == "Mage Warrior") 
+        { 
+            mageAttack = player.GetComponent<MageAttack>();
+            upgradesNumber = 6;
+        }
+        if (player.name == "Corssbow Warrior") 
+        { 
+            hunterAttack = player.GetComponent<HunterAttack>(); 
+            upgradesNumber = 7;
+        }
         heroController = player.GetComponent<HeroController>();
         health = player.GetComponent<Health>();
 
@@ -117,12 +133,12 @@ public class LevelSystem : MonoBehaviour
             Time.timeScale = 0f;
             heroController.enabled = false;
 
-            proposition1 = UnityEngine.Random.Range(0, 7);
-            while (obtained[proposition1]) { proposition1 = UnityEngine.Random.Range(0, 6); }
-            proposition2 = UnityEngine.Random.Range(0, 7);
-            while (obtained[proposition2]) { proposition2 = UnityEngine.Random.Range(0, 6); }
-            proposition3 = UnityEngine.Random.Range(0, 7);
-            while (obtained[proposition3]) { proposition3 = UnityEngine.Random.Range(0, 6); }
+            proposition1 = UnityEngine.Random.Range(0, upgradesNumber);
+            while (obtained[proposition1]) { proposition1 = UnityEngine.Random.Range(0, upgradesNumber); }
+            proposition2 = UnityEngine.Random.Range(0, upgradesNumber);
+            while (obtained[proposition2]) { proposition2 = UnityEngine.Random.Range(0, upgradesNumber); }
+            proposition3 = UnityEngine.Random.Range(0, upgradesNumber);
+            while (obtained[proposition3]) { proposition3 = UnityEngine.Random.Range(0, upgradesNumber); }
             
             (proposition1Text.text, proposition1Icon.GetComponent<Image>().sprite, effect1)  = UpgradeUI(proposition1);
             (proposition2Text.text, proposition2Icon.GetComponent<Image>().sprite, effect2) = UpgradeUI(proposition2);
@@ -183,7 +199,7 @@ public class LevelSystem : MonoBehaviour
                 {
                     case "Knight Warrior":
                         return ("Left click attack x2", upgrade_6, "Effect6K");
-                    case "Hunter":
+                    case "Corssbow Warrior":
                         return ("Left click attack x2", upgrade_6, "Effect6H");
                     case "Mage Warrior":
                         return ("Left click attack x2", upgrade_6, "Effect6M");
@@ -195,8 +211,8 @@ public class LevelSystem : MonoBehaviour
                 {
                     case "Knight Warrior":
                         return ("Right click attack x2", upgrade_7K, "Effect7K");
-                    case "Hunter":
-                        return ("Description", upgrade_7H, "Effect7H");
+                    case "Corssbow Warrior":
+                        return ("Spacebar speed x2", upgrade_7H, "Effect7H");
                     case "Mage Warrior":
                         return ("Description", upgrade_7M, "Effect7M");
                     default:
@@ -207,7 +223,7 @@ public class LevelSystem : MonoBehaviour
                 {
                     case "Knight Warrior":
                         return ("Spacebar attack x2", upgrade_8K, "Effect8K");
-                    case "Hunter":
+                    case "Corssbow Warrior":
                         return ("Description", upgrade_8H, "Effect8H");
                     case "Mage Warrior":
                         return ("Description", upgrade_8M, "Effect8M");
@@ -219,7 +235,7 @@ public class LevelSystem : MonoBehaviour
                 {
                     case "Knight Warrior":
                         return ("Right click range +", upgrade_9K, "Effect9K");
-                    case "Hunter":
+                    case "Corssbow Warrior":
                         return ("Description", upgrade_9H, "Effect9H");
                     case "Mage Warrior":
                         return ("Description", upgrade_9M, "Effect9M");
@@ -231,7 +247,7 @@ public class LevelSystem : MonoBehaviour
                 {
                     case "Knight Warrior":
                         return ("Spacebar range +", upgrade_10K, "Effect10K");
-                    case "Hunter":
+                    case "Corssbow Warrior":
                         return ("Description", upgrade_10H, "Effect10H");
                     case "Mage Warrior":
                         return ("Description", upgrade_10M, "Effect10M");
@@ -283,7 +299,7 @@ public class LevelSystem : MonoBehaviour
     }
     private void Effect7H()
     {
-
+        hunterAttack.attack3Speed *= 2;
     }
     private void Effect7M()
     {

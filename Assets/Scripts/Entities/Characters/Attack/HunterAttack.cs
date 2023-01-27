@@ -11,6 +11,7 @@ public class HunterAttack : Attack
     public GameObject Trap;
 
     public int attack1Damage = 10;
+    public float attack3Speed = 2;
 
     public void Start()
     {
@@ -46,7 +47,7 @@ public class HunterAttack : Attack
     {
         float saveSpeed = this.gameObject.GetComponent<HeroController>().speed;
         float saveCd1 = this.gameObject.GetComponent<HeroController>().cooldown1;
-        this.gameObject.GetComponent<HeroController>().speed *= 2;
+        this.gameObject.GetComponent<HeroController>().speed *= attack3Speed;
         this.gameObject.GetComponent<HeroController>().cooldown1 /= 2;
         yield return new WaitForSeconds(3);
         this.gameObject.GetComponent<HeroController>().speed = saveSpeed;

@@ -1486,6 +1486,9 @@ MonoBehaviour:
   proposition1Icon: {fileID: 496572319032773838}
   proposition2Icon: {fileID: 3543150367121860127}
   proposition3Icon: {fileID: 4825623840859850096}
+  knightAttack: {fileID: 0}
+  mageAttack: {fileID: 0}
+  hunterAttack: {fileID: 0}
   upgrade_0: {fileID: 21300000, guid: 7c94ae95473401c4f99abad148fa42cb, type: 3}
   upgrade_1: {fileID: 21300000, guid: b1ae4b220d2c971499aa87fea4ca301e, type: 3}
   upgrade_2: {fileID: 21300000, guid: f0ed85d1349c85e4f8f77179abdac0ec, type: 3}
@@ -1494,10 +1497,10 @@ MonoBehaviour:
   upgrade_5: {fileID: 21300000, guid: ddb9f0383d50c1c4e855c9cacbb4aa89, type: 3}
   upgrade_6: {fileID: 21300000, guid: 475b41ff2c231a54baae0e7fd0ca02bc, type: 3}
   upgrade_7K: {fileID: 21300000, guid: f3b9aa2ef1bdbe849be1b32c89cb96fd, type: 3}
-  upgrade_7H: {fileID: 0}
+  upgrade_7H: {fileID: 21300000, guid: d06f8939438caaf42a17bca3a9ba6c0f, type: 3}
   upgrade_7M: {fileID: 0}
   upgrade_8K: {fileID: 21300000, guid: 955d02f468940d94bb668d0f42950225, type: 3}
-  upgrade_8H: {fileID: 21300000, guid: d06f8939438caaf42a17bca3a9ba6c0f, type: 3}
+  upgrade_8H: {fileID: 0}
   upgrade_8M: {fileID: 0}
   upgrade_9K: {fileID: 21300000, guid: cd6bf2661d494b24699f46bc43e5a879, type: 3}
   upgrade_9H: {fileID: 0}

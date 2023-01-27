@@ -2508,7 +2508,7 @@ MonoBehaviour:
   groundDetection: 0.2
   gravityOnFall: 5
   levelSystem: {fileID: 0}
-  experienceAmount: 1
+  experienceAmount: 3
 --- !u!195 &4851142042248984080
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -2544,6 +2544,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Trap: {fileID: 920760300362844728, guid: dcce850f9eef98840b5a7cb9ae1e6050, type: 3}
+  attack1Damage: 10
+  attack3Speed: 2
 --- !u!114 &1268717877020328261
 MonoBehaviour:
   m_ObjectHideFlags: 0

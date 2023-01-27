@@ -2017,7 +2017,7 @@ MonoBehaviour:
   groundDetection: 0.1
   gravityOnFall: 5
   levelSystem: {fileID: 0}
-  experienceAmount: 1
+  experienceAmount: 3
 --- !u!114 &3304623315339141215
 MonoBehaviour:
   m_ObjectHideFlags: 0
