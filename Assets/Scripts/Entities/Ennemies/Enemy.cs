@@ -30,7 +30,7 @@ public class Enemy : MonoBehaviour
     Rigidbody rb;
     Animator animator;
     [SerializeField] GameObject enemyModel;
-    private float knockbackForce = 4.5f;
+    private float knockbackForce = 5.5f;
     protected void Awake()
     {
         rb = GetComponent<Rigidbody>();
@@ -119,7 +119,7 @@ public class Enemy : MonoBehaviour
 
     private IEnumerator TimeKnockback()
     {
-        yield return new WaitForSeconds(0.8f);
+        yield return new WaitForSeconds(1);
         rb.isKinematic = true;
         agent.enabled = true;
     }

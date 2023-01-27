@@ -22,13 +22,13 @@ public class HunterAttack : Attack
     public override void First()
     {
         Debug.Log("Hunter First Attack");
-        RaycastHit hit;
-        if (Physics.Raycast(controller.rayMouse, out hit))
-        {
-            HunterArrowManager.SendMessage("OnArrowProjectile", new Vector3[] { transformProjectileSource.position, new Vector3(hit.point.x, transformProjectileSource.position.y, hit.point.z) });
-            hit.collider.gameObject.GetComponent<Health>().OnTakeDamage(attack1Damage);
-            Debug.Log("shot");
-        }
+        //RaycastHit hit;
+        //if (Physics.Raycast(controller.rayMouse, out hit))
+        //{
+         //   HunterArrowManager.SendMessage("OnArrowProjectile", new Vector3[] { transformProjectileSource.position, new Vector3(hit.point.x, transformProjectileSource.position.y, hit.point.z) });
+          //  hit.collider.gameObject.GetComponent<Health>().OnTakeDamage(attack1Damage);
+           // Debug.Log("shot");
+        //}
     }
 
     public override void Second()
