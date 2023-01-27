@@ -20,7 +20,7 @@ public class ProjectileManager : MonoBehaviour
             SendMessage("OnFireProjectile", ( new Vector3[]{ Vector3.zero, Vector3.one }));//event
         }
     }
-    public void OnFireProjectile(Vector3 shooter, Vector3 target)
+    public void OnFireProjectile(int damage, Vector3 shooter, Vector3 target)
     {
         Projectile obj;
         if (pool.Count == 0)
@@ -33,6 +33,7 @@ public class ProjectileManager : MonoBehaviour
         {
             obj = pool.Pop();
         }
+        obj.damage = damage;
         obj.transform.position = shooter;
         obj.transform.right = -(target - shooter).normalized;
         obj.gameObject.GetComponent<Rigidbody>().velocity = (target - shooter).normalized * 3;

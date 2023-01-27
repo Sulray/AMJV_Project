@@ -1480,22 +1480,31 @@ MonoBehaviour:
   experienceBar: {fileID: 8324604563266455484}
   levelText: {fileID: 655538261750277106}
   levelUpPanel: {fileID: 6956561933991702270}
-  Upgrade1Text: {fileID: 6272918900996534157}
-  Upgrade2Text: {fileID: 6572645678399191048}
-  Upgrade3Text: {fileID: 6714196215311209600}
-  Upgrade1Icon: {fileID: 496572319032773838}
-  Upgrade2Icon: {fileID: 3543150367121860127}
-  Upgrade3Icon: {fileID: 4825623840859850096}
-  upgrade_0: {fileID: 21300000, guid: b1ae4b220d2c971499aa87fea4ca301e, type: 3}
-  upgrade_1: {fileID: 21300000, guid: f0ed85d1349c85e4f8f77179abdac0ec, type: 3}
-  upgrade_2: {fileID: 21300000, guid: 70367d656fab15d4bb88e0669a62d491, type: 3}
-  upgrade_3: {fileID: 21300000, guid: 81b71002f9460714eb2c2abc28cd35f9, type: 3}
-  upgrade_4: {fileID: 21300000, guid: ddb9f0383d50c1c4e855c9cacbb4aa89, type: 3}
-  upgrade_5: {fileID: 21300000, guid: 7c94ae95473401c4f99abad148fa42cb, type: 3}
-  upgrade_6: {fileID: 21300000, guid: 7c94ae95473401c4f99abad148fa42cb, type: 3}
-  upgrade_7: {fileID: 21300000, guid: 7c94ae95473401c4f99abad148fa42cb, type: 3}
-  upgrade_8: {fileID: 21300000, guid: 7c94ae95473401c4f99abad148fa42cb, type: 3}
-  upgrade_9: {fileID: 21300000, guid: 7c94ae95473401c4f99abad148fa42cb, type: 3}
+  proposition1Text: {fileID: 6272918900996534157}
+  proposition2Text: {fileID: 6572645678399191048}
+  proposition3Text: {fileID: 6714196215311209600}
+  proposition1Icon: {fileID: 496572319032773838}
+  proposition2Icon: {fileID: 3543150367121860127}
+  proposition3Icon: {fileID: 4825623840859850096}
+  upgrade_0: {fileID: 21300000, guid: 7c94ae95473401c4f99abad148fa42cb, type: 3}
+  upgrade_1: {fileID: 21300000, guid: b1ae4b220d2c971499aa87fea4ca301e, type: 3}
+  upgrade_2: {fileID: 21300000, guid: f0ed85d1349c85e4f8f77179abdac0ec, type: 3}
+  upgrade_3: {fileID: 21300000, guid: 70367d656fab15d4bb88e0669a62d491, type: 3}
+  upgrade_4: {fileID: 21300000, guid: 81b71002f9460714eb2c2abc28cd35f9, type: 3}
+  upgrade_5: {fileID: 21300000, guid: ddb9f0383d50c1c4e855c9cacbb4aa89, type: 3}
+  upgrade_6: {fileID: 21300000, guid: 475b41ff2c231a54baae0e7fd0ca02bc, type: 3}
+  upgrade_7K: {fileID: 21300000, guid: f3b9aa2ef1bdbe849be1b32c89cb96fd, type: 3}
+  upgrade_7H: {fileID: 0}
+  upgrade_7M: {fileID: 0}
+  upgrade_8K: {fileID: 21300000, guid: 955d02f468940d94bb668d0f42950225, type: 3}
+  upgrade_8H: {fileID: 21300000, guid: d06f8939438caaf42a17bca3a9ba6c0f, type: 3}
+  upgrade_8M: {fileID: 0}
+  upgrade_9K: {fileID: 21300000, guid: cd6bf2661d494b24699f46bc43e5a879, type: 3}
+  upgrade_9H: {fileID: 0}
+  upgrade_9M: {fileID: 0}
+  upgrade_10K: {fileID: 21300000, guid: 8327b3b75c3e4b2428eda070c0c7c575, type: 3}
+  upgrade_10H: {fileID: 0}
+  upgrade_10M: {fileID: 0}
 --- !u!1 &4014344248306289050
 GameObject:
   m_ObjectHideFlags: 0

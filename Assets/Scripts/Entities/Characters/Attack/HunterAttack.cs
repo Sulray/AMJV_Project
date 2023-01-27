@@ -10,6 +10,8 @@ public class HunterAttack : Attack
     Transform transformProjectileSource;
     public GameObject Trap;
 
+    public int attack1Damage = 10;
+
     public void Start()
     {
         HunterArrowManager = GameObject.Find("HunterArrowManager").GetComponent<ProjectileManager>();
@@ -24,7 +26,7 @@ public class HunterAttack : Attack
         if (Physics.Raycast(controller.rayMouse, out hit))
         {
             HunterArrowManager.SendMessage("OnArrowProjectile", new Vector3[] { transformProjectileSource.position, new Vector3(hit.point.x, transformProjectileSource.position.y, hit.point.z) });
-            hit.collider.gameObject.GetComponent<Health>().OnTakeDamage(10);
+            hit.collider.gameObject.GetComponent<Health>().OnTakeDamage(attack1Damage);
             Debug.Log("shot");
         }
     }

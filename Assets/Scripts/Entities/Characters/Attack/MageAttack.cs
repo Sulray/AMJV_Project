@@ -14,6 +14,8 @@ public class MageAttack : Attack
 
     [SerializeField] private PlayerParameter playerData;
 
+    public int attack1Damage = 5;
+
     int timeWallInitial=5;
     int timeWall=5;
 
@@ -53,7 +55,7 @@ public class MageAttack : Attack
         RaycastHit hit;
         if (Physics.Raycast(controller.rayMouse, out hit))
         {
-            MageFireManager.OnFireProjectile(transformProjectileSource.position, new Vector3(hit.point.x, transformProjectileSource.position.y, hit.point.z));
+            MageFireManager.OnFireProjectile(attack1Damage ,transformProjectileSource.position, new Vector3(hit.point.x, transformProjectileSource.position.y, hit.point.z));
             //MageFireManager.SendMessage("OnFireProjectile", new Vector3[] { transformProjectileSource.position, new Vector3(hit.point.x,transformProjectileSource.position.y,hit.point.z) });
 
         }
