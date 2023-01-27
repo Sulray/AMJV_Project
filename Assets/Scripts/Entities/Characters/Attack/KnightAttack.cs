@@ -39,8 +39,8 @@ public class KnightAttack : Attack
         if (this.gameObject.GetComponent<HeroController>().grounded) //cette attaque n'est possible que lorsque le joueur n'est pas au dessus d'une fosse
         {
             Rigidbody rb = this.gameObject.GetComponent<Rigidbody>();
-            rb.velocity = new Vector3(rb.velocity.x, 3, rb.velocity.z);
-            StartCoroutine(WaitTilOnGround());
+            rb.velocity = new Vector3(rb.velocity.x, 10, rb.velocity.z);
+            StartCoroutine(WaitTilOnGround());//from Basile @Céline : Useless coroutine?
             if (this.gameObject.GetComponent<HeroController>().grounded)
             {
                 RaycastHit[] hitArray = Physics.SphereCastAll(transform.position, attack2Range, Vector3.zero, 1.5f);

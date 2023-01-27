@@ -79,8 +79,6 @@ public class HeroController : MonoBehaviour
         cooldown1 = playerData.startingCD1;
         cooldown2 = playerData.startingCD2;
         cooldown3 = playerData.startingCD3;
-        
-        Debug.Log("setHealth" + playerData.startingHealth);
         switch (playerType)
         {
             case PlayerType.Mage:

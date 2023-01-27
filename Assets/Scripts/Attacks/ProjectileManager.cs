@@ -7,10 +7,15 @@ public class ProjectileManager : MonoBehaviour
     private Stack<Projectile> pool;
     [SerializeField] private Projectile prefab;
     [SerializeField] private int size;
+    private int projSpeed = 3;
 
     private void Awake()
     {
         pool = new Stack<Projectile>(size);
+        if (prefab.onPlayerSide)
+        {
+            projSpeed = 9;
+        }
     }
 
     private void Update()
@@ -33,18 +38,17 @@ public class ProjectileManager : MonoBehaviour
         {
             obj = pool.Pop();
         }
+        
         obj.damage = damage;
         obj.transform.position = shooter;
         obj.transform.right = -(target - shooter).normalized;
-        obj.gameObject.GetComponent<Rigidbody>().velocity = (target - shooter).normalized * 3;
+        obj.gameObject.GetComponent<Rigidbody>().velocity = (target - shooter).normalized * projSpeed;
         obj.gameObject.SetActive(true);
 
     }
 
     public void OnDestroyProjectile(Projectile obj)
     {
-        Debug.Log("size " + size);
-        Debug.Log("count " + pool.Count);
         if (pool.Count >= size)
         {
             Destroy(obj.gameObject);

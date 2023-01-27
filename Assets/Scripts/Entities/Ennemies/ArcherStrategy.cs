@@ -12,6 +12,7 @@ public class ArcherStrategy : Strategy
 
     private int damage;
 
+    //"state pattern"
     private bool isAttacking = false;
     
     private void Start()
@@ -22,21 +23,25 @@ public class ArcherStrategy : Strategy
 
     public override Vector3 Move()
     {
-        //select one of the four areas inside the viewport but away from the player; will go slightly more into the corners but osef
-        int area = Random.Range(0, 4);
-        switch (area)
+        if (!isAttacking)
         {
-            case 0: //bottom
-                return Camera.ViewportToWorldPoint(new Vector3(Random.Range(0f, 1f), Random.Range(0f, 0.5f - yDistanceFromPlayer), zCameraToGround));
-            case 1: //top
-                return Camera.ViewportToWorldPoint(new Vector3(Random.Range(0f, 1f), Random.Range(0.5f + yDistanceFromPlayer, 1f), zCameraToGround));
-            case 2: //right
-                return Camera.ViewportToWorldPoint(new Vector3(Random.Range(0.5f + xDistanceFromPlayer, 1f), Random.Range(0f, 1f), zCameraToGround));
-            case 3: //left
-                return Camera.ViewportToWorldPoint(new Vector3(Random.Range(0f, 0.5f - xDistanceFromPlayer), Random.Range(0f, 1f), zCameraToGround));
-            default:
-                return gameObject.transform.position;
+            //select one of the four areas inside the viewport but away from the player; will go slightly more into the corners but osef
+            int area = Random.Range(0, 4);
+            switch (area)
+            {
+                case 0: //bottom
+                    return Camera.ViewportToWorldPoint(new Vector3(Random.Range(0f, 1f), Random.Range(0f, 0.5f - yDistanceFromPlayer), zCameraToGround));
+                case 1: //top
+                    return Camera.ViewportToWorldPoint(new Vector3(Random.Range(0f, 1f), Random.Range(0.5f + yDistanceFromPlayer, 1f), zCameraToGround));
+                case 2: //right
+                    return Camera.ViewportToWorldPoint(new Vector3(Random.Range(0.5f + xDistanceFromPlayer, 1f), Random.Range(0f, 1f), zCameraToGround));
+                case 3: //left
+                    return Camera.ViewportToWorldPoint(new Vector3(Random.Range(0f, 0.5f - xDistanceFromPlayer), Random.Range(0f, 1f), zCameraToGround));
+                default:
+                    return gameObject.transform.position;
+            }
         }
+        return gameObject.transform.position;
     }
     public override bool Attack()
     {

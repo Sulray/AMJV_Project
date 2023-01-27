@@ -25,7 +25,7 @@ public class Enemy : MonoBehaviour
 
 
     //For movement
-    public bool canMove;
+    public bool CanMove { get; set; }
     NavMeshAgent agent;
     Rigidbody rb;
     Animator animator;
@@ -38,7 +38,7 @@ public class Enemy : MonoBehaviour
     }
     protected void Start()
     {
-        canMove = true;
+        CanMove = true;
         agent = GetComponent<NavMeshAgent>();
         animator = enemyModel.GetComponent<Animator>();
         agent.speed = enemyData.speed;
@@ -77,7 +77,7 @@ public class Enemy : MonoBehaviour
             Debug.Log(health.currentHealth);
         }
 
-        if (!canMove)
+        if (!CanMove)
         {
             agent.speed = 0;
         }
@@ -87,11 +87,11 @@ public class Enemy : MonoBehaviour
             //si l'attaque réussi
             if (strategy.Attack())
             {
-                StartCoroutine(Cooldown());
+                StartCoroutine(Cooldown());//known issue : cd starts as soon as the attack starts, and thus an attack can restart as soon as the first one finishes, locking the enemy into an attack state. No time to fix for now but should look into a different cd implementation (maby handled in strategy script?)
             }
         }
 
-        if ((!agent.hasPath) || enemyType == EnemyType.Soldier)
+        if (CanMove && ((!agent.hasPath) || enemyType == EnemyType.Soldier)) //Si l'ennemi peut bouger (pas dans un piège, et qu'il n'a pas déjà de destination (sauf pour le soldat qui aggro en permanence le joueur, alors on lui trouve une destination
         {
             agent.destination = strategy.Move();
         }

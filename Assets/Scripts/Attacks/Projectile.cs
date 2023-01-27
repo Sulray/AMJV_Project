@@ -6,7 +6,7 @@ public class Projectile : MonoBehaviour
 {
     public int damage { get; set; }
     [SerializeField]
-    private bool onPlayerSide;
+    public bool onPlayerSide { get; set; }
     [SerializeField]
     private Rigidbody rb;
     public ProjectileManager ProjectileManager { get; set; }

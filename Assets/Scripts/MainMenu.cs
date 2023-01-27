@@ -83,7 +83,7 @@ public class MainMenu : MonoBehaviour
 
     public void StartGame()
     {
-        int arena = Random.Range(1, 3);
+        int arena = Random.Range(3, 4);
         Debug.Log(arena);
         SceneManager.LoadScene("LV" + arena.ToString());
     }

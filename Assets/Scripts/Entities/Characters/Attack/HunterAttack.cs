@@ -14,21 +14,21 @@ public class HunterAttack : Attack
 
     public void Start()
     {
-        HunterArrowManager = GameObject.Find("HunterArrowManager").GetComponent<ProjectileManager>();
+        HunterArrowManager = GetComponent<ProjectileManager>();
         controller = this.gameObject.GetComponent<HeroController>();
-        transformProjectileSource = GameObject.FindGameObjectWithTag("Projectile_Source").transform;
+        //transformProjectileSource = GameObject.FindGameObjectWithTag("Projectile_Source").transform;
     }
 
     public override void First()
     {
         Debug.Log("Hunter First Attack");
-        //RaycastHit hit;
-        //if (Physics.Raycast(controller.rayMouse, out hit))
-        //{
-         //   HunterArrowManager.SendMessage("OnArrowProjectile", new Vector3[] { transformProjectileSource.position, new Vector3(hit.point.x, transformProjectileSource.position.y, hit.point.z) });
-          //  hit.collider.gameObject.GetComponent<Health>().OnTakeDamage(attack1Damage);
-           // Debug.Log("shot");
-        //}
+        RaycastHit hit;
+        if (Physics.Raycast(controller.rayMouse, out hit))
+        {
+           HunterArrowManager.OnFireProjectile(attack1Damage, transform.position, new Vector3(hit.point.x, transform.position.y, hit.point.z));  //SendMessage("OnArrowProjectile", new Vector3[] { transformProjectileSource.position, new Vector3(hit.point.x, transformProjectileSource.position.y, hit.point.z) });
+           //hit.collider.gameObject.GetComponent<Health>().OnTakeDamage(attack1Damage);
+           Debug.Log("shot");
+        }
     }
 
     public override void Second()

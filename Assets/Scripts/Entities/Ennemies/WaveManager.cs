@@ -8,13 +8,17 @@ public class WaveManager : MonoBehaviour
 {
     [SerializeField] private HeroController player1;
     [SerializeField] private HeroController player2;
+    [SerializeField] private HeroController player3;
 
     //Objects qui seront récupérés dans awake et passés à chaque entité spawn
     private GameObject player;
     private Camera camera;
 
+    //Pools n stuff
     [SerializeField] private ExperiencePool xpPool;
     [SerializeField] private ProjectileManager projectileManager;
+    [SerializeField] private Experience xp;
+
     //On utilise une Pool d'objets pour optimiser la mémoire
     [SerializeField] private Enemy[] enemies;
     private Pool[] pools;
@@ -49,6 +53,10 @@ public class WaveManager : MonoBehaviour
         else if (playerToSpawn == 2)
         {
             player2.gameObject.SetActive(true);
+        }
+        else if (playerToSpawn == 3)
+        {
+            player3.gameObject.SetActive(true);
         }
 
         pools = new Pool[enemies.Length];
@@ -186,17 +194,16 @@ public class WaveManager : MonoBehaviour
     {
         Debug.Log("despawn");
         //Would've been better to make a WaveManager<T> class and fuse it with pools but it's too late so here's a rusty implementation
-        foreach(Enemy prefab in enemies)
+        for (int i = 0; i<= enemies.Length; i++) //check for each pool if the enemy to return belongs
         {
-            for (int i = 0; i<= enemies.Length; i++) //check for each pool if the enemy to return belongs
+            if (enemies[i].CompareTag(enemy.tag))
             {
-                if (prefab.CompareTag(enemy.tag))
-                {
-                    pools[i].ReturnObject(enemy);
-                    break;
-                }
+                pools[i].ReturnObject(enemy);
+                break;
             }
-            
         }
+        Debug.Log("spawn xp");
+        Experience obj = Instantiate(xp);
+        obj.transform.position = enemy.transform.position;
     }
 }

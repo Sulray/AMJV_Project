@@ -24,14 +24,13 @@ public class Health : MonoBehaviour
     void Start()
     {
         currentHealth = MaxHealth;
-        Debug.Log(HealthBar);
-        HealthBar.fillAmount = 1;   
+        HealthBar.fillAmount = 1;
     }
 
     // Update is called once per frame
     void Update()
     {
-        Debug.Log("normal health " + currentHealth);
+
     }
     public void OnTakeDamage(int damage)
     {
