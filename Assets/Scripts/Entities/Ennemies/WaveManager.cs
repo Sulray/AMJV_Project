@@ -6,6 +6,9 @@ using TMPro;
 using UnityEngine.Events;
 public class WaveManager : MonoBehaviour
 {
+    [SerializeField] private HeroController player1;
+    [SerializeField] private HeroController player2;
+
     //Objects qui seront récupérés dans awake et passés à chaque entité spawn
     private GameObject player;
     private Camera camera;
@@ -36,6 +39,18 @@ public class WaveManager : MonoBehaviour
     
     private void Awake()
     {
+
+        int playerToSpawn = GameObject.FindWithTag("Singleton").GetComponent<Singleton>().Player;
+        Debug.Log(playerToSpawn);
+        if ( playerToSpawn == 1)
+        {
+            player1.gameObject.SetActive(true);
+        }
+        else if (playerToSpawn == 2)
+        {
+            player2.gameObject.SetActive(true);
+        }
+
         pools = new Pool[enemies.Length];
         player = GameObject.FindWithTag("Player");
         camera = GameObject.FindWithTag("MainCamera").GetComponent<Camera>();

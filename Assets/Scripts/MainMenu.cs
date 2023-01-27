@@ -119,4 +119,9 @@ public class MainMenu : MonoBehaviour
         title.enabled = false;
         trueTitle.enabled = true;
     }
+
+    public void PickPlayer(int player)
+    {
+        GameObject.FindWithTag("Singleton").GetComponent<Singleton>().Player = player;
+    }
 }
