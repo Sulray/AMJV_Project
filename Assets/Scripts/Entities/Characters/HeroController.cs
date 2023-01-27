@@ -5,6 +5,7 @@ using UnityEngine.AI;
 
 public class HeroController : MonoBehaviour
 {
+
     [SerializeField] private PlayerType playerType;
     [SerializeField] public PlayerParameter playerData;
     private Attack attack;
@@ -101,7 +102,7 @@ public class HeroController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E))
         {
-            experienceAmount += 1;
+            levelSystem.AddExeprience(experienceAmount);
         }
         Inputs();
         Action();

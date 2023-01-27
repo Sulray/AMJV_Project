@@ -93,7 +93,7 @@ public class Enemy : MonoBehaviour
 
         if ((!agent.hasPath) || enemyType == EnemyType.Soldier)
         {
-            agent.destination = strategy.Move();    
+            agent.destination = strategy.Move();
         }
         animator.SetFloat("ForwardSpeed", agent.velocity.magnitude / agent.speed);
 
