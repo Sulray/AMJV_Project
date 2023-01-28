@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 2380696942932456426}
   - component: {fileID: 1751703624166286844}
   - component: {fileID: 6776382452705776195}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Knight Warrior
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -137,6 +137,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 755d8cb44eec4de4c95679f4000850ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attack1Damage: 5
+  attack2Damage: 2
+  attack3Damage: 1
+  attack2Range: 1.5
+  attack3Range: 1.5
 --- !u!114 &6776382452705776195
 MonoBehaviour:
   m_ObjectHideFlags: 0

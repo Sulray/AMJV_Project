@@ -30,7 +30,7 @@ public class Projectile : MonoBehaviour
             other.gameObject.GetComponent<Health>().OnTakeDamage(damage);
             ProjectileManager.OnDestroyProjectile(this);
         }
-        else if (tag == "Enemy" && onPlayerSide)
+        else if ((tag == "Enemy" || tag == "Boss")&& onPlayerSide)
         {
             other.gameObject.GetComponent<Health>().OnTakeDamage(damage);
             ProjectileManager.OnDestroyProjectile(this);

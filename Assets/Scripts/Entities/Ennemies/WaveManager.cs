@@ -6,6 +6,7 @@ using TMPro;
 using UnityEngine.Events;
 public class WaveManager : MonoBehaviour
 {
+    [SerializeField] private Boss boss;
     [SerializeField] private HeroController player1;
     [SerializeField] private HeroController player2;
     [SerializeField] private HeroController player3;
@@ -24,13 +25,13 @@ public class WaveManager : MonoBehaviour
     private Pool[] pools;
     [SerializeField] private int poolSize;
 
-    private int wave;
+    private int wave = 0;
     private int currentFib = 0;
     private int lastFib = 1;
     [SerializeField] private int totalEnemies;
     private int maxEnemies = 500;
     private float spawnSpeed = 2;
-    private float waveDelay = 2;
+    private float waveDelay = 5;
     private float timer;
     [SerializeField] Slider slider;
     [SerializeField] TMP_Text text;
@@ -106,14 +107,25 @@ public class WaveManager : MonoBehaviour
             timer += Time.deltaTime;
             if (timer >= waveDelay)
             {
-                timer = 0;
-                //update the fibonacci sequence
-                tmpFib = currentFib;
-                currentFib += lastFib;
-                lastFib = tmpFib;
-                wave += 1;
-                text.text = "Wave " + wave;
-                yield return startWave(currentFib);
+                if (wave <= 9)
+                {
+                    timer = 0;
+                    //update the fibonacci sequence
+                    tmpFib = currentFib;
+                    currentFib += lastFib;
+                    lastFib = tmpFib;
+                    wave += 1;
+                    text.text = "Wave " + wave;
+                    yield return startWave(currentFib);
+                }
+                
+                else
+                {
+                    Debug.Log("boss spawn");
+                    Boss tmp = Instantiate(boss);
+                    tmp.transform.position = spawnpoints[0].transform.position;
+                    break;
+                }
                 
             }
             else

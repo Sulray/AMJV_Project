@@ -37,7 +37,7 @@ public class PauseMenu : MainMenu
         
     }
 
-    public void Settings()
+    new public void Settings()
     {
         pauseMenu.SetActive(false);
         settings.SetActive(true);

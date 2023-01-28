@@ -1933,7 +1933,7 @@ GameObject:
   - component: {fileID: 1612513484502341779}
   - component: {fileID: 3304623315339141215}
   - component: {fileID: 5178009339363541878}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Mage Warrior
   m_TagString: Player
   m_Icon: {fileID: 0}

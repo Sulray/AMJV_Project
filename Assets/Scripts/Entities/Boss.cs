@@ -91,7 +91,7 @@ public class Boss : MonoBehaviour
         rb.isKinematic = true;
 
         canMove = true;
-        canAttack = false;
+        canAttack = true;
         waitForAttack = false;
 
     }
@@ -279,7 +279,11 @@ public class Boss : MonoBehaviour
             StartCoroutine(Action1Cooldown(cooldown));
             StartCoroutine(AttackAnimation(1,timeAttackAnimation));
             StartCoroutine(WaitAttack(timeAttackAnimation));
-            // mtn faut voir les dégâts
+            if(hit.collider.gameObject.tag == "Player")
+            {
+                hit.collider.gameObject.GetComponent<Health>().OnTakeDamage(damageStrike);
+                Debug.Log("damage strike");
+            }
             
 
         }
@@ -352,10 +356,15 @@ public class Boss : MonoBehaviour
         RaycastHit hit;
         if (Physics.SphereCast(this.transform.position, range, transform.forward, out hit, Player))
         {
-           
+            GameObject objectHit = hit.collider.gameObject;
             StartCoroutine(WaitAttack(timeAttackAnimation));
             // mtn faut voir les dégâts et knockback
-            
+            if (objectHit.tag == "Player")
+            {
+                objectHit.GetComponent<Health>().OnTakeDamage(damageEarthquake);
+                objectHit.GetComponent<Rigidbody>().AddForce((objectHit.transform.position - this.transform.position).normalized * knockback, ForceMode.Impulse);
+                Debug.Log("damage earthquake");
+            }
 
         }
     }

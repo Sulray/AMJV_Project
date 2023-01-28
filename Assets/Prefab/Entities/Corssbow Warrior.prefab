@@ -2419,7 +2419,8 @@ GameObject:
   - component: {fileID: 4851142042248984080}
   - component: {fileID: 3915555035844597046}
   - component: {fileID: 1268717877020328261}
-  m_Layer: 0
+  - component: {fileID: 3289192599667772641}
+  m_Layer: 8
   m_Name: Corssbow Warrior
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -2491,6 +2492,8 @@ MonoBehaviour:
   inputAction2: 0
   inputAction3: 0
   cooldown1: 0
+  cooldown2: 0
+  cooldown3: 0
   lClickCooldown: {fileID: 0}
   rClickCooldown: {fileID: 0}
   spaceCooldown: {fileID: 0}
@@ -2501,6 +2504,8 @@ MonoBehaviour:
   grounded: 0
   groundDetection: 0.2
   gravityOnFall: 5
+  levelSystem: {fileID: 0}
+  experienceAmount: 1
 --- !u!195 &4851142042248984080
 NavMeshAgent:
   m_ObjectHideFlags: 0

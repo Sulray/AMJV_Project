@@ -47,7 +47,7 @@ public class ArcherStrategy : Strategy
     {
         if (!isAttacking)
         {
-            Debug.Log("start attack " + Time.time);
+            //Debug.Log("start attack " + Time.time);
             isAttacking = true;
             this.GetComponent<NavMeshAgent>().velocity = Vector3.zero;
             StartCoroutine(Fire(Random.Range(1, 6)));
@@ -68,7 +68,7 @@ public class ArcherStrategy : Strategy
             ArrowManager.OnFireProjectile(damage, this.transform.position, Target.transform.position);
             yield return new WaitForSeconds(0.5f);
         }
-        Debug.Log("end attack " + Time.time);
+        //Debug.Log("end attack " + Time.time);
         isAttacking = false;
     }
 }

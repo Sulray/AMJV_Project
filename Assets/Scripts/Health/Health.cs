@@ -45,12 +45,17 @@ public class Health : MonoBehaviour
                 GameObject.FindWithTag("SceneManager").GetComponent<PauseMenu>().GameOver();
                 //playerDeath?.Invoke();
             }
-            else
+            else if (gameObject.CompareTag("Enemy"))
             {
                 GetComponent<Enemy>().Despawn();
                 GameObject.Instantiate(GetComponent<Enemy>().xp, transform);
                 //GetComponent<ExperiencePool>().OnSpawnExp(transform.position);
                 //enemyDeath?.Invoke(this.gameObject.GetComponent<Enemy>());
+            }
+
+            else if (gameObject.CompareTag("Boss"))
+            {
+                SceneManager.LoadScene("VictoryScreen");
             }
         }
         HealthBar.fillAmount = (currentHealth / MaxHealth);
