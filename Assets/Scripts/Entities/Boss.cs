@@ -115,6 +115,7 @@ public class Boss : MonoBehaviour
         if (canMove)
         {
             agent.destination = target.position;
+            animator.SetFloat("floatVelocity",agent.velocity.magnitude/agent.speed);
         }
 
         switch (currentState)
@@ -191,12 +192,12 @@ public class Boss : MonoBehaviour
             case BossStates.SecondPhase:
                 Debug.Log("Phase 2");
                 agent.speed = speedPhase2;
-                agent.acceleration = agent.speed * 10;
+                agent.acceleration = agent.speed * 2;
                 break;
             case BossStates.ThirdPhase:
                 Debug.Log("Phase 3");
                 agent.speed = speedPhase3;
-                agent.acceleration = agent.speed * 10;
+                agent.acceleration = agent.speed * 2;
                 break;
             default:
                 Debug.Log("State not in the list");

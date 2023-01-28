@@ -15,7 +15,6 @@ TagManager:
   - Rotating_Projectile
   - Projectile_Source
   - Singleton
-
   layers:
   - Default
   - TransparentFX

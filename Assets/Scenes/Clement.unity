@@ -213,20 +213,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b1e56f85ddffb0409b9a3887a9b4583, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerType: 0
-  playerData: {fileID: 0}
-  animator: {fileID: 0}
-  inputAction1: 0
-  inputAction2: 0
-  inputAction3: 0
-  canMove: 1
-  inputJump: 0
-  buttonTimeJump: 0.3
-  jumpAmount: 20
-  grounded: 0
-  groundDetection: 0
-  gravityOnFall: 0
-  knockbackForce: 20
 --- !u!1 &883052331
 GameObject:
   m_ObjectHideFlags: 0
@@ -461,6 +447,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 5823197088974745815, guid: 6690bc19b9aa2c24ebca4e060a1b415a, type: 3}
   size: 2
+  projSpeed: 3
 --- !u!114 &84731361288420088
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5127,7 +5114,7 @@ GameObject:
   - component: {fileID: 3049683171238344489}
   - component: {fileID: 3049683171238344488}
   m_Layer: 0
-  m_Name: Brute Warrior (1)
+  m_Name: Brute Warrior
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5160,8 +5147,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77fbcbac4cbcae144b6c709ac0bead8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 0}
-  maximumHealth: 0
+  animator: {fileID: 3882130309611121942}
+  maximumHealth: 100
   grounded: 0
   groundDetection: 0.5
   speedPhase1: 5
@@ -5191,7 +5178,7 @@ MonoBehaviour:
   rangeRangeStrike: 5
   Player:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 256
 --- !u!114 &3402572934540484452
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10054,7 +10041,7 @@ PrefabInstance:
     - target: {fileID: 8936869707419572270, guid: 2473cee4db166304f889770459cd7896,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.19
+      value: 1.2
       objectReference: {fileID: 0}
     - target: {fileID: 8936869707419572270, guid: 2473cee4db166304f889770459cd7896,
         type: 3}
@@ -10099,6 +10086,11 @@ PrefabInstance:
     - target: {fileID: 8936869707419572270, guid: 2473cee4db166304f889770459cd7896,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8936869707419927564, guid: 2473cee4db166304f889770459cd7896,
+        type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8936869707419927566, guid: 2473cee4db166304f889770459cd7896,
