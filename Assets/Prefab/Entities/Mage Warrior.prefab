@@ -1467,7 +1467,7 @@ GameObject:
   - component: {fileID: 2537884999174320477}
   - component: {fileID: -7456608686356919919}
   - component: {fileID: 8251527464966335160}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Mage Warrior
   m_TagString: Player
   m_Icon: {fileID: 0}

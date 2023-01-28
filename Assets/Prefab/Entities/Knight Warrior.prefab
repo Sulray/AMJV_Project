@@ -232,7 +232,7 @@ GameObject:
   - component: {fileID: 5485783724630859710}
   - component: {fileID: 8459951771854768552}
   - component: {fileID: 3684524530653658647}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Knight Warrior
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -303,6 +303,8 @@ MonoBehaviour:
   inputAction2: 0
   inputAction3: 0
   cooldown1: 1
+  cooldown2: 0
+  cooldown3: 0
   lClickCooldown: {fileID: 445086498992930554, guid: 02a9617e423ba4949a9f75da4613aa62,
     type: 3}
   rClickCooldown: {fileID: 7874889117661679475, guid: 8fdf266e28ecb924ba3f3ca80a5650e3,
@@ -316,6 +318,8 @@ MonoBehaviour:
   grounded: 0
   groundDetection: 0.1
   gravityOnFall: 5
+  levelSystem: {fileID: 0}
+  experienceAmount: 1
 --- !u!195 &5485783724630859710
 NavMeshAgent:
   m_ObjectHideFlags: 0

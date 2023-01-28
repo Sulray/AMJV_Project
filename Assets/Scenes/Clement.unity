@@ -5124,6 +5124,8 @@ GameObject:
   - component: {fileID: 1511179374708556308}
   - component: {fileID: 1511179374708556311}
   - component: {fileID: 3049683171238344486}
+  - component: {fileID: 3049683171238344489}
+  - component: {fileID: 3049683171238344488}
   m_Layer: 0
   m_Name: Brute Warrior (1)
   m_TagString: Untagged
@@ -5131,6 +5133,65 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &3049683171238344488
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3049683171238344487}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a1ffc3d74503bf4f9a31053381043fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentHealth: 0
+  HealthBar: {fileID: 0}
+  hitDamage: 1
+--- !u!114 &3049683171238344489
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3049683171238344487}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77fbcbac4cbcae144b6c709ac0bead8b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 0}
+  maximumHealth: 0
+  grounded: 0
+  groundDetection: 0.5
+  speedPhase1: 5
+  speedPhase2: 7
+  speedPhase3: 9
+  timeAttackAnimation: 0.5
+  cooldownStrike: 3
+  cooldownRangeStrike: 5
+  cooldownJump: 15
+  cooldownBigJump: 10
+  cooldownSpeedBoost: 10
+  cooldownCanAttack: 2
+  speedBoostValue: 15
+  speedBoostTime: 2
+  speedJump: 15
+  radiusEarthquake: 2
+  radiusBigEarthquake: 5
+  damageEarthquake: 2
+  damageBigEarthquake: 5
+  rangeEarthquake: 2
+  rangeBigEarthquake: 5
+  knockbackEarthquake: 2
+  knockbackBigEarthquake: 5
+  damageStrike: 2
+  damageRangeStrike: 5
+  rangeStrike: 2
+  rangeRangeStrike: 5
+  Player:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!114 &3402572934540484452
 MonoBehaviour:
   m_ObjectHideFlags: 0
