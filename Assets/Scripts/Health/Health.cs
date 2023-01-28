@@ -60,7 +60,7 @@ public class Health : MonoBehaviour
     {
         if (collision.collider.CompareTag("Poison"))
         {
-            OnTakeDamage(1000);
+            OnTakeDamage(500000);
         }
     }
 }

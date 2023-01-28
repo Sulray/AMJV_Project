@@ -7,23 +7,18 @@ public class ProjectileManager : MonoBehaviour
     private Stack<Projectile> pool;
     [SerializeField] private Projectile prefab;
     [SerializeField] private int size;
-    private int projSpeed = 3;
+    [SerializeField] private int projSpeed = 3;
+    
 
     private void Awake()
     {
         pool = new Stack<Projectile>(size);
-        if (prefab.onPlayerSide)
-        {
-            projSpeed = 9;
-        }
+        
     }
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.G))
-        {
-            SendMessage("OnFireProjectile", ( new Vector3[]{ Vector3.zero, Vector3.one }));//event
-        }
+
     }
     public void OnFireProjectile(int damage, Vector3 shooter, Vector3 target)
     {

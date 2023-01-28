@@ -8,7 +8,7 @@ public class HunterAttack : Attack
     ProjectileManager HunterArrowManager;
     HeroController controller;
     Transform transformProjectileSource;
-    public GameObject Trap;
+    [SerializeField] private TrapBehavior Trap;
 
     public int attack1Damage = 10;
     public float attack3Speed = 2;
@@ -18,6 +18,7 @@ public class HunterAttack : Attack
         HunterArrowManager = GetComponent<ProjectileManager>();
         controller = this.gameObject.GetComponent<HeroController>();
         //transformProjectileSource = GameObject.FindGameObjectWithTag("Projectile_Source").transform;
+        Debug.Log("trap " + Trap);
     }
 
     public override void First()
@@ -35,6 +36,7 @@ public class HunterAttack : Attack
     public override void Second()
     {
         Debug.Log("Hunter Second Attack");
+        Debug.Log(Trap);
         Instantiate(Trap, this.transform.position, Quaternion.identity);
     }
     public override void Third()

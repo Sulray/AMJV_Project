@@ -12,6 +12,7 @@ public class Singleton : MonoBehaviour
     }
     void Awake()
     {
+        Player = 0;
         if (instance != null & instance != this)
         {
             Destroy(this.gameObject);

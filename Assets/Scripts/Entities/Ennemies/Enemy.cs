@@ -124,6 +124,13 @@ public class Enemy : MonoBehaviour
         agent.enabled = true;
     }
 
+    public IEnumerator Stopped()
+    {
+        CanMove = false;
+        yield return new WaitForSeconds(5f);
+        CanMove = true;
+    }
+
     public void Despawn()//Despawns (events aren't working, this is current solution)
     {
         Manager.despawn(this);

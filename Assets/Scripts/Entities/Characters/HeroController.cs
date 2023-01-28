@@ -79,13 +79,13 @@ public class HeroController : MonoBehaviour
         cooldown1 = playerData.startingCD1;
         cooldown2 = playerData.startingCD2;
         cooldown3 = playerData.startingCD3;
-        switch (playerType)
+        switch (playerType) 
         {
             case PlayerType.Mage:
                 attack = gameObject.AddComponent<MageAttack>();
                 break;
             case PlayerType.Hunter:
-                attack = gameObject.AddComponent<HunterAttack>();
+                attack = GetComponent<HunterAttack>();
                 break;
             case PlayerType.Knight:
                 attack = gameObject.AddComponent<KnightAttack>();
@@ -101,6 +101,11 @@ public class HeroController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E))
         {
             levelSystem.AddExeprience(experienceAmount);
+        }
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+            GetComponent<Health>().MaxHealth = 500000;
+            GetComponent<Health>().currentHealth = 500000;
         }
         Inputs();
         Action();

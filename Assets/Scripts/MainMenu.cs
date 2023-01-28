@@ -30,9 +30,13 @@ public class MainMenu : MonoBehaviour
 
     Resolution[] resolutions;
 
+    private Singleton playerSelect;
+
     // Start is called before the first frame update
     void Start()
     {
+        playerSelect = GameObject.FindWithTag("Singleton").GetComponent<Singleton>();
+
         mainMenuContainer.SetActive(true);
         characterSelectionContainer.SetActive(false);
         settingsContainer.SetActive(false);
@@ -83,9 +87,12 @@ public class MainMenu : MonoBehaviour
 
     public void StartGame()
     {
-        int arena = Random.Range(3, 4);
-        Debug.Log(arena);
-        SceneManager.LoadScene("LV" + arena.ToString());
+        if(playerSelect.Player != 0)
+        {
+            int arena = Random.Range(1, 4);
+            SceneManager.LoadScene("LV" + arena.ToString());
+        }
+
     }
 
     // Setting functions
@@ -122,6 +129,6 @@ public class MainMenu : MonoBehaviour
 
     public void PickPlayer(int player)
     {
-        GameObject.FindWithTag("Singleton").GetComponent<Singleton>().Player = player;
+        playerSelect.Player = player;
     }
 }

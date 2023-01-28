@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using UnityEngine.Events;
-public class PauseMenu : MonoBehaviour
+public class PauseMenu : MainMenu
 {
     
     [SerializeField] private GameObject pauseMenu;

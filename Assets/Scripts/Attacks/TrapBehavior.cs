@@ -16,12 +16,13 @@ public class TrapBehavior : MonoBehaviour
         
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        if(collision.gameObject.tag == "Enemy")
+        if (other.gameObject.tag == "Enemy")
         {
             Debug.Log("Trap triggered");
-            collision.gameObject.GetComponent<Enemy>().CanMove = false;
+            other.gameObject.GetComponent<Enemy>().StartCoroutine("Stopped");
+            Destroy(this.gameObject);
         }
     }
 }

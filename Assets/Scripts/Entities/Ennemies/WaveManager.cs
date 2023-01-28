@@ -45,7 +45,6 @@ public class WaveManager : MonoBehaviour
     {
 
         int playerToSpawn = GameObject.FindWithTag("Singleton").GetComponent<Singleton>().Player;
-        Debug.Log(playerToSpawn);
         if ( playerToSpawn == 1)
         {
             player1.gameObject.SetActive(true);

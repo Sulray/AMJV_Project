@@ -6,7 +6,7 @@ public class Projectile : MonoBehaviour
 {
     public int damage { get; set; }
     [SerializeField]
-    public bool onPlayerSide { get; set; }
+    private bool onPlayerSide;
     [SerializeField]
     private Rigidbody rb;
     public ProjectileManager ProjectileManager { get; set; }
@@ -15,7 +15,7 @@ public class Projectile : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.B))
         {
-            ProjectileManager.SendMessage("OnDestroyProjectile", this);//utiliser la méthode
+            ProjectileManager.OnDestroyProjectile(this);
         }
     }
     private void OnTriggerEnter(Collider other)
